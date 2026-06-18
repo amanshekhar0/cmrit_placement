@@ -33,7 +33,7 @@ function CompanyCardButton({ company, count, isActive, onSelect, cards, complete
   const [imgError, setImgError] = useState(false);
   const initials = getInitials(company);
   const domain = COMPANY_DOMAINS[company] || COMPANY_DOMAINS[company.trim()];
-  const logoUrl = domain ? `https://logo.clearbit.com/${domain}` : null;
+  const logoUrl = domain ? `https://logos.hunter.io/${domain}` : null;
 
   return (
     <button
@@ -81,7 +81,7 @@ function DrawerHeader({ company, cards, completed }) {
   const [imgError, setImgError] = useState(false);
   const initials = getInitials(company);
   const domain = COMPANY_DOMAINS[company] || COMPANY_DOMAINS[company.trim()];
-  const logoUrl = domain ? `https://logo.clearbit.com/${domain}` : null;
+  const logoUrl = domain ? `https://logos.hunter.io/${domain}` : null;
 
   const done = cards ? cards.filter((c) => completed.has(c.id)).length : 0;
   const total = cards ? cards.length : 0;
@@ -115,31 +115,35 @@ function DrawerHeader({ company, cards, completed }) {
 function CompanyQuestions({ cards, bookmarks, onToggleBookmark, completed, onToggleCompleted }) {
   const tech = cards.filter((c) => c.type === "Technical");
   const prog = cards.filter((c) => c.type === "Programming");
+  const hr = cards.filter((c) => c.type === "HR");
   const [tab, setTab] = useState("all");
 
-  const shown = tab === "technical" ? tech : tab === "programming" ? prog : cards;
+  const shown = tab === "technical" ? tech : tab === "programming" ? prog : tab === "hr" ? hr : cards;
 
   return (
     <div className="mt-4 space-y-4">
       <div className="flex items-center gap-1 border-b border-zinc-100 pb-2">
         {[
           { key: "all", label: `All (${cards.length})` },
-          { key: "technical", label: `Technical (${tech.length})` },
-          { key: "programming", label: `Programming (${prog.length})` },
-        ].map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setTab(t.key)}
-            aria-pressed={tab === t.key}
-            className={`text-[12px] px-3 py-1.5 rounded-lg font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-200 ${
-              tab === t.key
-                ? "bg-zinc-900 text-white shadow-sm"
-                : "text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100/60"
-            }`}
-          >
-            {t.label}
-          </button>
-        ))}
+          { key: "technical", label: `Technical (${tech.length})`, count: tech.length },
+          { key: "programming", label: `Programming (${prog.length})`, count: prog.length },
+          { key: "hr", label: `HR (${hr.length})`, count: hr.length },
+        ]
+          .filter((t) => t.key === "all" || t.count > 0)
+          .map((t) => (
+            <button
+              key={t.key}
+              onClick={() => setTab(t.key)}
+              aria-pressed={tab === t.key}
+              className={`text-[12px] px-3 py-1.5 rounded-lg font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-200 ${
+                tab === t.key
+                  ? "bg-zinc-900 text-white shadow-sm"
+                  : "text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100/60"
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
       </div>
       <div className="space-y-2.5">
         {shown.map((card) => (

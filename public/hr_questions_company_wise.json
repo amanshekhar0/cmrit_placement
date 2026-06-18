@@ -1,0 +1,3021 @@
+[
+  {
+    "id": "1",
+    "company": "ABB",
+    "years": [],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Are you ready to handle a team under pressure? How will you manage them?",
+      "What do you know about our competitors?",
+      "How do you plan to improve upon our product?",
+      "What do you know about our company?",
+      "How will you react to a situation where you are assigned a task which is beyond your skills?",
+      "How long can you commit to work with us?",
+      "Give an example which describes that you are hard working.",
+      "What do you consider to be your best strength?",
+      "Will you be comfortable working as an individual contributor?",
+      "Why do you believe we should hire you?",
+      "Where do you see yourself 5 years from now?",
+      "Do you have any questions for us?",
+      "Where do you see yourself in 5 years?",
+      "Why do you think you’re a suitable candidate for this job?",
+      "What do you do daily to improve your knowledge?",
+      "Why do you want to work with ABB?",
+      "What are the challenges facing power and automation technology today?",
+      "What are your long-term goals?",
+      "What challenges are you facing presently and how are you dealing with them?",
+      "What will you mark as your achievement during your college life?",
+      "What are your weaknesses and why should we not hire you?",
+      "Tell us some strengths of your personality.",
+      "What do you regret in your life?",
+      "What are your achievements?",
+      "What challenges are you facing in your domain?"
+    ],
+    "total_questions": 26
+  },
+  {
+    "id": "2",
+    "company": "Accenture",
+    "years": [
+      "2022-23",
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Why Accenture?",
+      "Was there a time when you dealt with conflict in a team? How did you deal with it?",
+      "What are you looking for in a company?",
+      "How will you deal with work pressure?",
+      "Where do you see yourself in 5 years?",
+      "Why should we hire you?",
+      "What do you know about Accenture?",
+      "Why should I consider you for this job?",
+      "Are you willing to relocate?",
+      "Why are you interested in this position?",
+      "Tell me about yourself.",
+      "Tell us about your achievements?",
+      "Do you have any questions for me?",
+      "What do you know about the company?",
+      "Tell me about your family background?",
+      "Tell me about your weaknesses. How do you work to improve on them?",
+      "Who is your role model? Why?",
+      "Where do you see yourself after 2 years?",
+      "What is your goal in life?",
+      "Why have you applied for this job?",
+      "What is the motivating factor for you at work?",
+      "If recruiting someone for this position, what qualities would you look for?",
+      "Did you face any problems in your last project?",
+      "How do you handle criticism at college?",
+      "Tell us about your work/leadership style?",
+      "How would you handle a problem with your own performance?",
+      "How would you classify your style of management?",
+      "How would you work through a situation where your team does not perform as expected?",
+      "Have you ever had to criticise anyone? How did you handle it?",
+      "Why should I hire you?",
+      "What do you think are the three qualities to work at Accenture?",
+      "Questions on project / Explain your recent project / Explain your final year project idea?",
+      "What was your role in project?",
+      "Explain the Design phase of your project",
+      "Questions on teamwork/ Discussion about the teamwork while doing the project",
+      "How do you delegate work in a team?",
+      "What difficulties did you face in life?",
+      "Would you fight for your role in a team or give up?",
+      "Tell about yourself.",
+      "Tell about the project that you think has social impact?",
+      "Tell about the problem in real world which you think can be made into business?",
+      "Discussion about your technical skills.",
+      "Explain one of your projects & what difficulties faced during project? / What difficulties you faced in project and how you handled them",
+      "What is your most favourite subject and why so.",
+      "What is your family background?",
+      "What is your greatest achievement?",
+      "What are your strengths, weakness etc?",
+      "Explain events you conducted in college?",
+      "Questions on hobbies.",
+      "Questions on Self-improvement.",
+      "Explain the recent event you organised?",
+      "Tell me how you will manage the team while playing sports?",
+      "Can you give me an example of leadership skill?",
+      "What're the skills you developed after joining college?",
+      "Tell me about good and bad remarks you got.",
+      "How did you select your teammates?",
+      "If you were a team leader how would you handle conflicts?",
+      "What is your favourite and least favourite subject? How did you handle the least favourite subject?",
+      "Questions on certifications.",
+      "Where do you see yourself in the next 5 years?",
+      "What do you mean by innovation?",
+      "Questions on extra-curricular courses and its knowledge.",
+      "How did you handle Feedback you received from your project mentor",
+      "Name a quality which is both strength and weakness.",
+      "Tell me about the Toughest Situation faced in life.",
+      "Did you have a leadership opportunity and led a team? What were the roles and responsibilities that you had?",
+      "Did you take feedback with mentors previously?",
+      "Are you flexible to other locations than the specified one, are you ok with any kind of rotational shifts like morning shift, night shift.",
+      "What is the impact of your mentor in your life?",
+      "Any conflict between groups during the project if yes then how you solve it.",
+      "Summary:",
+      "Questions were asked from the resume only.",
+      "More focus was on project and technical skills.",
+      "Situation based questions were also asked in interview."
+    ],
+    "total_questions": 74
+  },
+  {
+    "id": "3",
+    "company": "Affle",
+    "years": [],
+    "hr_questions": [
+      "Tell me something that is not on your resume.",
+      "What do you know about Affle and maas",
+      "How will you acquire this business (Swiggy) for us?",
+      "How will you sell iPhone to android user",
+      "4 ps of marketing",
+      "Why this constant shift? What are you trying to achieve? (As in I have finance, operations, marketing and digital marketing in my profile so he was wondering why sales out of nowhere)",
+      "Strength and weakness",
+      "What challenge or difference did you make for your Institute?",
+      "Will you be okay to work in Mumbai?",
+      "What was your previous role and what were your responsibilities there.",
+      "why do you want to work in a business development profile?",
+      "strengths of the business?",
+      "how to generate revenue from the company",
+      "how will you interact with the client for the first time",
+      "how can you sell a product etc etc",
+      "Why do you want to work here?",
+      "Having looked at our business, can you see any opportunities we’re missing at all?",
+      "What are your strengths/weaknesses?",
+      "How did you prepare for this interview?",
+      "Why did you leave your last role?",
+      "Describe a situation in the past where you’ve had to improvise.",
+      "Where do you see your career progressing to?",
+      "What’s your favourite book?",
+      "What salary would you be looking for?",
+      "How can you become a good BDE?"
+    ],
+    "total_questions": 25
+  },
+  {
+    "id": "4",
+    "company": "Alembic Real Estate",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Introduce yourself.",
+      "Tell me about your family background",
+      "Do you have any work experience?",
+      "What are your hobbies and interest?",
+      "Can you list out few of your achievements?",
+      "Do you any expectations?",
+      "Do you have any questions for us?"
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "5",
+    "company": "Altair",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Will you be able to relocate?"
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "6",
+    "company": "Amadeus",
+    "years": [
+      "2022-23",
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Why should I select you?",
+      "Tell me your strength and weakness?",
+      "Why you want to join Amadeus?",
+      "Tell me a time when you took lead role in your project?",
+      "Tell my about your family.",
+      "Do you prefer Offer letter or hire education.",
+      "Difficult faced while working on a team",
+      "If not IT what Next",
+      "What did being in many clubs in college teach me?",
+      "How would you tackle any issues you have with your peers.",
+      "Introduce yourself",
+      "Why did you choose this company?",
+      "Tell me about your hobbies",
+      "Discuss on the topic \"Timeline kills Creativity\"",
+      "What are the projects that you have done, and other certifications",
+      "Are you a team player, or a team leader."
+    ],
+    "total_questions": 16
+  },
+  {
+    "id": "7",
+    "company": "Amazon",
+    "years": [],
+    "hr_questions": [
+      "Tell me what you know about AWS?",
+      "Why do you want to work at Amazon?",
+      "What are your strengths?",
+      "Tell me about a time you handled a crisis.",
+      "Tell me about a time you had to deal with ambiguity.",
+      "Give me a time you had to act quickly without any data.",
+      "What would you change about the website?",
+      "Tell me a time when you took on a role higher than yours.",
+      "Tell me a time you failed at a project.",
+      "Tell me a time when you led a project.",
+      "Describe a time you were innovative.",
+      "Describe a time you disagreed with a professor.",
+      "Describe a time you were very disappointed.",
+      "Describe a time you exhibited trial and error execution of any task.",
+      "Describe a time you handled an event/project/budget on your own, if any.",
+      "Tell me about a time you skipped a deadline.",
+      "Do you know our CEO? How do you pronounce his name?",
+      "How would you solve problems if you were from Mars?",
+      "Tell me about a time when you took risk at work",
+      "Tell the story of the last time you had to apologize to someone.",
+      "What is the most difficult situation you have ever faced in your life? How did you handle it?",
+      "What would you do if you found out that your closest friend at work was stealing?",
+      "If your direct manager was instructing you to do something you disagreed with, how would you handle it?",
+      "What would you do if you saw someone being unsafe at work?",
+      "Do you think you’ll reach a point where you storm off the floor and never return?"
+    ],
+    "total_questions": 25
+  },
+  {
+    "id": "8",
+    "company": "ANZ Bank",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "What you know about the company?",
+      "Why you want this company?",
+      "Tell me about yourself apart from what you mentioned in Resume",
+      "What kind of environment you want in your Working place list any three?",
+      "Scenario based question where me and my colleague are working on same project and he tells his approach is right and you know it is not how will you convince him to agree with you approach.",
+      "Water bottle was placed in front of me and interviewer asked me how will you test this bottle and on what basis",
+      "Tell me about my Project and problems faced while doing the project.",
+      "Tell me about your internship & what did you learn from those internships and will it help you in future?",
+      "Did you do any research about the company?",
+      "Tell me a time when you were not able to deliver how whatever you promised.",
+      "After 2 years in this role you have no technical growth, you don't like your job, you are bored, and you have no chances to grow in the company. What will u do?",
+      "why did u take up engineering and how did u start enjoying it",
+      "How did u handle conflict with teammate",
+      "Why ANZ?",
+      "Tell me about your hobbies.",
+      "What is your learning strategy?",
+      "Why do you think you did not get selected last time? Do you think it is because you are overqualified?"
+    ],
+    "total_questions": 17
+  },
+  {
+    "id": "9",
+    "company": "Ascendion",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Describe about yourself",
+      "Why did you choose Bangalore for engineering?",
+      "Tell me about your family",
+      "Where are you from and it is famous for?",
+      "How would you manage time in Bangalore traffic?",
+      "What do you know about company?"
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "10",
+    "company": "Atomwalk Technologies",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Explain your projects in detail.",
+      "Questions on situation handling were asked.",
+      "Why would you like to join this company?",
+      "What can you contribute to us?",
+      "Any questions for us?"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "11",
+    "company": "AXA XL",
+    "years": [],
+    "hr_questions": [
+      "GD TOPIC: Asked to talk about “Technology: Boon or Bane” for 30 seconds.",
+      "Talk about projects",
+      "What’s your goals for the next 5 years?"
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "12",
+    "company": "Axcess.io",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Introduce yourself.",
+      "Questions were asked from all sections of resume."
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "13",
+    "company": "Beghou Consulting",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Introduce yourself.",
+      "Explain your resume",
+      "What are your career goals?",
+      "Why did you choose this company?"
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "14",
+    "company": "Belc",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Why Japan?",
+      "Project explanation",
+      "What work do you see yourself doing in BELC.",
+      "Database/project related questions.",
+      "Optimization of project and usage."
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "15",
+    "company": "Bluebird",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Explain anyone of your projects.",
+      "What different could you do in your projects?",
+      "Puzzle based Aptitude Questions."
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "16",
+    "company": "Bosch",
+    "years": [
+      "2022-26"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Why do you want to join Bosch?",
+      "Why do you need apprenticeship in Bosch?",
+      "What is you plan after apprentice period?"
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "17",
+    "company": "Bottomline Technologies",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Tell me about company.",
+      "Explain the project in detail",
+      "Where do you see yourself in the next 5 years?",
+      "Why Bottomline?",
+      "Why haven't you been placed before?",
+      "What are your Hobbies?",
+      "What did I enjoy the most in my engineering?",
+      "Tell me about your family.",
+      "Throw light on your internships",
+      "What is your Career Goal?",
+      "What is your expectations from the company?",
+      "Any extracurricular?",
+      "Tell me about the Patent.",
+      "If you have another offer, then why did you choose Bottomline over the other company?",
+      "Introduce yourself.",
+      "Why do you want to work with us?",
+      "What are your strengths and weakness?",
+      "How do you handle situations when you feel stuck?",
+      "What is your contribution in projects?",
+      "How to perform well in a group project?",
+      "How you are curious about your goal?",
+      "Why should I hire you?",
+      "Will you able be work on different Technologies?",
+      "What's your long term goals?",
+      "What did you learn in last 1 month?",
+      "What was the role and contribution in the internship?"
+    ],
+    "total_questions": 26
+  },
+  {
+    "id": "18",
+    "company": "BSC Solutions",
+    "years": [
+      "2022-26"
+    ],
+    "hr_questions": [
+      "Introduce yourself.",
+      "Tell me about your project.",
+      "Why do you want to join our company?",
+      "Do you prefer working in team or individually?",
+      "How do you handle conflict?"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "19",
+    "company": "Capgemini",
+    "years": [
+      "2024-25",
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Do you have offer from any other company?",
+      "Where do you see yourself 10 years from now?",
+      "Why do you think Capgemini work is for you?",
+      "In a situation where you have an idea, how will you project it to your seniors and colleagues?",
+      "Describe yourself in 3 words.",
+      "Give one instance where you have shown leadership qualities.",
+      "You have 15 rupees. You went to shop and bought chocolates with that money. Each chocolate is 1 rupee. If you give three chocolate wrappers to the shopkeeper and he gives one chocolate to you, finally how many chocolates you have?",
+      "In a town only 2 barber shops are there, you are new person to that town you want hair cutting...you don't know which person do better haircut....you should not ask any person. Then how can you choose best barber?",
+      "What is your expected CTC? What if we cannot match it?",
+      "What do you know about Capgemini? How will you improve the company?",
+      "What are the qualities of a good manager?",
+      "What subjects were most difficult for you in your graduation? How did you overcome your difficulties?",
+      "What subjects did you prefer in the last year of your graduation? Why?",
+      "What problems did you face during your project? How did you recover from them?",
+      "What do you love about your city? What would you change about it? How?",
+      "Assume that 1 rupee = 20 sparrows = 1 crow & 5 rupees = 1 parrot. You have 100rs and have to spend your whole money in such a way that you buy 100 birds in total. (Condition: you have to buy all three birds.). What will you do?",
+      "Under what circumstances you will leave our company?",
+      "Tell us about one problem faced? How did you overcome?",
+      "What are your strengths and weakness?",
+      "What are some initiatives you took in your college years?",
+      "What you know about our organization?",
+      "Describe the novelty in you project undertaken in last few years.",
+      "Are you fine with working in night shifts?",
+      "Why should we hire you?",
+      "Why do you want to join Capgemini?",
+      "What is your greatest strength?",
+      "What do you want to achieve in the next 5 years?",
+      "What is your greatest weakness?",
+      "What is your greatest achievement?",
+      "What is the difference between hard work and smart work",
+      "On a scale of 1 to 10 how would you rate yourself as a leader?",
+      "What makes you angry?",
+      "Are you open to take risks?",
+      "Do you like experimenting?",
+      "What are your future goals?",
+      "Tell me about your short term and long-term goals.",
+      "What motivates you?",
+      "What are your hobbies?",
+      "What are you passionate about?",
+      "Are you preparing for MBA exams ?",
+      "Tell me about yourself family background?",
+      "Tell me your strengths which can also be your weakness?",
+      "Why did you take this project?",
+      "Why do you think should we take you for this job?",
+      "Are you planning to go for further studies?",
+      "Are you an Introvert or Extrovert?",
+      "Tell me something about yourself that is not written in your resume.",
+      "Do you know anyone who works with this company?",
+      "Are you a team player?",
+      "Which courses have you enjoyed the most? The least? Why?",
+      "Did you prepare for the interview? What did you prepare? (Question will be asked from What you prepared)?",
+      "How do you expect a mechanical engineering graduate can learn and work in a software company?",
+      "Why did you Select IT?",
+      "What would u be if not an IT engineer?",
+      "Are you ready to relocate?",
+      "How do you feel about doing repetitive work?",
+      "What will you do if you are offered a job with a salary higher than this?",
+      "How do you feel about working weekends and night shifts?",
+      "Are you reliable? or Can I trust you with responsibilities?",
+      "What are the three things that are most important for you in a job?",
+      "What was the toughest decision you ever had to make?",
+      "If you won a Rs.10-crore lottery, would you still work?",
+      "Give me an example of your creativity. What makes you happy?",
+      "How do you work under pressure? Can you handle the pressure?",
+      "Do you want to ask us something about the company?",
+      "What does your father do?",
+      "What are your future plans?",
+      "What are your greatest professional strengths?",
+      "Tell us about an accomplishment you are most proud of.",
+      "Do you want to pursue higher education?",
+      "Introduce yourself",
+      "Explain your project",
+      "What are the challenges faced during project?",
+      "Why did you joined MCA?",
+      "Are you willing to relocate?",
+      "Tell me your Strengths & weakness?",
+      "What do you know about our company?",
+      "Can you tell me about any other achievements or recognition which are not mentioned in resume?",
+      "Do you have questions for me?",
+      "Self-introduction.",
+      "Comparison between Chennai and Bangalore traffic.",
+      "Who is my role model?",
+      "What makes you fit for this role?",
+      "What is your hobby?",
+      "What are your interests apart from the study?",
+      "Why Capgemini?",
+      "Do have you any questions for me?"
+    ],
+    "total_questions": 87
+  },
+  {
+    "id": "20",
+    "company": "Ceptes",
+    "years": [],
+    "hr_questions": [
+      "Tell me about yourself",
+      "What are your strengths?",
+      "Where do you see yourself in 5 years?",
+      "Why sales when you are from ECE?",
+      "Situation based questions (demonstrate selling a product)",
+      "Have you organized any event before?",
+      "Questions related to company",
+      "What is sales and marketing?",
+      "Questions related to Salesforce",
+      "How do you manage personal and workplace pressure?",
+      "Why do you want to join the company / role?",
+      "How will you sell a particular product?",
+      "Which program will you choose is the best if you and your friend have been asked to code the same project?",
+      "What is Salesforce?",
+      "How do you think Salesforce is very good at crm?",
+      "Very important question asked from everyone-What do you know about cloud computing?",
+      "As you are from a technical background why do you want to take sales and marketing?",
+      "Introduce yourself.",
+      "Sell me this iPad.",
+      "How much will you rate your technical skills out of 10?",
+      "Why should I hire you?",
+      "What do you understand about sales?",
+      "Why is sales better than others?",
+      "What are your Interested fields to work on ?",
+      "Why sales and marketing when you are a computer science major?",
+      "What things are you good at other than academics?",
+      "What are the things that other people around you have acknowledged you for being good at it?",
+      "Do you have any questions for me?",
+      "Describe what you have done in college till date.",
+      "Give an overview of our company.",
+      "Why are you showing interest in sales not in your education stream ?",
+      "Situation based questions - how would you sell Google pay to others ?",
+      "Have you organized any events ?",
+      "Sell any product to me.",
+      "Sell me the paytm app.",
+      "How will you handle conflicts?",
+      "Sell me your project.",
+      "Sell me an app as a company (vendor).",
+      "How are you different from others?",
+      "Talk about your extracurricular activities.",
+      "How do you take negative feedback?",
+      "Why should I hire you if I have the option of IT guys?",
+      "Do you know basic knowledge of IT?",
+      "Describe your Achievements and Projects.",
+      "Do you have convincing power?",
+      "What did you learn apart from the college syllabus?"
+    ],
+    "total_questions": 46
+  },
+  {
+    "id": "21",
+    "company": "Chainalytics",
+    "years": [],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Tell me about your college.",
+      "Why chainalytics?",
+      "Tell me about our company?",
+      "Explain your projects.",
+      "What are your hobbies and interests?",
+      "Question from Job description (JD)?",
+      "Are you ready to relocate?",
+      "Do you have any internship experience?",
+      "Why you need this job?"
+    ],
+    "total_questions": 10
+  },
+  {
+    "id": "22",
+    "company": "Cimpress",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Where are you from?",
+      "What do your parents do?",
+      "Tell me about your family background.",
+      "What do you like the most?",
+      "Why do you like to join this company?",
+      "Questions based on projects.",
+      "Questions from resume."
+    ],
+    "total_questions": 8
+  },
+  {
+    "id": "23",
+    "company": "Clarivate",
+    "years": [],
+    "hr_questions": [
+      "Tell me about yourself",
+      "Tell me about your project",
+      "Where are you from?",
+      "Why Clarivate?",
+      "What is your CGPA?",
+      "What is the use of your project in real life.",
+      "Tell about your Internship.",
+      "Any questions for us?",
+      "What is your weakness?",
+      "How do you keep yourself motivated?",
+      "How do you handle pressure?",
+      "How do you adapt to change in your environment?",
+      "Your college will give leave for internship?",
+      "What are your future plans?",
+      "What you know about Clarivate ?",
+      "How you got to know about it?",
+      "How was your college life?",
+      "What are your expectations?",
+      "What are your hobbies and interests?",
+      "Why did you come to Bangalore?"
+    ],
+    "total_questions": 20
+  },
+  {
+    "id": "24",
+    "company": "Cognizant",
+    "years": [
+      "2022-23",
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Starting with tell me about yourself",
+      "Hr questions on team leader role.",
+      "What are your hobbies?",
+      "Questions based on what hobbies i mentioned \"",
+      "Questions about internet issues for work from home.",
+      "Situation based questions. How will be overcome the situation and what solution do you provide.",
+      "Role play based questions. How will be overcome the situation and what solution do you provide.",
+      "Explain about your projects",
+      "You are from EEE then why do you choose IT field?",
+      "Are you comfortable to work in shifts?",
+      "Are you ready to relocate?",
+      "What Difficulties did you experienced in life?",
+      "How did you handle the team while doing a project and what role did I play in the team?",
+      "What's the toughest situation that you've faced and how did you overcome it?",
+      "What are your Strengths and weakness?",
+      "Where do you see yourself in 5 years?",
+      "What is your preferred job location?",
+      "How do you handle rude customers?",
+      "Talk about Bangalore for 1 minute.",
+      "Can you work night shifts?",
+      "Can you work in some places other than South India?",
+      "Tell me about yourself.",
+      "How do you handle critical condition?",
+      "Are you ready to relocate to any place?",
+      "Are you ready to work any time?",
+      "Do you have any questions for me?",
+      "Tell me about your projects?",
+      "What are your strengths and weaknesses?",
+      "How willed are you to learn new technologies?",
+      "Are you ready to work in any domain and projects?",
+      "Where do you see yourself in future?"
+    ],
+    "total_questions": 31
+  },
+  {
+    "id": "25",
+    "company": "Conde Nest",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Why did you choose conde nast?",
+      "Why do you think you are qualified for this role?",
+      "Do you have any plans of higher studies or to change the current field?",
+      "How many years are you planning to stay in conde nast?",
+      "Are you ok to sign on bond?",
+      "Tell me about your projects."
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "26",
+    "company": "Cordis",
+    "years": [
+      "2022-23"
+    ],
+    "hr_questions": [
+      "Do you work well in team?",
+      "Explain yourself in one line.",
+      "What are your weakness for Cordis position?",
+      "What are your strength?",
+      "What opinion does your prof and friends have about you?",
+      "Can you tell me a little about yourself?"
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "27",
+    "company": "Covalance",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "About projects, questions related to your favourite project.",
+      "Tell me about yourself",
+      "Tell me about your current project and a few questions based on the project.",
+      "Can you explain your projects (emphasized more on embedded project)"
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "28",
+    "company": "Dell",
+    "years": [
+      "2022-23"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Where do you see yourself in next 5 years?",
+      "Anything related to internship if you have done any.",
+      "Strengths and Weakness.",
+      "Top- 2 reasons why we should we hire you?",
+      "What you will do if in next one year another?",
+      "Why this role?",
+      "Which one will you prefer work from home or office with reason why?",
+      "What products do we sell?",
+      "Tell me about your Family background.",
+      "What you will do if you don't have any work to do? Will you sit ideally or will learn something new?",
+      "If any other company comes with the same role will you take it?",
+      "How many people in your family, dad and mom's profession?",
+      "Any event organized?",
+      "Steps taken as a host."
+    ],
+    "total_questions": 15
+  },
+  {
+    "id": "29",
+    "company": "Deloitte",
+    "years": [
+      "2022-23",
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Tell me about projects (max questions).",
+      "Asked about my favourite subject.",
+      "Main question was tell me about yourself.",
+      "Technical question everything from project only.",
+      "Introduce yourself.",
+      "Favourite subject.",
+      "Language preferred for coding.",
+      "Tell me about Deloitte.",
+      "About Job role.",
+      "Self-Introduction",
+      "Cross questions on your answer regarding projects.",
+      "Why Deloitte.",
+      "Why this role.",
+      "Why did you participate in Extra-Curricular?",
+      "Why should we hire you?",
+      "Questions based on certifications and MOOC courses.",
+      "Which role do you prefer?",
+      "What do you know about new technologies?",
+      "Which tech would you like to work on?",
+      "Tell me about the college curriculum.",
+      "What difficulties did you face while doing your projects?",
+      "Strength and Weakness.",
+      "Tell me things apart from your resume.",
+      "Explain the activities done in college.",
+      "Explain your one project completely.",
+      "Did you face any failure in life?",
+      "What’s your Point of view on higher studies?",
+      "Working hours preferred.",
+      "Which one would you prefer work from home or office? Give me the reasons.",
+      "What are your hobbies?",
+      "Tell me about yourself?",
+      "Tell me about your projects?",
+      "What technologies did you learn?",
+      "Questions related to JD"
+    ],
+    "total_questions": 34
+  },
+  {
+    "id": "30",
+    "company": "Dexler Energy Pvt Ltd",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Explain your projects.",
+      "What did you learn from your Internships?"
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "31",
+    "company": "Dhiomics",
+    "years": [],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Where you see yourself in 5years?",
+      "What do you know about the company?",
+      "Why you want this role?",
+      "Tell me about your project."
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "32",
+    "company": "Diona Technologies",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Explain your projects.",
+      "Talk about your co-curricular activities.",
+      "Tell me about yourself."
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "33",
+    "company": "Ellucian",
+    "years": [
+      "2022-23",
+      "2023-24",
+      "2025-26"
+    ],
+    "hr_questions": [
+      "What are your Hobbies?",
+      "Talk about your technical skills?",
+      "Why Ellucian?",
+      "In-depth questions on project mentioned in resume/ Explain one of your projects.",
+      "Scenario based questions.",
+      "Introduce yourself.",
+      "Few situational questions - if you are put in a team where you dont know the software being used, how do you cope up?)",
+      "If you have one job offer from Ellucian and another from some XYZ company, which company would you choose?",
+      "Tell me the role played by you in your club?",
+      "What is difference between Byjus and Ellucian company.",
+      "Summary:",
+      "More questions was on projects mentioned in resume and scenario/ situation based question.",
+      "Explain your projects written in resume.",
+      "What are your achievements?",
+      "Do you have any questions for me?",
+      "Resume walkthrough.",
+      "What Improvisation would you like to do on projects?",
+      "Basic questions from Resume and the projects mentioned",
+      "What are you passionate about?",
+      "What is it about this position At Ellucian that attracts you the most?",
+      "Where do you see yourself in five years At Ellucian?",
+      "How do you stay up to date with industry?",
+      "Tell me an occasion when you needed to persuade someone to do something?",
+      "Tell me about yourself?",
+      "What will you do when your manager assigns you a task that you don't have any knowledge about?",
+      "What were the challenges faced during the project?",
+      "Tell me about the Project?",
+      "How will you incorporate AI in your project?"
+    ],
+    "total_questions": 28
+  },
+  {
+    "id": "34",
+    "company": "Enphase Energy",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Apart from resume what else have you done?",
+      "Tell me about yourself apart from your resume?",
+      "Tell me about your projects?",
+      "Talk about your hackathons?",
+      "Why enphase energy?"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "35",
+    "company": "Entune",
+    "years": [],
+    "hr_questions": [
+      "Tell me about yourself",
+      "What are your hobbies",
+      "Parents working history.",
+      "Project details",
+      "About myself",
+      "Interested in management or technical",
+      "Are you fine with one or 2 days of traveling out of station for work?",
+      "What are your strengths?",
+      "Why should we hire you?"
+    ],
+    "total_questions": 9
+  },
+  {
+    "id": "36",
+    "company": "Epicor",
+    "years": [
+      "2022-23",
+      "2023-24",
+      "2025-26",
+      "2026-27"
+    ],
+    "hr_questions": [
+      "Explain your projects.",
+      "Tell me about yourself.",
+      "Tell me about your parents?",
+      "Why did you choose engineering?",
+      "What would you want to work on eventually?",
+      "Any future plans?",
+      "What is your expectation from the company?",
+      "Why do you join our company when there are multiple companies are offering better package?",
+      "Where are you from? what it is famous for?",
+      "What do you know about Epicor?",
+      "Puzzle: They have given me 2 candles and each candle take 1 hr to complete then what should I do such that both candle finishes in 45 minutes.",
+      "SUMMARY:",
+      "More focus was on projects and puzzle based questions.",
+      "What are the first few things you would do when creating an E-commerce website?",
+      "Tell me about your extracurricular activities.",
+      "Questions based on your extracurricular activities.",
+      "Tell me about your internship.",
+      "Tell me about your achievements.",
+      "Have you hosted any website? If not, why?",
+      "Explain all your projects.",
+      "What are your expectations about working at Epicor?",
+      "What separates you from other candidates?",
+      "Tell me about yourself and your family background.",
+      "Tell me about your internship experience.",
+      "What are your interests?",
+      "Why did you choose CMRIT?",
+      "How was your journey from your home state to Bangalore?",
+      "How do you plan to manage college and internship together?",
+      "Tell me about your personal background.",
+      "What do your parents do?",
+      "How do you manage living away from home?",
+      "What is your favorite programming language and why?",
+      "Have you built a compiler or worked on low-level projects?",
+      "What interests you in programming?",
+      "Have you worked on any AI projects?",
+      "Where do you see yourself in 3–5 years?",
+      "Suppose you had to build an E-commerce platform in one week. How would you approach it?",
+      "What is your favorite web application?",
+      "Why should we hire you?",
+      "What are your strengths?",
+      "What are your weaknesses?",
+      "Tell me about a challenge you faced and how you solved it.",
+      "Describe a project you are most proud of.",
+      "What motivates you to learn new technologies?",
+      "How do you handle deadlines and pressure?",
+      "Have you ever worked in a team? What was your role?",
+      "Why are you interested in this company?",
+      "What are your career goals?",
+      "Why do you want to join my company?",
+      "Tell me about your school days?",
+      "Tell me about your family background.",
+      "Any suggestions to improve their pre-placement task.",
+      "Project related questions.",
+      "Explain the contents written in resume.",
+      "Cross-checking of technologies written in resume which you claim to know better.",
+      "Tell me your interaction with the outside world.",
+      "Tell me your dream?",
+      "What is your dream?",
+      "Where do you see yourself in 5 years?",
+      "Tell me about your future plans?",
+      "Tell me about background?",
+      "Talk about your family history?",
+      "Why specifically you want to join this company?",
+      "Are you interested to pursue masters? Yes or No",
+      "What are your future prospects?",
+      "Tell me about strengths?",
+      "What kind of a developer do you want to be?",
+      "Tell me about your resume?",
+      "What are your aspirations in life?",
+      "Where do you see yourself in life after 3 years?",
+      "How will you guide and assist the lowest contribution person in your project team? How will you uplift them?"
+    ],
+    "total_questions": 71
+  },
+  {
+    "id": "37",
+    "company": "Epsilon",
+    "years": [
+      "2022-23",
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Tell me about yourself other than resume?",
+      "Digital marketing related questions?",
+      "Project explanation?",
+      "Any questions for me?",
+      "What are your strengths?",
+      "What are your weaknesses?",
+      "What do you know about Epsilon?",
+      "Which role are you interested in?",
+      "What is the tools Epsilon uses?",
+      "What are your Hobbies?",
+      "Why do you want to join this company?",
+      "Personal Introduction (both parties)",
+      "Tell me about Epsilon.",
+      "List the products and services provided by Epsilon.",
+      "Project based questions."
+    ],
+    "total_questions": 15
+  },
+  {
+    "id": "38",
+    "company": "ERICSSON",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Tell me about yourself?",
+      "Can you tell me about your family background?",
+      "What do you know about our company?",
+      "How good are you about your decision making skills?",
+      "What is your long term and short term goal?"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "39",
+    "company": "Esyasoft Technologies",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Tell me about your family",
+      "How will you handle situation when you feel stuck?",
+      "What is your contribution to the project?",
+      "What is your strategy to perform well in group project",
+      "Explain your project.",
+      "List out your Hobbies",
+      "Scenario-based questions"
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "40",
+    "company": "Eurofins",
+    "years": [
+      "2023-24",
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Go through your resume",
+      "Explain your projects mentioned in resume",
+      "sked from resume and project also",
+      "Difficulties faced in your life.",
+      "How did you face those difficulties (Personal & Technical Difficulties)",
+      "SUMMARY",
+      "Interviewers' focus was on content written in the resume.",
+      "Be strong with basic concepts",
+      "Introduce yourself.",
+      "Tell me about your hobbies",
+      "How your usual day does goes?",
+      "How will you learn new concepts or courses?",
+      "What is your favourite subject in college?"
+    ],
+    "total_questions": 13
+  },
+  {
+    "id": "41",
+    "company": "Evalueserve",
+    "years": [],
+    "hr_questions": [
+      "Do you have any doubt about the company?",
+      "Where are you from?",
+      "Why you came to Bangalore?",
+      "Why you did not choose a college around your native place?",
+      "Which is your biggest strength?",
+      "Give a short intro about yourself.",
+      "How many cups of chai have been consumed in Delhi last week, give a guess estimate.",
+      "Explain about some scenario (do not remember about which topic).",
+      "What do you know about Evaluesure?",
+      "Asked me about family background.",
+      "Do you have any question for me?"
+    ],
+    "total_questions": 11
+  },
+  {
+    "id": "42",
+    "company": "EY",
+    "years": [],
+    "hr_questions": [
+      "Introduce yourself.",
+      "What is the difference between smart work and hard work?",
+      "List some of you achievements?",
+      "What according to you was your greatest failure in life?",
+      "Where do you see yourself after 2 years?",
+      "Explain your personality in one word.",
+      "What opinion do your friends have about you?",
+      "When do you think you will complete and be able to join?(contextual question)",
+      "Do you have any questions for us?",
+      "What changes would you make at your college?",
+      "If you were to ask one of your professors to describe you, what would he or she say?",
+      "What do you think are your strengths and weaknesses?",
+      "What interests you most about this position?",
+      "How has your education prepared you for your career?",
+      "Describe your Final Year Project. What innovations did you bring into this project?",
+      "Who is the CEO of the company?",
+      "Do you prefer working in a team?",
+      "How would a lecturer describe you?",
+      "Do you keep your promises?",
+      "What motivates you?",
+      "Are you a good listener?",
+      "Have you ever wanted to quit something?",
+      "Tell me about your groups of friends?",
+      "Do you believe in talent or hard work?",
+      "What do you know about the company?",
+      "Why EY?",
+      "What value can you offer to this role?",
+      "Tell us your opinion on a global political/economic trend.",
+      "What are your top 3 strengths?"
+    ],
+    "total_questions": 29
+  },
+  {
+    "id": "43",
+    "company": "F-Secure",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "If the production data is given and you have a model that predicts accurate results, how can you show its accurate before running through model (ex. If the model accuracy is to predict the given message is a scam or not)",
+      "Tell me about your projects and challenges you faced and how overcame it.",
+      "Introduce yourself.",
+      "What are the difficulties you faced while doing project based on Ai and ML.",
+      "What are the difficulties you faced during project implementation?"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "44",
+    "company": "Falca E Solutions",
+    "years": [],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Explain about your project."
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "45",
+    "company": "Genpact",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Where do you see yourself in next 10 years?",
+      "How will you complete with AI?",
+      "List your Strengths and weaknesses.",
+      "Tell me 3 reasons to hire you.",
+      "GENPACT GD TOPIC 2025-26",
+      "Is Gen AI a revolution in IT industry or is it an assisting tool?"
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "46",
+    "company": "Global Logic",
+    "years": [
+      "2022-23"
+    ],
+    "hr_questions": [
+      "Why Global Logic?",
+      "Why you have taken a drop year and why you decided to go to kota after 10th?",
+      "If you are given a task apart from the work you like, will you be able to do it?",
+      "How do you came to know about Global Logic?",
+      "Any questions which you would like to ask from us.",
+      "Tell me about yourself?",
+      "Why should I hire you?",
+      "What’s your management style?",
+      "What are your long term goals?",
+      "What are your short term goals?",
+      "What is making the news today?",
+      "Which profiles would you like to work in?",
+      "Would you like to change your domain, if yes why?",
+      "Tell me an experience of yours in that you didn't like to do and how you handled it?",
+      "What are you expecting from the company?",
+      "Are you comfortable shifting base?",
+      "General discussion about my resume.",
+      "Why do you think you’re a suitable candidate for this job?",
+      "Why haven’t you been placed yet?",
+      "How will you compensate for the lack of experience you have for this position?",
+      "How will you rate your communication skills and technical skills?",
+      "What do you know about our competitors in the market?",
+      "Do you have any questions for us?"
+    ],
+    "total_questions": 23
+  },
+  {
+    "id": "47",
+    "company": "Google",
+    "years": [],
+    "hr_questions": [
+      "Introduce yourself.",
+      "How would you describe your ideal job?",
+      "Why did you choose this career?",
+      "When did you decide on this career?",
+      "What motivates you to work at Google?",
+      "What is your favourite pass time? What do you do in your spare time?",
+      "Do you have any backlogs?",
+      "How would you rate us as interviewers on a scale of 1-10?",
+      "Tell me about a time when you delegated a project effectively.",
+      "Tell me about a time when you set your sights too high (or too low).What goals do you have in your career?",
+      "What do you think it takes to be successful in this career?",
+      "What accomplishments have given you the most satisfaction in your life?",
+      "If you had to live your life over again, what would you change?",
+      "Tell me about some of your recent goals and what you did to achieve them.",
+      "What are your short-term goals?",
+      "What is your long-range objective?",
+      "What do you see yourself doing five years from now?",
+      "Where do you want to be ten years from now?",
+      "Do you have any plans for further education?",
+      "How much training do you think you'll need to become a productive employee?",
+      "What is your greatest strength?",
+      "What is your greatest weakness?",
+      "If I were to ask one of your professors to describe you, what would he or she say?",
+      "Why did you choose to attend your college?",
+      "What changes would you make at your college?",
+      "How has your education prepared you for your career?",
+      "What were your favorite classes? Why?",
+      "Tell me about a time when you worked effectively under pressure.",
+      "Tell me about a time when you handled a difficult situation with a co-worker.",
+      "Do you have any location preferences?",
+      "How familiar are you with the community that we are located in?",
+      "Will you relocate in the future?",
+      "Are you willing to travel? How much?",
+      "Is money important to you?",
+      "How much training do you think you will need to become a productive employee?",
+      "What qualities do you feel a successful manager should have?",
+      "Do you handle conflict well?",
+      "Tell me about a time when you were tolerant of an opinion that was different from yours.",
+      "Tell me about a time when you were disappointed with your behavior.",
+      "Tell me about a time you had to handle a project that was late",
+      "Tell me about a time you had to handle trade offs and ambiguity",
+      "Tell me about a time you were part of an organization in transition and how you helped them move forward",
+      "Tell me about a time you lead a team through a difficult situation",
+      "Tell me about a time you developed and retained team members",
+      "How would you deal with a team challenge in a balanced way",
+      "How would you address a skill gap or personality conflict",
+      "How would you ensure your team is diverse and inclusive",
+      "How would you organize day-to-day activities",
+      "How would you convince a team to adopt new technologies",
+      "How do you stay accountable?",
+      "Tell me about a time when you set and achieved a goal?",
+      "What is your favorite Google product, and how would you improve it?",
+      "Describe a situation when you did much more than it was expected from you to get the project done. Were your efforts recognized? By whom and how? How did that make you feel?",
+      "Tell me about a time when you took ownership of a project. Why did you do this? What was the result of you taking the challenge? What could have happened if you did not take ownership?",
+      "Think about an instance in which you came up with a project idea which was implemented primarily because of your efforts. What was it about? What was its outcome? What was your role?",
+      "Describe a time when you made a suggestion to improve something on the project that you were working on.",
+      "Give me an example of the project or initiative that you started on your own. It can be a non business one. What prompted you to get started?",
+      "Describe a situation in which you met a major obstacle in order to complete a project. How did you deal with it? What steps did you take?",
+      "Tell me about a time you had to work on several projects at once. How did you handle this?",
+      "Describe a situation in which you have experienced significant project change that you weren’t expecting. What was it? How did that impact you, and how did you adapt to this change? How did you remain productive through the project?",
+      "Describe a situation in which you had to adjust to changes over which you had no control. How did you do this?",
+      "Give an example of an important project goal you reached and how you achieved it.",
+      "Think about an instance in which you worked on and achieved multiple project goals.",
+      "Describe a circumstance when you were not able to achieve a project goal that was set by your supervisor. How did you handle this situation? What was the outcome?",
+      "Think about an instance in which you had to depend on others to help you achieve a project goal. How did you feel?"
+    ],
+    "total_questions": 65
+  },
+  {
+    "id": "48",
+    "company": "HashedIn",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Questions related to conflict management.",
+      "Why do you want to join HashedIn?",
+      "Rate yourself out of 5 on your leadership skills.",
+      "Can you give me a scenario where you demonstrated leadership skills?",
+      "A scenario where you worked in a team and your contribution as a leader?",
+      "A time where you received a feedback on your leadership and how did you handle it?",
+      "Is AI a boon or a bane for organizations",
+      "Are organizations using AI in a responsible manner?"
+    ],
+    "total_questions": 8
+  },
+  {
+    "id": "49",
+    "company": "HDFC",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "How would you handle stress?",
+      "How are you planning your financial life ?",
+      "GD Topics",
+      "Ethics In Business",
+      "Smart work vs hard work"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "50",
+    "company": "Himitsu Lab",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Introduce yourself",
+      "Why do you want to join this company?",
+      "How do you spend your free time and how it shapes you as a person?",
+      "How do you face challenges and explain with an example you faced?",
+      "Questions regarding the previous internships."
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "51",
+    "company": "Hitachi",
+    "years": [],
+    "hr_questions": [
+      "What is your college name.",
+      "Why did you choose this college?",
+      "Goals of life.",
+      "Why did you travel from hometown to Bangalore?",
+      "About hometown.",
+      "Tell some good things of your hometown.",
+      "Your hobbies.",
+      "Are you an introvert or an extrovert?",
+      "What is the important lesson that covid-19 taught to the world?",
+      "What are your weakness and strengths?",
+      "Any 2 attributes the you would work in yourself.",
+      "Difference between hard-work and smart-work.",
+      "What is your biggest achievements?",
+      "What is your favorite holiday destination?",
+      "Why Bangalore for graduation?",
+      "Tell me about your family.",
+      "Which place you want to visit.",
+      "What is your goal?",
+      "Tell me about your project.",
+      "Do you follow your heart or mind?",
+      "List any of your 2 weaknesses and how are you overcoming them?"
+    ],
+    "total_questions": 21
+  },
+  {
+    "id": "52",
+    "company": "Hitachi Vintara",
+    "years": [],
+    "hr_questions": [
+      "Some HR questions like strengths and weaknesses",
+      "Brief introduction",
+      "Difference between hard-work and smart-work.",
+      "Tell me about your goal in life.",
+      "What is your biggest achievements?",
+      "What is your favourite holiday destination?",
+      "Why Bangalore for graduation?",
+      "Tell me about your family.",
+      "Which place you want to visit.",
+      "Tell me about your project.",
+      "List any of your 2 weaknesses and how are you overcoming them?",
+      "Some scenario based questions",
+      "Do you follow your heart or mind?",
+      "About some family background questions",
+      "Questions about my home place.",
+      "What are your hobbies?"
+    ],
+    "total_questions": 16
+  },
+  {
+    "id": "53",
+    "company": "HUDL",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Tell me about your family background.",
+      "What sports are you interested in?"
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "54",
+    "company": "Ichinose Co Ltd",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "If I was given a leader role, how would you go about solving specific issues?",
+      "Explain a situation where you showed leadership qualities ?",
+      "How will do deal with non-cooperative teammates?"
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "55",
+    "company": "IManage",
+    "years": [
+      "2024-25",
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Introduce yourself.",
+      "Explain your projects mentioned in resume.",
+      "Why do you want to work in our company?",
+      "Questions based on the role.",
+      "Introduction & personal details",
+      "Details about project, flow & block diagram explanation on white board",
+      "If you have a team and you want to delete a shared folder, what steps would you take to make a flow & block diagram & explain (pen paper)",
+      "Why did you choose Engineering?",
+      "Difference between accuracy & precision?",
+      "Internship overview- role, duration, working model ,stipend etc.",
+      "Where do you see yourself in 5 years?",
+      "Will you be ok to work for the same role in full time ?",
+      "Why QA at imanage? Why not anything else like developer in other companies etc?"
+    ],
+    "total_questions": 13
+  },
+  {
+    "id": "56",
+    "company": "Impelsys",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "What is the concept of office for you?",
+      "Do you prefer work from home or coming to office?",
+      "Tell me about your family.",
+      "What are your hobbies?",
+      "How did you adjust to life in Bangalore away from home?",
+      "Tell me about yourself.",
+      "Tell me about your projects.",
+      "Questions on all the co-curricular and extra-curricular activities in resume.",
+      "What is your family and friend expectations and opinions on you and about the company?",
+      "How can you contribute to the growing technology?",
+      "Tell me about your projects and your role in them.",
+      "What difficulties did you face when making the project and how did you resolve them?",
+      "What do you know about our company?",
+      "What do you think are the differences between Gen Z and millennials?",
+      "What do you think about the role of introverts in society?",
+      "Why Impelsys?",
+      "Being in core why do you want to join IT?",
+      "What is role of placement coordinator?",
+      "What did you researched about the company?",
+      "What are your friends opinion on you?",
+      "What was the Gd topic.  Explain it briefly."
+    ],
+    "total_questions": 21
+  },
+  {
+    "id": "57",
+    "company": "Infosys",
+    "years": [
+      "2022-23",
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Tell me about your project and the tech used in project.",
+      "Tell me about yourself",
+      "Tell me about your family background,",
+      "Where do you see yourself in next 5 years?",
+      "Explain one of your project?",
+      "Did you participated in any event in college?",
+      "What work did you do as SPC?",
+      "Tell something about your internship.",
+      "What are your strengths and weekness?",
+      "Why is CMRIT good",
+      "How good are you at learning new skills?",
+      "Whats your favourite movies",
+      "Short introduction about yourself",
+      "Why and how is AI used?",
+      "Why did u choose this branch?",
+      "What are you good at apart from what is mentioned in the resume",
+      "What do you mean by Positive Attitude ?",
+      "What you did as cybernauts vice president?",
+      "How did you do the dance coordination etc?",
+      "Why you want to join Infosys",
+      "What is your goal in life",
+      "Tell me about your college life?",
+      "Is AI a threat or a good tool",
+      "What is your SGPA",
+      "What is your Comedk rank?",
+      "Why do you want to work in Infosys?",
+      "What are your long and short term goals?",
+      "What are your Contribution in your project.",
+      "Is java good for programmers apart from others give 7 reasons?",
+      "What projects have you done? What challenges did you face?",
+      "Which is the toughest subject which you feel is in your curriculum?",
+      "What certification courses have you done? Explain them",
+      "Explain any of your best project you have done till now .",
+      "What is Positive attitude ? How important is it in today's world ?",
+      "What are your hobbies?",
+      "Approach you followed for doing projects.",
+      "Situation based questions\"",
+      "What are the challenges you face in life may be studies or life in general.",
+      "What are your greatest strengths?",
+      "Do you have any blind spots?",
+      "Why should I hire you?",
+      "Why did you leave your last job?",
+      "Where do you see yourself five years from now?",
+      "Are you fine with working in night shifts?",
+      "Why should we hire you?",
+      "Why do you want to join Infosys?",
+      "What is your greatest strength?",
+      "What do you want to achieve in the next 5 years?",
+      "What is your greatest weakness?",
+      "What is your greatest achievement?",
+      "What is the difference between hard work and smart work",
+      "On a scale of 1 to 10 how would you rate yourself as a leader?",
+      "What makes you angry?",
+      "Are you open to take risks?",
+      "Do you like experimenting?",
+      "What are your future goals?",
+      "Tell me about your short term and long-term goals.",
+      "What motivates you?",
+      "What are you passionate about?",
+      "Can you work under pressure?",
+      "What are your goals?",
+      "Tell me your happiest moments.",
+      "Tell me your sad moments.",
+      "Who is your role model?",
+      "Tell me 5 positive sentence about your college.",
+      "What are your interest?",
+      "Tell me about your family background",
+      "What are your strengths and weakness?",
+      "Why did you choose this branch?",
+      "How do you deal with deadlines?",
+      "What is positive attitude according to you?",
+      "Tell about your internship if done",
+      "Which certification courses have you done? Explain them",
+      "What is Positive attitude? How important is it in today's world?",
+      "What is your SGPA of each semester?",
+      "What subjects did you study in college?",
+      "What subject did you find difficult in your curriculum?",
+      "What are the challenges you faced in your project and how did you solve it?"
+    ],
+    "total_questions": 78
+  },
+  {
+    "id": "58",
+    "company": "Intellipaat",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "What is calling format?",
+      "Tell me about yourself.",
+      "Tell me about projects?",
+      "What are you interested in this position?",
+      "Tell me about your family background."
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "59",
+    "company": "Iron Mountain",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Tell me about your projects.",
+      "Explain your tasks in the projects.",
+      "Introduce yourself.",
+      "Tell me about your family.",
+      "What do you know about our company?",
+      "What do you like about our company?",
+      "What is the one thing that you liked about Iron Mountain in the pre placement presentation?",
+      "What is that 1 thing you liked about Iron Mountain during Pre-placement talk?"
+    ],
+    "total_questions": 8
+  },
+  {
+    "id": "60",
+    "company": "IT Orizon",
+    "years": [],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Explain me about your family background/ parents.",
+      "What are your hobbies?",
+      "Where do you stay?",
+      "Where are you located?",
+      "What is your qualification?",
+      "Explain your internship?",
+      "Talk about any topic for 5 mins."
+    ],
+    "total_questions": 8
+  },
+  {
+    "id": "61",
+    "company": "Johnson Controls",
+    "years": [
+      "2022-23",
+      "2024-25",
+      "2025-26"
+    ],
+    "hr_questions": [
+      "What is your nature?",
+      "What do you do other than studies?",
+      "What do you do if you have leadership responsibility?",
+      "Why did you choose CMRIT?",
+      "Why do you think Johnson Control is right place for you to work?",
+      "Tell me about yourself.",
+      "Tell me about your Family Background.",
+      "What is your discomfort zone?",
+      "What are your hobbies?",
+      "What if I reject you? How would u feel?",
+      "Why are you different from others that I should hire you?",
+      "What extra qualities do you have than the others waiting outside?",
+      "What I you fail as a leader? What will you do?",
+      "If in a team of 10 members and out the 10, 9 of them are not ready to cooperate with you then what would you do?",
+      "What is your intension towards higher education?",
+      "What is your discomfort zone? Give Real time example of discomfort zone",
+      "What is your Favourite subject? Why?",
+      "What do you know about the company?",
+      "What's your opinion on IT industry?",
+      "What is your Comfort zone?",
+      "What are the other languages known?",
+      "What excited you about the company?",
+      "Do you have any questions for me?",
+      "Tell me your strengths.",
+      "Tell me about your weakness",
+      "How do you overcome your weakness",
+      "What do you do apart from your studies",
+      "Talk about your Family Background",
+      "Favourite subject and few question related to it?",
+      "If any hobbies mentioned in resume (few question were asked regarding to that.)",
+      "Are you ready to relocate?",
+      "Why AI is used and can it replace humans?",
+      "Why AI is needed?",
+      "What is genAi ?",
+      "Difference between Gemini and Chatgpt?",
+      "Why should we hire you?",
+      "How different you are from others?",
+      "Tell me your 3 weakness and strength?",
+      "Did you face any conflicts during projects and how did you overcome it?",
+      "Failures in life and how to resolve it?",
+      "What is your thought on higher studies?",
+      "Why you don’t want to continue parents business?\""
+    ],
+    "total_questions": 42
+  },
+  {
+    "id": "62",
+    "company": "JP Morgan & Chase",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Tell me about your projects",
+      "How good are you in team playing?",
+      "Did you face any failures? How did you handle it?",
+      "If the deadline was approaching and you don't have any time left, will you go for unethical practices?",
+      "What will you do when you think your idea is better than your senior’s idea?",
+      "What would you do if your team did not agree on a topic ?"
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "63",
+    "company": "Just Pay",
+    "years": [],
+    "hr_questions": [
+      "Who is the founder of Just Pay?",
+      "Introduce yourself.",
+      "Explain one of your projects?",
+      "What are your strength?",
+      "What are your weakness?",
+      "Why should I hire you?",
+      "How can you relate your personal goal to Just Pay?",
+      "What is your long term goal?",
+      "What is your biggest achievement so far?",
+      "Are you a team player? Explain.",
+      "Tell me about the seminar you attended a while ago.",
+      "Why is hobbies important for you?",
+      "What are your Hobbies?"
+    ],
+    "total_questions": 13
+  },
+  {
+    "id": "64",
+    "company": "Kawashima Packaging Machinery Ltd",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Why do you want to work in Japan, not in India or the USA? (Need to give a unique answer than others by doing proper research about country. That will really stand out since everyone gives the same answer available on the internet.)",
+      "What is your motto/slogan in your life? (The answer should align with the company philosophy or work environment.)",
+      "Why should I select you? (We should say what we bring to the table! What difference do we make to the company)",
+      "Why do you want to work for our company? (We should say that, how our passion aligns with the company's work.)",
+      "How do you relieve your stress?",
+      "What are your hobbies?",
+      "Describe your leadership skills and experiences.",
+      "What have you learnt beyond your coursework, and what did you learn? Where did you apply that knowledge, and what was the outcome?",
+      "What kind of engineer do you want to be in the future?",
+      "What would you consider your strengths and weaknesses?",
+      "How will you apply your skills to our company?"
+    ],
+    "total_questions": 11
+  },
+  {
+    "id": "65",
+    "company": "Koch",
+    "years": [
+      "2023-24",
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Tell me about your hands-on projects.",
+      "How will you handle a situation if one of your team members does not cooperate while working on projects?",
+      "How will you handle stress?",
+      "Can you multitask? How?",
+      "Will AI replace humans?",
+      "Tell me something about yourself apart from your resume.",
+      "How did you improve your Soft skills?",
+      "What is your take on AI?",
+      "Why did you choose engineering?",
+      "Where have you been as a team leader?",
+      "As I mentioned in my resume, I play cricket. so they asked which IPL team you like?",
+      "Are you planning for further studies or interested in doing a job?",
+      "Did you ever argue with your friends or with lecturers?",
+      "Which programming language do you like?",
+      "If I asked a faculty member about you, what would be their response about you?",
+      "What is your field of interest?",
+      "How will you convince your team members to work over-time or any situation?",
+      "Situational/ behavioural question based Leadership skills.",
+      "What problems did you face while working on team projects?",
+      "Why should we hire you?",
+      "Greatest weakness.",
+      "Greatest failure.",
+      "Why do you want to join Koch?",
+      "What is your professional ambition?",
+      "What do you do in your leisure time?",
+      "What is your strength?",
+      "Where do you see yourself in five years?",
+      "Why do you want to join this company?",
+      "Tell me about a time you worked with a difficult co-worker.",
+      "How do you stay motivated?",
+      "How is your HOD?",
+      "Did you like our company?",
+      "Why did you like our company?",
+      "What are your weaknesses?",
+      "What would you do if you get the role which is not a field of your interest?",
+      "Achievements in your life.",
+      "If you are put in a situation where a team member of yours is not repeatedly showing up for work or important presentations and because of him clients have been let down what will you do?",
+      "As a technical club head what were your roles and responsibilities and where did you find it challenging?",
+      "Ok If you are not given the task according to your role or say if you are put into a role just for temporary basis like testing then what would be your response to that.",
+      "Which was a difficult situation of your life and how you overcome it?",
+      "Give the road map of your 5-year goal.",
+      "Any real time problem and what step you took to solve it?",
+      "INTERVIEW QUESTIONS WHEN THE COMPANY VISITED CAMPUS FOR 2ND TIME FOR 2023 BATCH:",
+      "What have you learnt in college apart from studies?",
+      "If someone is cheating in the exam what would you tell them.",
+      "If your friends ask you for help in the exam what would you do.",
+      "Why dint you attend the previous KOCH drive.",
+      "Did you have any backlogs, if yes then why?",
+      "Where do you want to see yourself in the company in the next 5 years?",
+      "Would you work in a job where you love to work and have passion OR work in a job which you dont like and get a good pay?",
+      "If you had to pick a player who performs well on the field during practice and not in match AND a player who performs lazy during practice and plays very well in match?",
+      "How do you motivate your team-mates?",
+      "Why did you select this project when there are many projects such as this already available in the internet?",
+      "What makes you wake up in the morning?",
+      "Have you attended any other drives?",
+      "Did you get selected, if not then how did not getting selected make you feel?",
+      "Why do you feel you did not get selected?",
+      "How did you prepare for KOCH drive?",
+      "What makes you work so hard?",
+      "Do you have any questions for us?",
+      "Tell us about yourself.",
+      "Give an example where you felt disrespected by someone and how you handled it?",
+      "Was there a time when you hurt someone and how you apologised?",
+      "Why to do hardwork when you have shortcuts?",
+      "If you get selected, what do you want to improve in yourself while working with the colleagues?",
+      "Give an example where you incorporated self-actualisation in your life?",
+      "Was there a time you did something ethically wrong and did you feel guilty later on?",
+      "Tell us about your recent achievements and critical feedbacks?",
+      "How will you see yourself after 5 years in company?",
+      "How do you handle conflicts in your team? Eg- like in your project team",
+      "What is current technology you know?",
+      "Explain your project in detail.",
+      "What challenges, problems, guidelines I got and faced while doing the projects in team?",
+      "What are the rules and regulations in your college? Are they feasible?",
+      "What do you think about your college?",
+      "What will you do in a situation in which someone else took your credits?",
+      "What is Integrity?",
+      "Explain your Mini project, Societal project?",
+      "State your Internship report Outcomes and its applications based question.",
+      "If you were given old tech stack to work on a project for 1 year will you work?",
+      "If a person in your team isn't doing his job on time what would you do?",
+      "What is time complexity?",
+      "Introduce yourself.",
+      "What are your strength and weakness?",
+      "Explain your Work experience.",
+      "Difference between HCM and HR",
+      "Difference between ChatGPT and other AI tools",
+      "Tell about the role you played in the project.",
+      "How did you overcome problems while working in the project?",
+      "What is the difference between business analyst vs data analyst."
+    ],
+    "total_questions": 91
+  },
+  {
+    "id": "66",
+    "company": "Launchx Labs",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Questions on projects?",
+      "Questions were related to AI."
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "67",
+    "company": "Light and Wonder",
+    "years": [
+      "2022-23",
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Tell me about your family background.",
+      "Go through your projects.",
+      "How many offers you have in hand?",
+      "What is their CTC?",
+      "Why do you want to join this company when you already have 1 offer in hand?",
+      "Tell me about your four year experience of college life.",
+      "What is hometown famous for?",
+      "Basic personality based question."
+    ],
+    "total_questions": 8
+  },
+  {
+    "id": "68",
+    "company": "Linkwiz",
+    "years": [
+      "2022-23"
+    ],
+    "hr_questions": [
+      "Why do you wish to work in Japan?",
+      "How would your friends describe you?",
+      "How would you rate your personality?",
+      "What motivates you to come and work away from your home country?",
+      "How is your college and do you think it could improve in any field?",
+      "Will be able to learn the language?",
+      "What would you like to eat in Japan?",
+      "Would you be able to fit in?",
+      "What places would to like to visit?"
+    ],
+    "total_questions": 9
+  },
+  {
+    "id": "69",
+    "company": "MAERSK",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Tell me about yourself",
+      "Tell me about the most innovative project you completed",
+      "Tell me about how do you handle conflicts in team",
+      "Speak about Generative AI",
+      "How would you apply AI to solve real-world problems in different scenarios.",
+      "Which role do you prefer aiml or software developer?",
+      "If you were assigned to a different tech stack other than AI by your manager what would you do? Will you be open to switch tech stack if needed?"
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "70",
+    "company": "MAGNA",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "What is going on in industry these days?",
+      "What are your strengths and weakness?",
+      "What did you do in your project?",
+      "What is your favourite subject?"
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "71",
+    "company": "Maplelabs",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Introduce yourself.",
+      "Explain one of your projects mentioned in resume.",
+      "What are your strengths?",
+      "What are your weakness?",
+      "What is the biggest challenge you faced in life?",
+      "Are you ready to re-locate?",
+      "Where do you see yourself in next 5 years?",
+      "Why do you want to join this company?",
+      "Are you ready to change your domain?",
+      "What do you know about Maple Labs?",
+      "Tell me about yourself.",
+      "If you get selected for the company, what more can you contribute to the company?",
+      "Tell me your favourite colour? Why?",
+      "Imagine that you get selected from a company, the very next day you win lottery of 9 million. Will you still work for us?",
+      "Describe yourself in 3 words.",
+      "How will you manage your current role?",
+      "Tell me about your on-going project.",
+      "How badly you want this job?",
+      "Tell me about your time when you faced the challenges.",
+      "What is your ideal job?",
+      "Why are you better than anyone in your college?",
+      "What type of growth are you looking for?",
+      "Tell me one interesting thing about yourself that is not mentioned in your resume.",
+      "Tell me about a time you failed. How did you overcome"
+    ],
+    "total_questions": 24
+  },
+  {
+    "id": "72",
+    "company": "Megha Engineering Infrastructure",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Tell me about your Family background.",
+      "Tell me what I explained in PPT in 1min",
+      "What is the company’s turnover?"
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "73",
+    "company": "Microland",
+    "years": [
+      "2022-23",
+      "2023-24",
+      "2024-25",
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Explain your project in 2 minutes.",
+      "Why Microland?",
+      "Why this role?",
+      "Are you ok with rotational shifts and bond?",
+      "Tell me about yourself apart from your resume?",
+      "Tell me about your family?",
+      "Tell me about your native",
+      "Are you willing to relocate?",
+      "What is your passion?",
+      "Explain your projects mentioned in resume.",
+      "What technology or technical skills have you implemented in the projects?",
+      "Tell me about the company",
+      "Are you ready to relocate?",
+      "What is your thought on working in rotational shifts?",
+      "Are you ready to work in rotational shifts?",
+      "Why do you want to work in Microland?",
+      "Tell me about your family background.",
+      "Would you like to suggest any changes in the requirement process",
+      "Did you face any difficulties while traveling to the company",
+      "Are you satisfied with CTC",
+      "Are you okay with night shift?",
+      "Questions regarding marks",
+      "Do you have questions for me?",
+      "Are you ready to work in night shift?",
+      "Explain about your project.",
+      "How will you make your project profitable in business prospective?",
+      "How long you have been in Bangalore?",
+      "At what time you reached the office?",
+      "Are you flexible with working hours?",
+      "Are you flexible with working 5 days in a week?",
+      "Tell me about your most successful project that you've done so far?",
+      "If relocating to a different place like Mumbai, Pune would be fine?",
+      "Narrate a story within 2 mins that includes your favourite sport?",
+      "Do you have any questions for the HR?",
+      "Why should we hire you?",
+      "Which is your favorite subject?",
+      "Suppose you are given a project on a topic which you don't know, how will handle it?",
+      "Have you attended any other interviews previously?",
+      "Are you OK with any shifts or relocation?"
+    ],
+    "total_questions": 40
+  },
+  {
+    "id": "74",
+    "company": "Molex",
+    "years": [
+      "2023"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Explain your projects.",
+      "Explain your major project."
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "75",
+    "company": "MSG Global Solutions",
+    "years": [
+      "2022-23",
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Introduce yourself.",
+      "Explain your projects mentioned in resume.",
+      "Tell me about yourself apart from resume.",
+      "Go me through your hobbies",
+      "What are your strengths?",
+      "What are your weaknesses?",
+      "Getting to know about the company and interviewer more.",
+      "Questions about growth in the company and up skilling.",
+      "Tell me about your hobbies and interest."
+    ],
+    "total_questions": 9
+  },
+  {
+    "id": "76",
+    "company": "Mu Sigma",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "What are your hobbies?",
+      "Why Mu Sigma?",
+      "Tell me about your projects.",
+      "Where do u want to see yourself in next 5 years?",
+      "Scenario based questions?",
+      "How do you manage extra-curricular and academics?",
+      "Project work related questions",
+      "How do you execute project work being the leader of the group?",
+      "Short term and Long term goals?",
+      "What is your preferred work culture?",
+      "What do you know about the company?",
+      "Why do you want this role/think you're perfect for this role?",
+      "What do you think are the responsibilities of a specific role?",
+      "Do you have any questions for me?"
+    ],
+    "total_questions": 15
+  },
+  {
+    "id": "77",
+    "company": "Nagravision",
+    "years": [],
+    "hr_questions": [
+      "Tell me about yourself",
+      "Situation based questions",
+      "What if your manager asks you to use any shortcut to do some work, what would you suggest?",
+      "Strengths and weakness",
+      "What if one person in your team is not working wisely, what would you do?"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "78",
+    "company": "Open Text",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Tell me about your Family background.",
+      "What is your contribution in group projects?",
+      "Tell me about your Weakness.",
+      "Why open Text?",
+      "What is your highest and lowest points of your life?",
+      "Tell me one ability of yours you want to work on?",
+      "What personality u look up to?",
+      "What is that one book or quote that has impacted you the most?",
+      "What is your favourite sport and why?",
+      "What is your opinion on AI?",
+      "A situation based question on team effort.",
+      "Why did you take AInDS?",
+      "Tell me about the company.",
+      "Where do you see yourself in next 3 years?",
+      "Tell 2 situation supporting your weakness and strength and how you countered it?"
+    ],
+    "total_questions": 16
+  },
+  {
+    "id": "79",
+    "company": "Oracle",
+    "years": [
+      "2022-23",
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Explain one of your Projects?",
+      "Tell me about your projects mentioned in your resume?",
+      "How can you enhance your project?",
+      "What are your strengths?",
+      "What are your weakness?",
+      "What do you know about oracle?",
+      "Situation based questions.",
+      "Introduce Yourself.",
+      "Tell me about your project.",
+      "Why should we hire you?",
+      "Tell me something about your school life.",
+      "In hr he asked me 3-4 SQL query.",
+      "Where you see yourself in 5 years.",
+      "Are you nervous or tense?",
+      "Why did you choose CMRIT?",
+      "Why do you think location matters when choosing a college?",
+      "What do you talk to your pg-mates?",
+      "Who are your role models?",
+      "What did you learn from your favourite books?",
+      "Don't you think habit formation is a wrong thing? Like makes you work with no consciousness?",
+      "Puzzle related question.",
+      "Why do we need to hire you?",
+      "Few questions about the working environment.",
+      "Which and all companies' drives did you attend before?",
+      "About the company?",
+      "Speak on any one topic of your choice.",
+      "Interests and hobbies",
+      "Why you want to join the company?"
+    ],
+    "total_questions": 28
+  },
+  {
+    "id": "80",
+    "company": "Oracle Financial Software Solutions Limited",
+    "years": [
+      "2023-24",
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Provide complete background information about yourself.",
+      "Explain your college experience.",
+      "What are your interests?",
+      "Provide information about your Co-curricular activities.",
+      "Why should I hire you?",
+      "Why do you want to work at our company?",
+      "Tell me about yourself.",
+      "What did you like about Bangalore?",
+      "How was your school Life?",
+      "Were you part of any club? What was your role?",
+      "Tell me about your projects.",
+      "Tell me about your passion.",
+      "What is your learning from hackathons?",
+      "What experience did you gain from hackathons?",
+      "Who is your role model?",
+      "What are your strengths?",
+      "Where do you see yourself in next 5 years?",
+      "Do you think school life is different from college life? How?",
+      "Talk on any topic for 1 min.",
+      "What are your hobbies?",
+      "What challenges did you face while working on your projects?",
+      "What outcomes did you work on?",
+      "Why oracle?",
+      "Where do you see yourself in 3 years?",
+      "What is your favourite subject?",
+      "Can you tell me about your strengths?",
+      "Tell me one of your Weaknesses?",
+      "What do you know about the company?"
+    ],
+    "total_questions": 28
+  },
+  {
+    "id": "81",
+    "company": "Phone Pe",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Tell them about myself?",
+      "Why do you want to work in IT even though you are from ECE?",
+      "Tell me about your projects mentioned in resume.",
+      "Tell me a little about yourself.",
+      "What are your interests?",
+      "Currently what do you like working on?",
+      "What are you doing as your final year project?",
+      "Introduce yourself apart from your resume.",
+      "Introduce your projects."
+    ],
+    "total_questions": 9
+  },
+  {
+    "id": "82",
+    "company": "Practo",
+    "years": [],
+    "hr_questions": [
+      "Which is the last book that you read?",
+      "What is your favorite subject?",
+      "Would you rather work with information or with people?",
+      "How much money do you need to make to be happy?",
+      "Are you willing to travel? How much?",
+      "Do you have any questions for us?",
+      "What new value can you add to our organization?",
+      "A difficult situation was described. How would you deal with this situation?",
+      "Tell me a time when you were disappointed in your behavior.",
+      "How do you see your progress while working at Practo?",
+      "Who or what has had the greatest influence on your life?",
+      "What motivates you to put forth your best effort?",
+      "How has your education prepared you for a career?",
+      "What qualifications do you have that make you think that you will be successful in this career?",
+      "How do you define or evaluate success?",
+      "Why motivates you to join the company?",
+      "What is the reason behind your numerous rejections in the campus placement processes?",
+      "Describe your various hobbies. What do you like to do in your free time?",
+      "What were your favorite subjects during the course of your study?",
+      "What projects did you undertake during your engineering? Describe your role in these projects.",
+      "How would rate yourself in technical and communication skills?",
+      "Why should we select you over others?",
+      "Why did you choose this career?",
+      "When did you decide on this career?",
+      "What are your future plans?",
+      "How can you contribute to this company?",
+      "What kind of a manager would you be?",
+      "Has there been a situation when you’ve had any idea but have not been able to implement it?",
+      "What are your interests and hobbies? How do you spend your free time?",
+      "Do you have any plans for further education?",
+      "How much training do you think you'll need to become a productive employee?",
+      "What qualities do you feel a successful manager should have?",
+      "Why do you want to work in our organization?",
+      "Would you like to ask us anything?",
+      "Suppose you have to submit an assignment in one hour and say, the power goes out. What steps will you undertake?",
+      "Do you enjoy doing independent research?",
+      "Where do you want to be ten years from now?"
+    ],
+    "total_questions": 37
+  },
+  {
+    "id": "83",
+    "company": "Prism Johnson",
+    "years": [],
+    "hr_questions": [
+      "Tell me about your background.",
+      "Tell me about yourself.",
+      "What are your hobbies?",
+      "Any goals of being entrepreneur?",
+      "About interest in higher studies.",
+      "What did you like most about the job description?",
+      "What do you know about our company’s product/services?",
+      "Describe the workplace where you’ll be most happy and productive.",
+      "How would you rate yourself on a scale of 1 to 10?",
+      "Why should we hire you?",
+      "How do you deal with criticism?"
+    ],
+    "total_questions": 11
+  },
+  {
+    "id": "84",
+    "company": "Publicis Sapient",
+    "years": [
+      "2022-23",
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Where do you see yourself in 5 years?",
+      "Why should we hire you?",
+      "Tell us about yourself.",
+      "Why do you want to join Sapient Nitro?",
+      "What do you know about the company?",
+      "Why did you join this college?",
+      "Why did you choose this stream?",
+      "How do you plan to motivate your team if you become a leader?",
+      "Are you willing to relocate or travel?",
+      "What motivates you to do a good job?",
+      "Describe your ideal company, location & job.",
+      "Who is your inspiration in your life & why?",
+      "What are your goals in life?",
+      "What is the toughest decision you've had to make in your life?",
+      "How much salary do you expect from us?",
+      "What are three qualities that your friends will describe you having?",
+      "How do you feel about working according to US timings - 1:00pm to 9pm?",
+      "Do you have problem solving skills?",
+      "What is your biggest strength?",
+      "How would you rate your technical interview?",
+      "About Family background,",
+      "Questions related to the topics which I mentioned in resume,",
+      "Where are you willing to see yourself in future?",
+      "About final year project",
+      "Why should I hire you?",
+      "Tell me about the difficulties during the projects.",
+      "Introduce yourself.",
+      "How do you work under pressure?",
+      "How do you handle pressure?",
+      "What measures will you take if there is any conflict in the team?",
+      "Note: All questions were asked from a resume only.",
+      "When was the last time you watched a movie and narrate it?",
+      "What is the difficulty u faces during your project.",
+      "How are you feeling today?",
+      "What did you discuss in your previous interview?",
+      "What is the most thrilling thing you have done?",
+      "Why do you want to join corporate world?",
+      "Tell me about your family.",
+      "Do you have any questions for me?",
+      "What motivates you?",
+      "Tell me about yourself.",
+      "What's your dream company?",
+      "Give me the situation when you have thought outside the box?",
+      "What do you want to be in future?",
+      "What did you learn apart from your academics of your own interest?",
+      "Tell me about your projects.",
+      "About hobbies.",
+      "How do you pass your free time?",
+      "What are your achievements in your life?",
+      "Tell me about your family background?",
+      "What features did you like in social media?",
+      "Things which make you happy.",
+      "What difficulties did you face in projects?"
+    ],
+    "total_questions": 53
+  },
+  {
+    "id": "85",
+    "company": "PWC",
+    "years": [],
+    "hr_questions": [
+      "Introduce yourself.",
+      "Tell me something about your family.",
+      "Can you explain your personality in one word?",
+      "Why PwC?",
+      "Do you know the difference between smart work and hard work?",
+      "Tell me about some of your achievements.",
+      "What according to you was your greatest failure in life?",
+      "Why should we hire you?",
+      "Where do you see yourself after 3 years?",
+      "Do you believe in talent or hard work?",
+      "What opinion do your friends have about you?",
+      "When do you think you will complete and be able to join? (contextual question)",
+      "What changes would you make at your college?",
+      "What do you think are your strengths and weaknesses?",
+      "If you were to ask one of your professors to describe you, what would he or she say?",
+      "What interests you most about this position?",
+      "Describe your final year project. What innovations did you bring into this project?",
+      "Who is the CEO of the company?",
+      "Are you a good listener?",
+      "How has your education prepared you for your career?",
+      "Have you ever wanted to quit something?",
+      "Do you prefer working in a team?",
+      "Do you keep your promises?",
+      "What motivates you?",
+      "Tell me about your groups of friends.",
+      "Do you have any questions for us?",
+      "Tell me about a time when you worked effectively under pressure.",
+      "If you could be any animal, what would it be?",
+      "What do you know about PwC?",
+      "Do you enjoy doing independent research?",
+      "Why do you want to join this company?"
+    ],
+    "total_questions": 31
+  },
+  {
+    "id": "86",
+    "company": "QSC India Private Limited",
+    "years": [],
+    "hr_questions": [
+      "Tell me about your projects.",
+      "Introduce yourself.",
+      "What are your hobbies?",
+      "What are your technical interests?",
+      "What are your goals?"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "87",
+    "company": "Quantiphi",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Introduce yourself / Tell me about yourself,",
+      "Tell me about our company",
+      "Explain your project",
+      "Do you have any earlier experience",
+      "Multiple situation based questions.",
+      "Explain the projects you have mentioned in your resume,",
+      "Why Quantiphi?",
+      "Why business analyst role?",
+      "Roles and responsibilities of a business analyst?",
+      "A puzzle on how to reduce the weight of a metal disk without affecting its shape and size.",
+      "Question regarding website and their service offered.",
+      "Questions on palindrome code."
+    ],
+    "total_questions": 12
+  },
+  {
+    "id": "88",
+    "company": "Quantum Street AI",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "What is your strength?",
+      "Personal Hobbies related Questions.",
+      "Greatest Achievement in my life.",
+      "Greatest weaknesses.",
+      "Self introduction"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "89",
+    "company": "Robert Bosch",
+    "years": [],
+    "hr_questions": [
+      "Tell me your strengths and weakness",
+      "Tell me 3 qualities of an engineer",
+      "Explain your Projects",
+      "What are your hobbies",
+      "Explain the certifications mentioned in your resume etc"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "90",
+    "company": "Sacha Engineering",
+    "years": [],
+    "hr_questions": [
+      "Tell about your family?",
+      "Tell me about yourself?",
+      "Why did you choose Mechanical engineering?"
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "91",
+    "company": "Sage",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Brief about your internship.",
+      "Are you flexible with the work culture?",
+      "What is your weakness?",
+      "How do you handle misunderstandings in a team?",
+      "What are your interests apart from academics?",
+      "What is the scope of your project?",
+      "Who are the beneficiaries of your project?",
+      "What was your contribution to the project?",
+      "What were the roles of other team members?",
+      "Pick one project and explain it thoroughly.",
+      "Explain your project in depth.",
+      "Explain the complete architecture of your project.",
+      "Explain the frontend and backend architecture.",
+      "How is the frontend linked to the backend?",
+      "Explain the REST APIs used in your project.",
+      "Explain the project logic.",
+      "What challenges did you face during development?",
+      "Why did you choose this project?",
+      "What technologies did you use and why?",
+      "What was your exact contribution?",
+      "What is the future scope of the project?",
+      "Explain the Coronary Heart Disease project in depth.",
+      "Explain the ML models used in the project.",
+      "How did you train the models?",
+      "How was the dataset processed?",
+      "Explain vectorization in your project.",
+      "How does the prediction flow work from frontend to backend?",
+      "Explain the database design used in your project.",
+      "Explain the deployment flow of your project.",
+      "What improvements would you make if given more time?"
+    ],
+    "total_questions": 31
+  },
+  {
+    "id": "92",
+    "company": "SAP Labs",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Where do u see yourself in 5yrs?",
+      "How do you handle conflicts within your team?",
+      "Name the hackathons you participated. Tell me about your best hackathon experiences",
+      "How many members are there in your family? What are they currently doing?"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "93",
+    "company": "Seven Eleven",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Tell me about yourself",
+      "What are your strengths and weaknesses?",
+      "Why do you want to work here?",
+      "Tell me about your projects and internship experience.",
+      "Discussion about company",
+      "What are your goals?",
+      "How will this internship benefit you?",
+      "What is your biggest life lesson from college apart from academics?"
+    ],
+    "total_questions": 8
+  },
+  {
+    "id": "94",
+    "company": "Siemens Technology",
+    "years": [
+      "2026-27"
+    ],
+    "hr_questions": [
+      "What challenges did you face while working in your projects?",
+      "Explain the outcome of your projects.",
+      "What key learnings did you gain while working in internship?",
+      "Discussion on: A discussion on the impact of Artificial Intelligence and whether AI could replace human roles in the future.",
+      "Why do you want to join Siemens?",
+      "What are your long-term career goals?",
+      "Are you willing to work in rotational shifts?",
+      "Are you open to relocation?",
+      "Do you have plans for higher studies in the future?",
+      "Explain your patent.",
+      "Can you tell me about your achievements",
+      "Can you throw light on extra-curricular?"
+    ],
+    "total_questions": 12
+  },
+  {
+    "id": "95",
+    "company": "Sku Logic",
+    "years": [
+      "2025-26"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Why are you interested in working at SKULogic?",
+      "What do you know about supply chain consulting?",
+      "Why do you want to move into WMS/supply chain technology?",
+      "Walk me through your relevant experience.",
+      "Describe a project where you had to troubleshoot a complex technical issue.",
+      "How do you handle client-facing situations under pressure?",
+      "How do you prioritize tasks when working on multiple projects simultaneously?",
+      "Tell me about a time you had to learn a new system or technology quickly.",
+      "How do you handle on-call or 24/7 support requirements?",
+      "Are you open to relocation or remote work?"
+    ],
+    "total_questions": 11
+  },
+  {
+    "id": "96",
+    "company": "Sophis Tex",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Tell me about your projects mentioned in your resume."
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "97",
+    "company": "Spaudling Ridges",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Can you explain your final year project?",
+      "What make u perfect for this job role?",
+      "How would you handle a conflict in a team?",
+      "Where do you see yourself in 5 years?",
+      "Describe a time when you faced a challenge and how you overcame it?",
+      "What are your strength and weakness?"
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "98",
+    "company": "Spinny",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Are you willing to relocate to other cities?",
+      "How do you fit in our work environment?",
+      "What do you know about our company?",
+      "How do you handle your team?",
+      "How do you handle your customer in distress?",
+      "More situational questions how you handle things and situations.",
+      "Do you have knowledge on car?",
+      "Tell me about your projects.",
+      "Explain your learnings from internships.",
+      "Throw light on your extra courses.",
+      "Why you choose marketing job instead of Business Analytics or Financial Management jobs."
+    ],
+    "total_questions": 12
+  },
+  {
+    "id": "99",
+    "company": "Surewaves",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Tell me about your project.",
+      "Questions on schemes of projects.",
+      "Puzzle based questions on cakes.",
+      "Tell me about yourself.",
+      "Technical Questions:",
+      "Networking questions - http and flow of information when we click the search button on Google.",
+      "Oops concepts- overloading, overriding, abstraction, interface, inheritance.",
+      "Time complexity of recursion",
+      "Javascript questions on scope",
+      "Private public and protected access specifiers",
+      "Static methods",
+      "SQL commands",
+      "Find the 6th highest salary",
+      "Explain limit and offset",
+      "Explain having and group by"
+    ],
+    "total_questions": 15
+  },
+  {
+    "id": "100",
+    "company": "Surya Technologies",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Explain the technologies mentioned in resume.",
+      "Introduce yourself.",
+      "Explain content written in your resume.",
+      "SUMMARY",
+      "Aptitude based puzzle was asked more in HR interview.",
+      "Interviewers focus was on problem solving method rather than final solution / output."
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "101",
+    "company": "Svandhin Solutions",
+    "years": [],
+    "hr_questions": [
+      "Describe yourself.",
+      "Why will we hire you?",
+      "What do you know about this company?",
+      "Why did you choose civil engineering?",
+      "How much you rate your autocad skill out of 10.",
+      "Where are you from?",
+      "Hobbies.",
+      "Personal interest.",
+      "Strength and weakness."
+    ],
+    "total_questions": 9
+  },
+  {
+    "id": "102",
+    "company": "Syncron",
+    "years": [],
+    "hr_questions": [
+      "What is the difference between hard work and smart work?",
+      "How do you feel about working weekends and night shifts?",
+      "Give an example of a time you had to respond to an unhappy manager/ customer/ colleague/ professor/ friend.",
+      "How quickly do you adapt to new technology?",
+      "On a scale of 1 to 10 how would you rate yourself as a leader?",
+      "What are your future goals? Tell me about your short term and long-term goals.",
+      "What motivates you?",
+      "What are your hobbies?",
+      "What are you passionate about?",
+      "What are your biggest achievements till date?",
+      "Tell me about yourself?",
+      "What are you most proud of?",
+      "Are you an organized person?",
+      "Why should I hire you?",
+      "Where do you see yourself in next 5 years?"
+    ],
+    "total_questions": 15
+  },
+  {
+    "id": "103",
+    "company": "Synthesis System",
+    "years": [],
+    "hr_questions": [
+      "How can you increase your creativity?",
+      "Why did you choose Bangalore over Noida?",
+      "How did you find yourself in the exam we took?",
+      "Why do you want to choose synthesis over Accenture?",
+      "Tell me about your project, what it can to do to mankind?",
+      "Tell me about yourself other than what is on your resume.",
+      "What inspires you?",
+      "Where do you see yourself in 5 years?"
+    ],
+    "total_questions": 8
+  },
+  {
+    "id": "104",
+    "company": "Tata Elxsi",
+    "years": [],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Why do u want a job in this company",
+      "What are your hobbies",
+      "Tell me about your project.",
+      "Explain your project.",
+      "What are your strengths?",
+      "What are your Weakness?",
+      "What is your best skill?",
+      "Explain your hobbies.",
+      "What part did you do in your project?",
+      "Are you ready to relocate?",
+      "Tell me about your family background."
+    ],
+    "total_questions": 12
+  },
+  {
+    "id": "105",
+    "company": "TCS",
+    "years": [],
+    "hr_questions": [
+      "Introduce Yourself ?",
+      "Why Should I Take You In Tcs?",
+      "Tell Me About The Recent Trends In It Industry?",
+      "Who Inspired You To Become An Engineer?",
+      "What Is Your Weakness?",
+      "Explain work you have done apart from your studies.",
+      "Are You A Team Player?",
+      "Why Should We Hire You?",
+      "If You Are Rejected Today, Then What Will You Do?",
+      "Tell Me About Your Dream Job?",
+      "Where Youre Native Place Is And For What It Is Famous?",
+      "What Is More Important To You: The Money Or The Work?",
+      "Are You Willing To Work Overtime? Nights? Weekends?",
+      "Would You Be Willing To Relocate If Required?",
+      "Who Are The Competitors Of Tcs In The World Market As Well As In Indian Market?",
+      "Who Is The Founder Of Tcs?",
+      "Who Is The Present Ceo?",
+      "What Is The Name Of The Award Tcs Recently Received?",
+      "What Is Your Aim?"
+    ],
+    "total_questions": 19
+  },
+  {
+    "id": "106",
+    "company": "Tech Mahindra",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "How many interviews have you attended?",
+      "How many interviews did you fail? Where did you fail?",
+      "What are your weaknesses & how are you trying to overcome it?",
+      "Who is your role model?",
+      "Tell me about yourself.",
+      "Are you ready to reallocate yourself?",
+      "What did you learn from your college life?",
+      "What do you know about our company culture and value?",
+      "Why do you want to join Tech Mahindra?",
+      "What motivates you to work?"
+    ],
+    "total_questions": 10
+  },
+  {
+    "id": "107",
+    "company": "Tell Mic",
+    "years": [],
+    "hr_questions": [
+      "Self-introduction",
+      "What you like about japan?",
+      "Why japan and why our company?",
+      "Project details.",
+      "How long did it take to complete project?",
+      "Your role in the project?",
+      "What is your Strength and weakness?"
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "108",
+    "company": "Tesco",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Tell about your company",
+      "Explain your project. Can you write it down in a page and explain?",
+      "Tell me about your family",
+      "Are you okay to work in any shift?",
+      "British Council audio was played and they asked me to explain conversations."
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "109",
+    "company": "Thermo Fishers Scientific",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "How do you handle a situation in corporate world? (Situation based questions)",
+      "How do you handle stress?",
+      "Can you talk about your hobbies?",
+      "Tell me about your family background?",
+      "What kind of environment would you work in?",
+      "How would you resolve a work issue? Give your approach for it.",
+      "What challenges did you face while doing projects?",
+      "Out of the mentioned projects, which is your favourite and why?",
+      "Explain about the most complex thing have you done so far?"
+    ],
+    "total_questions": 9
+  },
+  {
+    "id": "110",
+    "company": "Thomson Reuters",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "How flexible are you to work at the weekend and for night shift?",
+      "What are your short term and long term goal?",
+      "What are your strengths and weakness etc?",
+      "How would you cope up with repetitive tasks?",
+      "What challenges did you face while doing your projects?",
+      "What are your hobbies?"
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "111",
+    "company": "Toyota Kirloskar Auto Parts",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "What are your Hobbies?",
+      "Where do you self after 5 years?",
+      "Being an engineer how do you contribute to society?",
+      "Tell us about yourself?",
+      "Tell me about your Family background?",
+      "Why do you want to be an electrical engineer?",
+      "How would you mange to work with men in your surroundings?",
+      "People claim that men are stronger than women would you agree with this?",
+      "What is your role in the mini projects?",
+      "What programming languages you know?"
+    ],
+    "total_questions": 10
+  },
+  {
+    "id": "112",
+    "company": "Tredence Inc",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "Can you tell me about yourself?",
+      "What motivated you to apply for this position at Tredence Inc?",
+      "What do you know about Tredence Inc and its services/products?",
+      "Can you walk me through your resume and highlight relevant experiences?",
+      "How do you stay updated with industry trends and developments?",
+      "Describe a challenging project you've worked on and how you overcame obstacles.",
+      "How do you prioritize tasks and manage your time effectively?",
+      "Can you give an example of a time when you had to work in a team to achieve a goal?",
+      "What are your strengths and weaknesses, and how do they relate to this position?",
+      "How do you handle stressful situations or tight deadlines?",
+      "Tell me about your previous experience."
+    ],
+    "total_questions": 11
+  },
+  {
+    "id": "113",
+    "company": "Vebuin",
+    "years": [
+      "2022-23"
+    ],
+    "hr_questions": [
+      "How would you solve problems in the team if you are the team leader?",
+      "What will be 2 things that you will change if you become Indian President?",
+      "Will you work on a team or like to work as an individual?",
+      "Why do you want to work in Japan?",
+      "Which food would you like to eat if you come to Japan?",
+      "Where do you see yourself in next 5 years?",
+      "What is your goal?"
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "114",
+    "company": "Veeva Systems",
+    "years": [
+      "2024-25"
+    ],
+    "hr_questions": [
+      "Introduce yourself.",
+      "What is your favourite part of school and college?",
+      "Why do you think Veeva system is the right choice for you?",
+      "Do you have any question for me?",
+      "How was the technical interview?",
+      "How do feel about the assignment given to you?",
+      "Why do u think Veeva is best fit for you?",
+      "Why did you change domain from BSc to MCA?",
+      "Are you facing any difficulty while doing MCA?"
+    ],
+    "total_questions": 9
+  },
+  {
+    "id": "115",
+    "company": "Viatres",
+    "years": [
+      "2022"
+    ],
+    "hr_questions": [
+      "Tell me about yourself.",
+      "Why should I hire you?",
+      "What are your strengths?",
+      "What are your weakness?",
+      "Do you have any salary expectations?",
+      "Why do you want to join my company?",
+      "Are you willing to relocate?"
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "116",
+    "company": "Vision Net",
+    "years": [],
+    "hr_questions": [
+      "Tell me about photography ( Hobbies)",
+      "What do you know about knife painting? What type of paint do you useMostly all hobbies mentioned.",
+      "Tell me about yourself.",
+      "Strength & weakness.",
+      "Hobbies",
+      "Achievements",
+      "Project explanation.",
+      "What feedback did your teacher/friend give about you recently?",
+      "Family background",
+      "How will you motivate to the team members when you are sick?",
+      "Scenario based questions."
+    ],
+    "total_questions": 11
+  },
+  {
+    "id": "117",
+    "company": "Vymo",
+    "years": [],
+    "hr_questions": [
+      "We finish the interview and you step outside the office and find a lottery ticket that ends up winning $10 million. What would you do?",
+      "What are three words you would use to describe yourself?",
+      "How badly do you want the job?",
+      "What’s one thing in your life you would have done differently if you could do it over again?",
+      "What is your ideal job – in detail?",
+      "What are you better at than anyone else in the world?",
+      "What type of growth are you looking for?",
+      "What’s the most interesting thing about you that we wouldn’t learn from your resume alone?",
+      "If I were to hire you for this job and I granted you three promises with regard to working here, what would they be?",
+      "Tell me about a time you failed. How did you deal with the situation?",
+      "What do you do in your spare time?",
+      "What is your greatest fear?",
+      "You have not done your PG yet. This is not a drawback, but don’t you think you should get a PG degree asap?",
+      "What do your friends/co-workers say about you?",
+      "What did you do in the last year to improve your knowledge?"
+    ],
+    "total_questions": 15
+  },
+  {
+    "id": "118",
+    "company": "Wiley Edge",
+    "years": [],
+    "hr_questions": [
+      "Tell me about yourself apart from your resume?",
+      "Where do you want to see yourself in 10 years?",
+      "Have you worked in a team?",
+      "What is your learning from teamwork?",
+      "Have you ever pushed yourself out of your comfort zone? What did you learn from it?",
+      "What do you know about Wiley edge?",
+      "Why do you want to explore yourself here in Wiley Edge?"
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "119",
+    "company": "Wipro",
+    "years": [],
+    "hr_questions": [
+      "Tell me about yourself apart from what is there in your resume.",
+      "What are your co-curricular activities?",
+      "Are you happy to relocate?",
+      "Why Wipro?",
+      "What are the skills that you want to improve before joining the company?",
+      "Introduce Yourself.",
+      "Explain your project.",
+      "What were the conflicts you faced with your team members while making this project? How did you solve them?",
+      "Did you get any criticism for your project? How did you handle that?",
+      "What are your strengths and weaknesses? Explain how you overcame these weaknesses?",
+      "Has there ever been a situation where you had to learn any technical skills overnight?",
+      ".Is there any situation where you used your creativity?",
+      "Are you willing to relocate?",
+      "Are you ready to sign a one year bond?",
+      "Do you have any backlogs?",
+      "Do you have any questions?"
+    ],
+    "total_questions": 16
+  },
+  {
+    "id": "120",
+    "company": "Wonksknow",
+    "years": [
+      "2023-24"
+    ],
+    "hr_questions": [
+      "What do you know about the Developer role?",
+      "Explain your relevant projects.",
+      "Situation based questions which we might face while working in company."
+    ],
+    "total_questions": 3
+  }
+]

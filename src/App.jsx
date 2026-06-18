@@ -26,26 +26,43 @@ function decodeJwt(token) {
   }
 }
 
-function buildCards(data) {
+function buildCards(techData, hrData) {
   const cards = [];
-  if (!data) return cards;
-  data.forEach((entry) => {
-    entry.technical_questions.forEach((q, i) => {
-      if (q && q.trim())
-        cards.push({ id: `${entry.id}_T${i}`, question: q.trim(), type: "Technical", company: entry.company, year: entry.year });
+  if (techData) {
+    techData.forEach((entry) => {
+      if (entry.technical_questions) {
+        entry.technical_questions.forEach((q, i) => {
+          if (q && q.trim())
+            cards.push({ id: `${entry.id}_T${i}`, question: q.trim(), type: "Technical", company: entry.company, year: entry.year });
+        });
+      }
+      if (entry.programming_questions) {
+        entry.programming_questions.forEach((q, i) => {
+          if (q && q.trim())
+            cards.push({ id: `${entry.id}_P${i}`, question: q.trim(), type: "Programming", company: entry.company, year: entry.year });
+        });
+      }
     });
-    entry.programming_questions.forEach((q, i) => {
-      if (q && q.trim())
-        cards.push({ id: `${entry.id}_P${i}`, question: q.trim(), type: "Programming", company: entry.company, year: entry.year });
+  }
+  if (hrData) {
+    hrData.forEach((entry) => {
+      if (entry.hr_questions) {
+        entry.hr_questions.forEach((q, i) => {
+          if (q && q.trim()) {
+            const yearStr = entry.years && entry.years.length > 0 ? entry.years.join(", ") : "N/A";
+            cards.push({ id: `HR_${entry.id}_H${i}`, question: q.trim(), type: "HR", company: entry.company, year: yearStr });
+          }
+        });
+      }
     });
-  });
+  }
   return cards;
 }
 
 function CompanyChip({ company, count, onClick }) {
   const [imgError, setImgError] = useState(false);
   const domain = COMPANY_DOMAINS[company] || COMPANY_DOMAINS[company.trim()];
-  const logoUrl = domain ? `https://logo.clearbit.com/${domain}` : null;
+  const logoUrl = domain ? `https://logos.hunter.io/${domain}` : null;
 
   return (
     <button
@@ -96,17 +113,24 @@ export default function App() {
   const { completed, toggleCompleted } = useProgress();
 
   const [rawData, setRawData] = useState([]);
+  const [hrData, setHrData] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
 
   // Fetch combined questions data
   useEffect(() => {
-    fetch("/interview_questions_combined.json")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch questions");
+    Promise.all([
+      fetch("/interview_questions_combined.json").then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch technical questions");
+        return res.json();
+      }),
+      fetch("/hr_questions_company_wise.json").then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch HR questions");
         return res.json();
       })
-      .then((data) => {
-        setRawData(data);
+    ])
+      .then(([techData, hrQuestionsData]) => {
+        setRawData(techData);
+        setHrData(hrQuestionsData);
         setLoadingData(false);
       })
       .catch((err) => {
@@ -115,10 +139,13 @@ export default function App() {
       });
   }, []);
 
-  const allCards = useMemo(() => buildCards(rawData), [rawData]);
+  const allCards = useMemo(() => buildCards(rawData, hrData), [rawData, hrData]);
   const companies = useMemo(() => {
-    return [...new Set(rawData.map((e) => e.company.trim()))].sort((a, b) => a.localeCompare(b));
-  }, [rawData]);
+    const allSet = new Set();
+    rawData.forEach((e) => allSet.add(e.company.trim()));
+    hrData.forEach((e) => allSet.add(e.company.trim()));
+    return [...allSet].sort((a, b) => a.localeCompare(b));
+  }, [rawData, hrData]);
 
   const cardsByCompany = useMemo(() => {
     const map = {};
@@ -130,14 +157,19 @@ export default function App() {
   }, [allCards]);
 
   const stats = useMemo(() => {
+    const techYears = rawData.map((e) => e.year);
+    const hrYears = hrData.flatMap((e) => e.years || []);
+    const allYears = new Set([...techYears, ...hrYears].filter(Boolean));
+
     return {
       total: allCards.length,
       companies: companies.filter((c) => c !== "General Question Bank").length,
-      years: [...new Set(rawData.map((e) => e.year))].length,
+      years: allYears.size || 1,
       tech: allCards.filter((c) => c.type === "Technical").length,
       prog: allCards.filter((c) => c.type === "Programming").length,
+      hr: allCards.filter((c) => c.type === "HR").length,
     };
-  }, [allCards, companies, rawData]);
+  }, [allCards, companies, rawData, hrData]);
 
   const fuse = useMemo(() => {
     return new Fuse(allCards, { keys: ["question", "company"], threshold: 0.35, includeScore: true });
@@ -456,6 +488,7 @@ export default function App() {
                 { label: "Years", value: loadingData ? "..." : stats.years },
                 { label: "Technical", value: loadingData ? "..." : stats.tech },
                 { label: "Programming", value: loadingData ? "..." : stats.prog },
+                { label: "HR", value: loadingData ? "..." : stats.hr },
               ].map((s) => (
                 <div key={s.label} className="text-center min-w-[80px]">
                   <div className="text-lg font-semibold text-zinc-800 tracking-tight tabular-nums leading-none">{s.value}</div>

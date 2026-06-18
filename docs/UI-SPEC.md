@@ -30,7 +30,7 @@ Stores a mapping of company names (as they appear in `questions.json`) to their 
 * *Example:* `"PhonePe": "phonepe.com"`, `"Oracle": "oracle.com"`, `"Accenture": "accenture.com"`.
 
 ### 2. Loading Strategy & Error Recovery
-* **API Endpoint:** Queries Clearbit Logo API (`https://logo.clearbit.com/{domain}`) to fetch high-resolution transparent PNG files.
+* **API Endpoint:** Queries Hunter.io Logo API (`https://logos.hunter.io/{domain}`) to fetch high-resolution transparent PNG files.
 * **Isolated Sub-Components:** Grid cards and panel drawers wrap image elements in isolated components (`CompanyCardButton`, `DrawerHeader`, and `CompanyChip`).
 * **Fallback State:** If a logo image fails to load (due to rate-limits or missing domains), the `onError` hook triggers a fallback state displaying beautiful name-hashed color gradients and initials, preventing broken images.
 
