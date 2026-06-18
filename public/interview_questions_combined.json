@@ -1,0 +1,2069 @@
+[
+  {
+    "id": "2022-23_1",
+    "company": "Cognizant",
+    "year": "2022-23",
+    "technical_questions": [
+      "Basic html questions.",
+      "Oops concept.",
+      "Syntax of dbms like creating a table etc",
+      "To write queries from a given table.",
+      "Basic syntax and definitions from python.\n6.Difference btw foreign key and primary key",
+      "Simple SQL queries",
+      "Difference between C vs C++",
+      "Using namespace std;   -> it's explanation"
+    ],
+    "programming_questions": [
+      "General questions on C++"
+    ],
+    "total_questions": 9
+  },
+  {
+    "id": "2022-23_2",
+    "company": "Ellucian",
+    "year": "2022-23",
+    "technical_questions": [
+      "Find the output of the code snippets.",
+      "I was also asked to write queries for the schemas provided.",
+      "GFG puzzles",
+      "operations of link lists",
+      "Hashing and encryption",
+      "Cloud based concepts and implementations\n7.Tested Python knowledge"
+    ],
+    "programming_questions": [
+      "Programs on Link list and basic data structures (JAVA)"
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "2022-23_3",
+    "company": "Epicor",
+    "year": "2022-23",
+    "technical_questions": [
+      "OOPS concepts",
+      "DBMS quesries and normal forms",
+      "REST APIs",
+      "Searching and sorting Algorithms",
+      "Class definition",
+      "Polymorphism it's types with an example",
+      "Data abstraction",
+      "Prevelant Operating systems in the industry",
+      "What is Interface ?",
+      "Explain Disc scheduling algorithms",
+      "Explain Job scheduling algorithms - Bellman Ford algorithm in detail",
+      "What is a thread, process, deadlock?",
+      "Sql queries on joins",
+      "Explain Normalization and it's types",
+      "Explain Primary key and unique key and their difference",
+      "All the skills I claimed in the first page of my resume. SQL Update query and find 2nd max salary."
+    ],
+    "programming_questions": [
+      "Check Valid Parenthesis,",
+      "Traversal of tree, \n3.Permutations of string in another,",
+      "Array sorting",
+      "Any programming language of our choice preferably Java.",
+      "Pascal's Triangle",
+      "Palindrome number",
+      "Find the last element of a circular linked list.",
+      "Write Quick sort program",
+      "One algorithm question and they give a input and output and ask you to write the code for it(for me it was reversing a array but using C).",
+      "Write a program to remove minimum element in an array",
+      "Question on oops concept",
+      "Question on sorting algorithm (Linear , bubble and quick sort)"
+    ],
+    "total_questions": 28
+  },
+  {
+    "id": "2022-23_4",
+    "company": "Surewaves",
+    "year": "2022-23",
+    "technical_questions": [
+      "Write the SQL Code for finding the second highest salary of an employee in the employee table",
+      "Write the SQL Code for finding the highest salary of an employee in the employee table",
+      "What is polymorphism explain with code",
+      "Can one try catch block have multiple catch statements?",
+      "What is a transaction?",
+      "What is meant by the term Docker?\n\n7.Questions on project",
+      "DSA questions - binary search, time complexity analysis, reverse string using recursion, find kth largest element in an array",
+      "More questions were asked on OOPs- types of polymorphism along with code, difference between abstract class and interface, Singleton classes",
+      "Difference between mongoDB and SQL",
+      "Questions on DBMS- deadlocks, few sql queries and a puzzle was asked at the end"
+    ],
+    "programming_questions": [
+      "Write a program to parse the boundary elements of a 2D matrix in clockwise direction (Open to code in any language my preference was python)",
+      "Why are strings immutable in java and how to make them mutable"
+    ],
+    "total_questions": 12
+  },
+  {
+    "id": "2022-23_5",
+    "company": "Amadeus",
+    "year": "2022-23",
+    "technical_questions": [
+      "Introduce yourself",
+      "Why did you choose this company?",
+      "Tell me about your hobbies",
+      "Discuss on the topic \"\"Timeline kills Creativity\"\"",
+      "What are the projects that you have done, and other certifications",
+      "Are you a team player, or a team leader\nAfter that the Technical round started. Questions were :-\n1.Explain OOPS concept in your choice of language (mine was C++)",
+      "Why did you choose C++ and not Java?",
+      "Write code for Operator overloading, Function overloading and Dynamic binding.",
+      "Write code for Merge sort and explain",
+      "Explain Quick sort",
+      "Explain what is Time Complexity",
+      "According to you, what is the definition of Data Structures",
+      "Explain what are the ML/AI algorithms you've used in your projects.\n\"Technical round(50 min):\n9.Oops:  Oops, oops pillar, Implement polymorphism(Function Overloading,  Function Overriding), More question on inheritance and polymorphism. Implement class for MakeMyTrip website.",
+      "Dbms:  Normalization and its forms",
+      "OS:  Multi-Threading, Multiprocessing OS, example of OS.",
+      "What if two people are booking same ticket and how to handle it?.",
+      "While searching for a flight how the different airline data are rendered ?\""
+    ],
+    "programming_questions": [
+      "Time Complexity",
+      "OOPS concepts, Sorting Algorithms",
+      "Linked lists, definition and manipulation",
+      "Trees and graphs",
+      "ML/AI algorithms",
+      "Data structures\n7.Implement Tree from scratch from the given arrays."
+    ],
+    "total_questions": 23
+  },
+  {
+    "id": "2022-23_6",
+    "company": "Bosch Drive",
+    "year": "2022-23",
+    "technical_questions": [
+      "\"Questions related to language provided in resume \nEg. Python",
+      "Features, how it will advance in future, how different it is compared to other languages.",
+      "Libraries, some coding questions, OOPS concepts, DS \"\n4 Django,flutter cross questions",
+      "On project"
+    ],
+    "programming_questions": [
+      "Sorting"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "2022-23_7",
+    "company": "Chainalytics",
+    "year": "2022-23",
+    "technical_questions": [
+      "Basics of sql(primary key, foreign key, unique, not null)",
+      "DML and DDL",
+      "Basic queries",
+      "Aggregate functions",
+      "Limit function in dbms Transactions,",
+      "ACID properties"
+    ],
+    "programming_questions": [
+      "Reverse a string",
+      "Fibonacci using recursion",
+      "Factorial using recursion",
+      "Quick sort and merge sort implementation",
+      "All OOPS concept implementation",
+      "Linked list using oops",
+      "Stack implementation using oops"
+    ],
+    "total_questions": 13
+  },
+  {
+    "id": "2022-23_8",
+    "company": "CLARIVATE ANALYTICS",
+    "year": "2022-23",
+    "technical_questions": [
+      "implement all types of polymorphism",
+      "\"Definitions of all DS",
+      "Applications of Some DSA",
+      "Project related questions",
+      "Tree traversal",
+      "Some basic questions related to Java program \"",
+      "Thorough Discussion on projects for 35 minutes. Told to write the code of the core logic of the project , database schema and database connectivity. Further discussion on time complexity of the code and how to improve it. \n\n8.Javascript Concept check like how to manipulate the dom , 2d array, how javascript is helpful in making the webpage interactive.",
+      "Thorough Discussion on 4 pillars of Oops Concept with coding. \"\nA query on updation"
+    ],
+    "programming_questions": [
+      "find unique elements in an array and variation of coin exchange problem",
+      "\"Reverse of list items in python",
+      "Elimination of repeated numbers in list",
+      "String reverse program in Java",
+      "Find the second maximum number in the array.",
+      "Programming language used - Java. : They asked me to code 2 coding questions. one is finding frequency of letters in a string using hashmap method the other one is printing a string excluding special characters."
+    ],
+    "total_questions": 14
+  },
+  {
+    "id": "2022-23_9",
+    "company": "Deloitte",
+    "year": "2022-23",
+    "technical_questions": [
+      "Sorting algorithm",
+      "Search method",
+      "Oops concepts",
+      "DBMS",
+      "Project",
+      "What is ML",
+      "What is multiclass regression\n8.Program to count no of words \n9.Real word regression example with internal and external factors.\n10.Java oops concepts.",
+      "Questions related to my Java project",
+      "How was your progress with Deloitte interviews throughout the day"
+    ],
+    "programming_questions": [
+      "Java : Swap a number without a third variable",
+      "Java rotate matrix\"",
+      "Program to count no of words (any language)",
+      "Program to replace a word (python)",
+      "Program to split 2 words (python)\""
+    ],
+    "total_questions": 14
+  },
+  {
+    "id": "2022-23_10",
+    "company": "EY",
+    "year": "2022-23",
+    "technical_questions": [],
+    "programming_questions": [
+      "We had an online coding round. There were 2 questions and we have 1hr 15 minutes to solve it. We could use any language"
+    ],
+    "total_questions": 1
+  },
+  {
+    "id": "2022-23_11",
+    "company": "Infoedge",
+    "year": "2022-23",
+    "technical_questions": [],
+    "programming_questions": [
+      "Count Frequency of characters,",
+      "anagram"
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "2022-23_12",
+    "company": "Hitachi vantara",
+    "year": "2022-23",
+    "technical_questions": [
+      "Oops(abstraction)",
+      "Java",
+      "Compiler and interpreter",
+      "SQL (ddl)"
+    ],
+    "programming_questions": [
+      "Projects"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "2022-23_13",
+    "company": "GlobalLogic",
+    "year": "2022-23",
+    "technical_questions": [
+      "OOPs: All Four pillars of OOPs with its implementation.",
+      "Discuss about your favourite Algorithm in DSA(Any One)"
+    ],
+    "programming_questions": [
+      "Discuss about all four pillars of OOPs along with its implementation.\n2)DBMS: Find the 2nd Highest salary from a table(Queries).Rank of the Table(Queries)\n3)what is the use of internal keyword in OOPs(java)?(tricky question)\n4) Reverse individual Words in a String."
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "2022-23_14",
+    "company": "PhonePe",
+    "year": "2022-23",
+    "technical_questions": [
+      "Difference between DNS and DHCP\n2.All Linux commands in brief.\n3.Write Linux Command to list the filenames which contains numerals.\n4.TCP VS UDP\n5.TCP Hand Shake",
+      "What is the process that runs in background when you search www.phonepe.com",
+      "Linux CNS DBMS Cloud Computing questions"
+    ],
+    "programming_questions": [
+      "sorting,",
+      "binary search\n7.List out all the linux/unix commands known by you.",
+      "Details and instructions about chmod.",
+      "Difference between execute permission for directories and specific files.",
+      "Technologies used in final year project.",
+      "Networking questions which include osi model,",
+      "router protocol,",
+      "DNS ,",
+      "difference between hub and switch ,",
+      "ip adress .",
+      "Linux based questions such as its architecture,  commands.",
+      "Dbms questions include normalization,",
+      "difference between relational and non relational database and many more.."
+    ],
+    "total_questions": 16
+  },
+  {
+    "id": "2022-23_15",
+    "company": "Visionet Systems Inc",
+    "year": "2022-23",
+    "technical_questions": [
+      "Basic concepts of oops, \n2 .DSA,\n3.DBMS,",
+      "Oops Concepts",
+      "MySQL,about project ."
+    ],
+    "programming_questions": [
+      "No programming questions were asked"
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "2022-23_16",
+    "company": "Evalueserve",
+    "year": "2022-23",
+    "technical_questions": [
+      "Python basics",
+      "Guess estimate questions",
+      "Linear regression based questions",
+      "DBMS based queries and theoretical questions"
+    ],
+    "programming_questions": [
+      "Basic questions related to python",
+      "Lists, tuple, dictionary and project related questions",
+      "2 rooms - 3 bulbs in one room and corresponding switches in other room. You have only one chance to enter the room and you can on only one switch at a time.how do you find the correct switches for each bulb",
+      "Sorting in python,",
+      "exchanging key value pair in python, analytic based questions,",
+      "Venn diagram",
+      "Unix commands"
+    ],
+    "total_questions": 11
+  },
+  {
+    "id": "2022-23_17",
+    "company": "Quinbay",
+    "year": "2022-23",
+    "technical_questions": [
+      "Oops concept , basic html tags, abstraction ,interface",
+      "HTML CSS JavaScript",
+      "OOPS Concept"
+    ],
+    "programming_questions": [
+      "Arrays sorting, String Manipulation",
+      "String Sorting",
+      "Reverse a linked list (Java)",
+      "Find Cycle in a linked list (Java)",
+      "Find Middle element of linked list(Java)"
+    ],
+    "total_questions": 8
+  },
+  {
+    "id": "2022-23_18",
+    "company": "Ceptes Software Drive",
+    "year": "2022-23",
+    "technical_questions": [
+      "Difference between python and Java",
+      "Why is python better than java?",
+      "Comparison between different languages",
+      "What is IaaS, PaaS, SaaS? Different types of databases.",
+      "What is DDL and DML?",
+      "What is salesforce"
+    ],
+    "programming_questions": [
+      "No programming questions were asked"
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "2022-23_19",
+    "company": "Capgemini(Dec)",
+    "year": "2022-23",
+    "technical_questions": [
+      "My projects and internships.",
+      "DBMS , OOPS , DSA,OS and HR questions"
+    ],
+    "programming_questions": [
+      "What is Slicing in Python?"
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "2022-23_20",
+    "company": "Accenture",
+    "year": "2022-23",
+    "technical_questions": [
+      "tell about your projects, \n2.design of project implementation,"
+    ],
+    "programming_questions": [],
+    "total_questions": 1
+  },
+  {
+    "id": "2022-23_21",
+    "company": "Amadeus (Dec)",
+    "year": "2022-23",
+    "technical_questions": [
+      "Why did you choose C++ and not Java?",
+      "Explain Quick sort",
+      "Explain what is Time Complexity",
+      "According to you, what is the definition of Data Structures",
+      "Explain what are the ML/AI algorithms you've used in your projects.\nand some other follow up questions were there, after that the interview was concluded.\""
+    ],
+    "programming_questions": [
+      "Write code for Operator overloading, Function overloading and Dynamic binding.",
+      "Write code for Merge sort and explain"
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "2022-23_22",
+    "company": "TATA ELXSI",
+    "year": "2022-23",
+    "technical_questions": [
+      "Explain Project"
+    ],
+    "programming_questions": [
+      "What is the use of internal keyword in OOPs?",
+      "Reverse individual Words in a String"
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "2022-23_23",
+    "company": "Publicis Sapient",
+    "year": "2022-23",
+    "technical_questions": [
+      "Questions related to the topics which I mentioned in resume,",
+      "About final year project"
+    ],
+    "programming_questions": [
+      "C++ code snippets",
+      "simple programs were given to solve and  some puzzles were also asked."
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "2022-23_24",
+    "company": "Lights& Wonder",
+    "year": "2022-23",
+    "technical_questions": [
+      "General technical interview"
+    ],
+    "programming_questions": [],
+    "total_questions": 1
+  },
+  {
+    "id": "2022-23_25",
+    "company": "Testvagrant",
+    "year": "2022-23",
+    "technical_questions": [
+      "Project"
+    ],
+    "programming_questions": [
+      "Only coding question given"
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "2022-23_26",
+    "company": "TCS (Ninja)",
+    "year": "2022-23",
+    "technical_questions": [
+      "OOPs concepts,basic HR questions."
+    ],
+    "programming_questions": [],
+    "total_questions": 1
+  },
+  {
+    "id": "2022-23_27",
+    "company": "AXA",
+    "year": "2022-23",
+    "technical_questions": [
+      "About projects, goals for the next 5 years"
+    ],
+    "programming_questions": [
+      "DBMS- Queries and Joins"
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "2022-23_28",
+    "company": "Entune",
+    "year": "2022-23",
+    "technical_questions": [
+      "No programming  questions only based on project"
+    ],
+    "programming_questions": [
+      "Project related questions only"
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "2022-23_29",
+    "company": "dhiOmics",
+    "year": "2022-23",
+    "technical_questions": [
+      "Technical questions related to SQL and PYTHON."
+    ],
+    "programming_questions": [
+      "Basic Python programs"
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "2022-23_30",
+    "company": "Publicis Sapient",
+    "year": "2022-23",
+    "technical_questions": [
+      "Oops, Networking",
+      "Data Structures"
+    ],
+    "programming_questions": [
+      "Program to find Prime Numbers Between given Interval"
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "2022-23_31",
+    "company": "Microland",
+    "year": "2022-23",
+    "technical_questions": [
+      "Basics about java",
+      "project related questions."
+    ],
+    "programming_questions": [
+      "Nothing"
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "2022-23_32",
+    "company": "Msg global solutions",
+    "year": "2022-23",
+    "technical_questions": [
+      "DSA,coading in array ,linked list etc"
+    ],
+    "programming_questions": [
+      "Program to find minimum of two array element",
+      "Coding questions in java"
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "2022-23_33",
+    "company": "QSC India",
+    "year": "2022-23",
+    "technical_questions": [
+      "Pillars in oops with real world examples",
+      "Singleton, multithreading in java, why do you prefer java more",
+      "OSI model, http vs https, ARPA, router, switch",
+      "DDL, DML commands and sql queries",
+      "Explain the testing processes you would execute on your projects(role specific question)",
+      "grep command",
+      "Questions about DBMS, CNS and OOPS.",
+      "Detailed questioning about projects and resume.",
+      "Asked to write code/pseudocode to questions in any preferred language.",
+      "Topics asked on: Oops, cns, DBMS, java, c, OS, testing, unix, puzzles"
+    ],
+    "programming_questions": [
+      "Palindrome program",
+      "Program to Swap two numbers without 3rd variable. Give and explain with examples all the approaches.",
+      "Program to handle Division by 0 exception (to check my knowledge in try catch block)"
+    ],
+    "total_questions": 13
+  },
+  {
+    "id": "2022-23_34",
+    "company": "Tata Elxsi",
+    "year": "2022-23",
+    "technical_questions": [
+      "questions on c programming, pointers,",
+      "data structures, linked list basic",
+      "In Techical interview they asked about project,oops ,basic questions on programmimg languages",
+      "questions were asked based on what you have mentioned in your resume"
+    ],
+    "programming_questions": [
+      "sorting program",
+      "reverse of a number program"
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "2022-23_35",
+    "company": "Falca ESolutions",
+    "year": "2022-23",
+    "technical_questions": [
+      "Asked for certain basic data structures questions",
+      "Difference between authentication and permission",
+      "What is bubble sort ?"
+    ],
+    "programming_questions": [
+      "Anagram program",
+      "bubble sort program",
+      "quick sort program"
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "2022-23_36",
+    "company": "IT Orizon",
+    "year": "2022-23",
+    "technical_questions": [
+      "OOPS concept",
+      "Java Basics"
+    ],
+    "programming_questions": [],
+    "total_questions": 2
+  },
+  {
+    "id": "2023-24_1",
+    "company": "Ellucian",
+    "year": "2023-24",
+    "technical_questions": [
+      "Output for C, Java code snippet - function overloading and overriding concept,\n2.postfix and prefix operators , classes , pointers.",
+      "Javascript - ES6 concept",
+      "SQL and DBMS concepts",
+      "Asked basic HTML,CSS,JS question. Apart from that discussed the projects mentioned in depth.\nTopics:\n1) Looping  2) HTML   3) CSS   4) JS",
+      "\"Questions from:- c++, objective-c, sql, math, java, data structures, date and time.",
+      "One-on-one tech round:- Basic to intermediate oops, java, python basics, sql,",
+      "write the approach of problem and if approach can be made better in terms of space and time.",
+      "\"DBMS:: +  Given a situation, write a query accordingly\n+ Difference between primary and foreign key,Composite key\n+ Joins related questions.",
+      "OOPS:(java) : Tell about Polymorphism using example.\n                            .overridden function\n                             .Constructors\n                             .Static functions\n                             .Inheritance and types",
+      "\"React js",
+      "\"Differentiate Between If Else and Switch Statement?",
+      "How Will You handle errors in the code?(Exception Handling)",
+      "What do you know about context managers in Python?",
+      "What is SQL? How is it different from MongoDB?",
+      "Do we need schema for SQL and MongoDB and how do you store the data in both?",
+      "Question Based on Project In the Resume and various use cases of each project.\""
+    ],
+    "programming_questions": [
+      "Code to print Prime numbers between a range",
+      "Asked one programming question(Palindrome) and asked to explain the approach and complexity.",
+      "Code Snippets, \"Mostly Guess the Correct Output based questions in languages such as C++, C, Python and Java.",
+      "SQL queries,",
+      "Code to reverse a number and check palindrome",
+      "Python: Packages and Coding question",
+      "Given a situation , to enter a name including first,middle and last name .Now select only the last name and give the output as each letter in reverse order.",
+      "Given a set of numbers , choose the numbers that add up to 5",
+      "Program to find Missing number in an array",
+      "program on Balanced paranthesis",
+      "Program to find Maximum subarray",
+      "Find the min number in an array?(C++)\""
+    ],
+    "total_questions": 28
+  },
+  {
+    "id": "2023-24_2",
+    "company": "Eurofins",
+    "year": "2023-24",
+    "technical_questions": [
+      "Asked from resume and project also",
+      "\"What are interfaces and differentiate it with abstract classes (java)",
+      "How does web work",
+      "Questions on Software architecture (MVC, etc.)",
+      "React JS"
+    ],
+    "programming_questions": [
+      "find the missing number in an array , numbers are from 0 to n",
+      "permutations of a string",
+      "given cites, make to functions connect(a,b) to connect two cities and isconnected(a,b) to check if they are connected or not\nthey asked to write the code + dry run\n4.\"",
+      "to check if 2 words are anagram or not",
+      "pattern matching,ex: give 2 string \"\"bombay\"\" an \"\"om*\"\", it should print \"\"ombay\"\"",
+      "find saddle points in a matrix, points in a matrix which have the highest value in a row and lowest value in column, print index in sorted order\n7.given string , remove single vowels, if continuos not remove it, for ex \"\"abbaabb\"\" will be \"\"bbaabb\"\"",
+      "given matrix of n*n, find m*m matrix with maximum sum, 2<=m<n\nI used python, but mostly every language was there.\nOnly 5 test cases were there for each,and chances of TLE i felt is very low as timing were pretty much high, 99sec for python\"",
+      "Maximum Subarray",
+      "Anagram string program",
+      "Write a Program on Balanced paranethesis",
+      "Write a Program to find Missing number in an array",
+      "Write a Program to find the maximum subarray"
+    ],
+    "total_questions": 17
+  },
+  {
+    "id": "2023-24_3",
+    "company": "Surya Software",
+    "year": "2023-24",
+    "technical_questions": [
+      "OOPS concept"
+    ],
+    "programming_questions": [
+      "Anagram and Subarray easy level problems"
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "2023-24_4",
+    "company": "Amadaus",
+    "year": "2023-24",
+    "technical_questions": [
+      "What is an Object Oriented Language?",
+      "List some OOP languages.",
+      "Why is Java not considered a pure OOP language? Name one pure OOP language.",
+      "What are the features/pillars of OOPS? Define each.",
+      "What are constructors? What are the different types of constructors?",
+      "Implement a copy constructor in a language of your choice (mine was Java)",
+      "What is call by value and call by reference? Code an example of each.",
+      "Explain the Java Memory Management (Heap and Stack Memory)",
+      "What is the Big-O of written code? Why?",
+      "Questions on  DSA, DBMS, OOPS, each again characterised into easy, medium and hard levels.",
+      "There were 30 mcqs from dsa, oops, dbms and 2 coding questions of easy-medium level. The mcqs were divided into sections as easy, medium, hard carrying different weightages. In 2nd round, there were questions based on data analysis(pie charts, bar graphs) in which lots of calculations were involved.",
+      "How would you test for a hacker trying to hack your data servers. (Security Testing)",
+      "Types of testing, functional and non functional.",
+      "what are the functional and non functional components of a code."
+    ],
+    "programming_questions": [
+      "Implement a copy constructor.",
+      "Implement call by value and call by reference.",
+      "Given a string and a pattern, return the number of times the pattern appeared in the string.",
+      "OOPs based code to make a headphone by inheriting various classes for different parts of the headphone,",
+      "code to send 5000 emails simultaneously to test an email application."
+    ],
+    "total_questions": 19
+  },
+  {
+    "id": "2023-24_5",
+    "company": "Surewaves",
+    "year": "2023-24",
+    "technical_questions": [
+      "They asked about the project, the scheme of the project and queries on the project.",
+      "Oops with the code and detailing of concepts.",
+      "Dsa, return the indices of pairs in an array whose sum is equal target sum.",
+      "Networking questions - http and flow of information when we click the search button on Google.",
+      "Oops concepts- overloading, overriding, abstraction, interface, inheritance.",
+      "Time complexity of recursion",
+      "Javascript questions on scope",
+      "Private public and protected access specifiers",
+      "Static methods"
+    ],
+    "programming_questions": [
+      "SQL commands\nFind the 6th highest salary, Explain limit and offset , Explain having and group by"
+    ],
+    "total_questions": 10
+  },
+  {
+    "id": "2023-24_6",
+    "company": "Accenture",
+    "year": "2023-24",
+    "technical_questions": [
+      "Software development phases",
+      "Database/project related questions, optimization of project and usage.",
+      "Different between c language and java language",
+      "OOPS concept in Java, SQL commands and queries, project related questions, technical questions related to the language mentioned in resume \n5.Overloading overriding",
+      "Python pass function",
+      "Friend function from java",
+      "Name few machine learning algorithms",
+      "About few electronic components Like LDR, Arduino",
+      "DBMS queries\n11.What are packages and modules in python",
+      "Name 5 modules used in python",
+      "They asked about PEP in python?",
+      "Inheritance, inheritance types, difference between tuple and list.",
+      "Questions related to my project such as my role in my project and questions related to computer networks.",
+      "SQL Joins SQL keys SQL BASICS\n17 What is database?\n18 What is schema diagram?\n19 How is data stored in DBMS?\n20 What is the difference between primary key and unique constraint?\n21 OOPs concepts\n22 ReactJs"
+    ],
+    "programming_questions": [
+      "Pattern generation and special numbers",
+      "Arrays, 2d arrays, string matching",
+      "Print the first occuring character which has count value more than one",
+      "Reverse String",
+      "Concatenation of Strings"
+    ],
+    "total_questions": 19
+  },
+  {
+    "id": "2023-24_7",
+    "company": "Epsilon",
+    "year": "2023-24",
+    "technical_questions": [
+      "SQL queries",
+      "Bootstrap classes",
+      "JavaScript data types"
+    ],
+    "programming_questions": [],
+    "total_questions": 3
+  },
+  {
+    "id": "2023-24_8",
+    "company": "Impelsys",
+    "year": "2023-24",
+    "technical_questions": [
+      "Projects",
+      "OOPs based questions (class, functions, inheritance)",
+      "How can you contribute to the growing technology \n4.Basic html tags",
+      "Difference between class and ID selector, about the team work we did in our project, why php is used in projects?",
+      "Questions on SQL- Left Join, Different b/w Truncate and Delete",
+      "Questions on CN- List the 7 layers of OSI model",
+      "Questions on OS- What is OS",
+      "Questions on your preferred programming language- Syntax, Operators, What makes it distinct from other programming languages etc.",
+      "Questions on OOPS- Polymorphism",
+      "Difference between array and list.",
+      "What is stack and queue?",
+      "What is machine learning ?",
+      "What is regression?",
+      "How is list in python different from list in other languages?",
+      "Selectors in CSS and what is the selector for class",
+      "Difference between constant and read only",
+      "Four pillars of OOP’s",
+      "Relationship between tables",
+      "What is an interpreter and compiler?",
+      "What is the difference between them?",
+      "What is the difference between C and python?",
+      "What is a function?",
+      "What is a loop?"
+    ],
+    "programming_questions": [
+      "program to Reverse String",
+      "program to Concatenation of Strings\n3.program to remove students to maintain equality marks",
+      "minimum sprinkler watering program (language: python)"
+    ],
+    "total_questions": 26
+  },
+  {
+    "id": "2023-24_9",
+    "company": "Oracle",
+    "year": "2023-24",
+    "technical_questions": [
+      "About Data structure and algorithms",
+      "Concepts of networking and OOPs",
+      "Explain JDBC",
+      "Explain LSTM in machine learning.",
+      "Questions on html ans Js,",
+      "Explain exception handling(python)",
+      "Explain API -GET  POST, PUT methods, request body",
+      "Explain JAVA - JDK,JVM,JRE, classes,",
+      "Project technicalities",
+      "ReactJs(mentioned in resume)",
+      "BST graph and their algorithm basic questions"
+    ],
+    "programming_questions": [
+      "Program to Swap two numbers",
+      "Program to reverse the LinkedIn list",
+      "Problems on Buckets",
+      "Write code to implement a class, and some code segments to perform some action on a given data.",
+      "Program to Minimize Array size by replacing adjacent integers by their Modulo",
+      "REST API question- given an api url, perform a fetch request to get required data and display specific fields from the data(used requests module of python)",
+      "Write a program to find a Prime number",
+      "Write a program to replace any character in a string",
+      "How to insert a node in a bst"
+    ],
+    "total_questions": 20
+  },
+  {
+    "id": "2023-24_10",
+    "company": "KOCH",
+    "year": "2023-24",
+    "technical_questions": [
+      "Questions on project"
+    ],
+    "programming_questions": [
+      "Write a program that accepts two integers A and X as inputs and calculate B if X is equal to (A+B)/2 (any programming language )",
+      "Given a number N, find its reverse R and calculate the absolute difference D between N and R. Next find the factors of D and print the number of 2s present in the factors(any programming language)\""
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "2023-24_11",
+    "company": "FIS",
+    "year": "2023-24",
+    "technical_questions": [
+      "Asked about project \n2.difference between oops and structures \n3.types of networks\n4.query to eliminate duplicate copy in table \n5.basic questions on html as l mentioned in resume",
+      "questions on inheritance and polymorphism.\n7.had a DB project in my resume so i was asked to draw the schema of the DB \n8.python (mentioned in resume)\n9.pass keyword\n10.list and tuples\n11.datatypes in python\n12.implement nested if else in python without using nested if elif (you cannot implement switch in python so not possible)\n13.java oops (inheritance,polymorphism,encapsulation,abstraction)\n14.Computer Networks\n15.linux"
+    ],
+    "programming_questions": [
+      "Write a program on reverse of string",
+      "Write a logic for reversing a string any language",
+      "Given an n number of bowls and each filled with some marble's (0-9) if the bowl contains 9 marble's from the last while traversing then make the bowl with 9 marble's as 0 and update the previous bowl before the bowl containing 9 marble's and some corner test cases to be handled.",
+      "Question was may be related to arrangements (combinations)",
+      "odd even program"
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "2023-24_12",
+    "company": "Cimpress",
+    "year": "2023-24",
+    "technical_questions": [
+      "Questions on project,",
+      "OOPS concepts: abstraction, encapsulation difference. Abstract classes in java",
+      "Interface in java. How both are different.",
+      "Protect data over the network. Encryption. Private key, public key, symmetric asymmetric encryption.",
+      "Hashing collisions.",
+      "Database design for auctions project.",
+      "Concept of locking in db design. Read locks write locks",
+      "ReactJS what is the advantage it provides: Virtual DOM",
+      "Nosql vs sql which to use, why one is preferred over the other",
+      "Scenario: parking lot design using concept of classes and objects"
+    ],
+    "programming_questions": [
+      "Find cycle in linked list. No hashMap, no fast slow pointers, no length given, code it uniquely",
+      "Find the element that appears only once",
+      "Implement stack using 2 queues",
+      "Write a Program on Creation of Linked list and insertion, deletion from linked list in Python",
+      "Given n computers where each computer is denoted by values [rj,sj, cj] rj denotes RAM, sj denotes speed, cj denotes cost. Given Q queries where each query contains [Rj,Sj] find the computer with the minimum cost for each query, if no computers exist return -1 (20Marks)\n6.Implement a lru cache. Given queries Q, queryj can be of 2 types: \nType1: 1,get, key\nType 2: 2, key,val \nFor type 1 queries, if key exists return its value in the cache, otherwise -1\nFor type 2 queries, if key exisits update its value,otherwise insert. If cache reaches its maximum size and no more space to insert, remove the key that was least recently accessed, if multiple such keys exist, take the smallest key.(50 Marks)"
+    ],
+    "total_questions": 15
+  },
+  {
+    "id": "2023-24_13",
+    "company": "Microland",
+    "year": "2023-24",
+    "technical_questions": [
+      "Questions based on networking",
+      "Interviewer focused mainly on projects and and questions were based on technologies used in the project",
+      "Basic questions based on C",
+      "SQL, HTML in technical round"
+    ],
+    "programming_questions": [
+      "no information received from students"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "2023-24_14",
+    "company": "Epsilon second drive",
+    "year": "2023-24",
+    "technical_questions": [
+      "A lot of DBMS questions were asked (Difference between SQL, NoSQL, Data types, Hashing, Optimization of Databases, Normalization, Joins, etc) and SQL Queries were to be written.",
+      "Programming/ basic questions from the programming language of your choice.",
+      "Project based questions; candidate might be asked to write queries used in their projects.",
+      "Stored Procedures, Triggers in SQL",
+      "Various Databases like MongoDB, SQL databases, their uses and case-based questions."
+    ],
+    "programming_questions": [
+      "Only one coding question in the Mettl round:\n\nQuestion:\n\nPasscode at an office entrance changes every day and is different for every employee. The passcode for an employee to enter the office is a function of total number of days the office has been in operation; added to a sum that is calculated using another function of employee ID number and number of days the employee has worked so far. \nAn employee enters the office by entering their passcode for the day, you need to find the employee ID number and the number of days they have worked at the office so far using the passcode they entered.\n\nApproach:\n\nUse a recursive approach where the base case is not fixed, and should depend on a variable like the day of employment or employee ID.\""
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "2023-24_15",
+    "company": "BlueBird",
+    "year": "2023-24",
+    "technical_questions": [
+      "Define list , traverse the list in Python",
+      "Basic SQL queries",
+      "testing, types of testing",
+      "what is automation testing, black box testing, white box testing",
+      "test cases for mobile battery",
+      "Explain the bugs you find in daily life during programming\nAndroid versions"
+    ],
+    "programming_questions": [
+      "Prime numbers in range of 1 to 100",
+      "Python create array"
+    ],
+    "total_questions": 8
+  },
+  {
+    "id": "2023-24_16",
+    "company": "O9 Solutions",
+    "year": "2023-24",
+    "technical_questions": [
+      "There were 2 technical round and in the first round the questions asked were from sql and some coding questions where i was asked to write a code for matrix multiplication",
+      "sql questions on find 2nd highest salary and triggers and stored procedure",
+      "Basic questions then in the second round it was completely on projects that were mentioned in the resume",
+      "Finally about the o9 Solutions and what do you know about the role that they are offering.",
+      "Joins,views ,rank ,dense rank and basic errors in python like syntax error, type error"
+    ],
+    "programming_questions": [
+      "Write a program for Fibonacci series",
+      "Find the second greatest element in an array",
+      "Prime numbers",
+      "Password verification program",
+      "Palindrome",
+      "String reversal\nLanguage: preferably Python but they were okay with any language",
+      "Matrix multiplication (python/java)",
+      "SQL basic questions",
+      "coding palindrome prime number password validity and printing  pattern"
+    ],
+    "total_questions": 14
+  },
+  {
+    "id": "2023-24_17",
+    "company": "Toprankers",
+    "year": "2023-24",
+    "technical_questions": [
+      "logical questions from oops(Java inheritance in depth),",
+      "sql-joins",
+      "recursion",
+      "linkedlist implementation,queue,stack,",
+      "css,html, dbms- indexing in depth",
+      "what is difference between anchor tag and link.",
+      "Why we use spam tag",
+      "How you modify dome model",
+      "what is flex in CSS",
+      "time complexity of some programs"
+    ],
+    "programming_questions": [
+      "medium level recursion question"
+    ],
+    "total_questions": 11
+  },
+  {
+    "id": "2023-24_18",
+    "company": "FlowEdge",
+    "year": "2023-24",
+    "technical_questions": [
+      "Problems on linked list, array",
+      "OOP concepts"
+    ],
+    "programming_questions": [
+      "Function calls",
+      "C++ based questions"
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "2023-24_19",
+    "company": "MSG Global solution",
+    "year": "2023-24",
+    "technical_questions": [
+      "How to achieve encapsulation",
+      "Call by value and call by reference",
+      "Searching and sorting algorithm with code",
+      "To check if a string is pallidrome or not",
+      "To find duplicate character in a array",
+      "program based on Java encapsulation and polymorphism",
+      "OOPs concepts, Inheritance and example, Polymorphism with example",
+      "Difference between abstract class and interfaces",
+      "Indexing in DBMS",
+      "Simple queries in SQL",
+      "Operator overloading"
+    ],
+    "programming_questions": [
+      "Reverse a string",
+      "Palindrome",
+      "Bubble sort (java or C)",
+      "Codes for polymorphism and inheritance",
+      "Queries in DBMS",
+      "Reverse string,check palindrome,remove duplicate letters in string,",
+      "check number of palindromes present in given string."
+    ],
+    "total_questions": 18
+  },
+  {
+    "id": "2023-24_20",
+    "company": "Publicis Sapient",
+    "year": "2023-24",
+    "technical_questions": [
+      "regarding the mini project.",
+      "Linear Data structures",
+      "Search or sort algorithm",
+      "Projects",
+      "hierarchy in exception handling",
+      "jdk vs jvm vs jre",
+      "primary key and foreign key,",
+      "explain public static void main"
+    ],
+    "programming_questions": [
+      "Program on palindrome",
+      "Program to reverse the string",
+      "How to sort the array in reverse and find second largest element in array",
+      "Program to find sum of all even numbers from 1 to 100"
+    ],
+    "total_questions": 12
+  },
+  {
+    "id": "2023-24_21",
+    "company": "Arts for Tech",
+    "year": "2023-24",
+    "technical_questions": [
+      "4 pillers of oops"
+    ],
+    "programming_questions": [
+      "Swapping program and reverse a string"
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "2023-24_22",
+    "company": "Tech Mahindra",
+    "year": "2023-24",
+    "technical_questions": [
+      "DBMS concept",
+      "OS concept",
+      "MYSQL"
+    ],
+    "programming_questions": [
+      "fibonacci series\n2.prime number\n3.palindrome"
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "2023-24_23",
+    "company": "KOCH2",
+    "year": "2023-24",
+    "technical_questions": [
+      "Oops implementation of abstract class , interface, inheritance, encapsulation, object creation",
+      "Dsa (bst),",
+      "java (core) ,",
+      "dbms (transiction),"
+    ],
+    "programming_questions": [
+      "Program on Merge sort , Binary serach Tree, linked list"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "2023-24_24",
+    "company": "Carrier",
+    "year": "2023-24",
+    "technical_questions": [],
+    "programming_questions": [
+      "Very easy DSA program beginner level",
+      "Sting character replace,",
+      "bubble sort",
+      "selection sort"
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "2023-24_25",
+    "company": "KOCH apprenticeship",
+    "year": "2023-24",
+    "technical_questions": [
+      "Technologies used in Projects which are present in Resume.",
+      "Oops concepts",
+      "SQLqueries",
+      "DBMS technical questions",
+      "Questions on python, java and DSA."
+    ],
+    "programming_questions": [
+      "Bubble sort,",
+      "Fibonacci,",
+      "Write a program using array for changing digits of number question."
+    ],
+    "total_questions": 8
+  },
+  {
+    "id": "2023-24_26",
+    "company": "IronMountain",
+    "year": "2023-24",
+    "technical_questions": [
+      "SQL queries and questions based on project",
+      "OOPS concepts",
+      "About The project"
+    ],
+    "programming_questions": [
+      "String programs"
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "2023-24_27",
+    "company": "Quantiphi",
+    "year": "2023-24",
+    "technical_questions": [
+      "What is GenAI? \n3.How can GenAI be used at home and colleges,",
+      "Difference between top down and bottom up approaches."
+    ],
+    "programming_questions": [
+      "Palindrome program ( in Java)"
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "2023-24_28",
+    "company": "Iron Mountain",
+    "year": "2023-24",
+    "technical_questions": [
+      "DBMS technical qns",
+      "SQL queries and questions based on project",
+      "Questions on python, Java and DSA."
+    ],
+    "programming_questions": [
+      "Bubble sort",
+      "Fibonacci",
+      "SQL queries"
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "2023-24_29",
+    "company": "Math Co",
+    "year": "2023-24",
+    "technical_questions": [],
+    "programming_questions": [],
+    "total_questions": 0
+  },
+  {
+    "id": "2024-25_1",
+    "company": "Ellucian",
+    "year": "2024-25",
+    "technical_questions": [
+      "HTTP status and methods.",
+      "What is nosql, list, tuple and set.                                                                                                                                                                                                                                                                     3.Some basic Java string questions                                                                                                                                                                                                                                                        4.Oops concepts in detail",
+      "Cloud concepts"
+    ],
+    "programming_questions": [
+      "Sort the list and give largest number from it.",
+      "Coding question prime number",
+      "Code for printing Nth number that is divisible by both number a and b. \nInput given is N,  a and b",
+      "Sql queries to write as well as to give expected output of sql, C, Python, C++ code snippet.",
+      "Code for Sorting the list and return largest element in the list",
+      "Sort an array increasing decreasing , print odd even numbers , Language : python",
+      "Java string question ( Reverse each word in a sentence)",
+      "Print prime number using java",
+      "Prime factorisation in a given range"
+    ],
+    "total_questions": 12
+  },
+  {
+    "id": "2024-25_2",
+    "company": "Phonepe",
+    "year": "2024-25",
+    "technical_questions": [
+      "3 way handshake",
+      "Docker: (what is docker file, docker image, docker container)",
+      "Nginx",
+      "Types of encryption",
+      "Difference between encryption and hash and where are they used",
+      "Linux related questions (directory and little concepts)",
+      "Firewall related theory",
+      "Javascript async await",
+      "Asked about IDS/IPS",
+      "How to improve security of network",
+      "Authorisation vs authentication",
+      "SSD vs HDD",
+      "What is UEFI",
+      "Project + resume related questions",
+      "Bash scripts basics",
+      "What is GRUB loader?                                                                                                                                                                                                                                                                                                                                                      (round 1)",
+      "what is chmod and chown",
+      "about firewall in linux",
+      "what is NAT",
+      "what is a subnet and related questions",
+      "where are system logs stored in linux",
+      "router and switch",
+      "http vs https (default ports of http,https,ssh)",
+      "how to secure a box",
+      "how is ssh secur",
+      "lateral cyber attack\n\n(round 2:)",
+      "experience in linux",
+      "what is WSL",
+      "what kernel does wsl use",
+      "how is wsl implemented in windows",
+      "what is hyper-v",
+      "what is a virtual system",
+      "how to create a virtual system",
+      "questions about curl,grep and basic shell scripting",
+      "what is repeater in burpsuite",
+      "how to replicate repeater feature in command line",
+      "how do u stay updated with infosec",
+      "Questions from resume, projects and tech stacks mentioned",
+      "Cryptography and its types and how does asymmetric cryptography works in detail",
+      "Inter process communication  and how is it possible in between files in python",
+      "Questions on docker image , docker container and docker compose and docker file",
+      "Questions on basics of linux and linux commands such as echo, cat,etc",
+      "Bash scripting commands to make a post request using curl",
+      "RESTful and RESTless api",
+      "Is http stateless or stateful and how If stateless, how does it maintain state of a user",
+      "Why is accept cookies prompt shown in websites nowadays.",
+      "What is jwt and how is it better the older ways of tokens and authentication.",
+      "How is jwt tamper proof",
+      "What is jwt token secret is leaked",
+      "How to ensure that confidential credentials are not pushed on to github.",
+      "Questions on Linux and Computer Networks mainly. Scripting languages as well",
+      "Explain TCP/IP and SSL protocols",
+      "How will you verify a website you are visiting is authentic and not fake.",
+      "Questions on bash",
+      "How would you do user authorization and authentication in Django\"",
+      "multithreading and multiprocessing in python",
+      "what are decorators in python and opinion on rust"
+    ],
+    "programming_questions": [
+      "Java program was to find the age given the date using localdate and period",
+      "It included questions like finding the frequency of each character and printing it like \"e2r3\" this meaning the e was repeated twice and r was repeated thrice.",
+      "the other program in python which is, giving discount based on the number of books purchased",
+      "Merge sorted array",
+      "Count frequency of letters",
+      "Programming question on OOPs concept",
+      "Convert a given date into years by finding difference from a given date (Easy, 3-lines code using Java library, question was restricted to solve using java only)\""
+    ],
+    "total_questions": 64
+  },
+  {
+    "id": "2024-25_3",
+    "company": "Deloitte",
+    "year": "2024-25",
+    "technical_questions": [
+      "explain sdlc life cycle ,structure of html , basic questions on css",
+      "what is stack",
+      "what is queue"
+    ],
+    "programming_questions": [
+      "HTML, Javascript and Python",
+      "Print Hello World and Even number"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "2024-25_4",
+    "company": "Amadeus",
+    "year": "2024-25",
+    "technical_questions": [
+      "About Project and questions related to that.",
+      "three DSA questions.\n(i) Merge two sorted linked list\n(ii)Find the first occurrence of a palindrome substring present in a string.\n(iii)Implement stack (overflow and underflow).",
+      "DBMS: Different type of keys and then he asked me to write a query for a problem statement. Difficulty level of query question was easy.",
+      "Stages of Software Development Life Cycle and explain in detail."
+    ],
+    "programming_questions": [
+      "(i) Merge two sorted linked list\n(ii)Find the first occurrence of a palindrome substring present in a string.\n(iii)Implement stack (overflow and underflow).\n*You can choose any programming language. I did with Java (student experience)*"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "2024-25_5",
+    "company": "Eurofins",
+    "year": "2024-25",
+    "technical_questions": [
+      "Different types of data types in python.",
+      "Why is python becoming more famous nowadays.",
+      "How will you manage traffic in websites?",
+      "Suppose you have a movie booking platform and two people are trying to book the same seat at the same time, then what will you do?(use threads)",
+      "Which algorithm is used by google maps and explain its working?",
+      "Internal working of joins(cartesian product and all)",
+      "Dbms queries based on scenarios.",
+      "About subscription and polling.",
+      "Bootstrap classes and html css functioning",
+      "Write a java class based on a scenario",
+      "\"Print words inside a bracket for a given string with random values.",
+      "Print star pyramid pattern\"",
+      "What is OOP and explain concepts of OOP along with code examples",
+      "Asked to write program to print words within brackets in a given string",
+      "Program to print pyramid pattern",
+      "Asked aptitude questions like how to get 1L, 2L,…, 9L from a flask of only 9L and 4L\"",
+      "Whether the string is anagram or not",
+      "Whether the string contain a given substring or not. If yes, then print remaining string... Example - string : ompati, substring : pa. It should print pati",
+      "2 matrix based question",
+      "String based question",
+      "divide the given string into substrings having 3 character each",
+      "sql query - find max salary employee puzzle - 9 balls problem where 9 balls are given and all are of same weight except one. How many steps will it take to identify the unique one.  \""
+    ],
+    "programming_questions": [
+      "Anagrams",
+      "Substring questions",
+      "Maximum subarray but for 2D array",
+      "Find saddle point in a 2D array",
+      "Remove single vowels from a string",
+      "Suppose you have a string as om* and the entered word is bombay, then print ombay",
+      "Print substring from an input string starting with given pattern",
+      "Find if two given strings are anagram",
+      "Remove single occurring vowels from a string",
+      "Find sub matrix giving maximum sum of elements",
+      "Whether the string is anagram or not",
+      "Whether the string contain a given substring or not. If yes, then print remaining string... \nExample - string : ompati, substring : pa\nIt should print pati",
+      "2 matrix based question",
+      "String based question divide the given string into substrings having 3 character each"
+    ],
+    "total_questions": 36
+  },
+  {
+    "id": "2024-25_6",
+    "company": "Quinbay Technologies",
+    "year": "2024-25",
+    "technical_questions": [
+      "Questions on OOPS",
+      "Difference between relational and non-relational databases",
+      "Basics of Javascript",
+      "Puzzles"
+    ],
+    "programming_questions": [
+      "Palindrome",
+      "Detect cycle in a linked list",
+      "Merge 2 linked lists",
+      "Pattern printing"
+    ],
+    "total_questions": 8
+  },
+  {
+    "id": "2024-25_7",
+    "company": "MSG Global Solutions",
+    "year": "2024-25",
+    "technical_questions": [
+      "Javascript, html, css, java, python basic concepts"
+    ],
+    "programming_questions": [
+      "Python programs"
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "2024-25_8",
+    "company": "Thermo Fisher Scientific",
+    "year": "2024-25",
+    "technical_questions": [
+      "Questions related to the resume (project, domain, languages)",
+      "Common interview questions for tech jobs that test your technical skills, problem-solving ability, and how well you adapt to challenges.",
+      "Definitions - operating system and networking, Basic SQL syntax\nQuestions based on Projects"
+    ],
+    "programming_questions": [
+      "Python programs",
+      "Hash, Maps, Graphs, SQL Queries"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "2024-25_9",
+    "company": "Thomson Reuters",
+    "year": "2024-25",
+    "technical_questions": [
+      "Web Scraping, Automation",
+      "Pandas",
+      "Java",
+      "Python"
+    ],
+    "programming_questions": [
+      "Scatter Palindrome , suppose input is [\"bbrg\"] a string is a Scatter Palindrome if it's letters can be rearranged to form a palindrome. Then for bbrg output is 12\nIt can be rearranged like - b, bb, brb, bbrr, bbgrr, b, rbr, r, rr, rgr, r, g"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "2024-25_10",
+    "company": "iManage(Internship)",
+    "year": "2024-25",
+    "technical_questions": [
+      "Questions were based on SDLC and STLC.",
+      "Application based questions from CN and OS."
+    ],
+    "programming_questions": [
+      "Simple pattern based coding questions."
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "2024-25_11",
+    "company": "Oracle (FSS)",
+    "year": "2024-25",
+    "technical_questions": [
+      "Two technical interview rounds - mainly focused on SQL queries, Java, OOPs concepts, projects, Exception handling and (prepare well for whatever tech skills mentioned in resume.) \n2.diagrammatically explain your project",
+      "Diff bw drop truncate delete in sql",
+      "indexing in sql and why its imp",
+      "foreign key and primary key and composite key in dbms",
+      "Java and its features, OOPs, thread and multithreading, exception handling and its types, get post put in api",
+      "what is method overloading and overriding and which one is runtime",
+      "types of Inheritance                                                                                                                         9.is multiple Inheritance allowed in java",
+      "synchronized block and synchronized method in java",
+      "abstraction and encapsulation",
+      "Diff bw linked list and arraylist",
+      "what are the diff types of collections in java",
+      "Java libraries",
+      "DBMS scenario based question"
+    ],
+    "programming_questions": [
+      "Find the count of possible palindromes in string                                                                                                                                           2.Find the count of vowels and consonants in string                                                                                                 3.Prime number with exception handling                                                                                                         4.sql queries to find maximum salary of emp                                                                                         5.doing left join from two tables 6.Based on experience of employees group there salary",
+      "Prime no. and fibonacci code, sql queries",
+      "Write Inheritance code",
+      "Code in java, find the max no. of ways a graph can be formed using the given no. Of vertices",
+      "SQL query - retrieve the details about third highest salary person.",
+      "Reverse a string and count the number of vowels and consonants."
+    ],
+    "total_questions": 19
+  },
+  {
+    "id": "2024-25_12",
+    "company": "Surewaves",
+    "year": "2024-25",
+    "technical_questions": [
+      "Questions based on skillsets mentioned in the resume and some social media improvements"
+    ],
+    "programming_questions": [],
+    "total_questions": 1
+  },
+  {
+    "id": "2024-25_13",
+    "company": "Epicor",
+    "year": "2024-25",
+    "technical_questions": [
+      "Basic questions on JAVA",
+      "What is bash? What is shell scripting used for?",
+      "What is kernel?",
+      "Explain projects mentioned on resume followed by questions related to it.",
+      "Discussion on extra curricular activities mentioned on resume."
+    ],
+    "programming_questions": [
+      "Write a program to find a particular word in a given sentence in JAVA.\nExample: Input: s = \"This is a book\"\n                            w = \"book\"\n                 Output: True (as the word is present in the given sentence)"
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "2024-25_14",
+    "company": "Microland",
+    "year": "2024-25",
+    "technical_questions": [
+      "Questions on networking and cloud computing. Apart from that, questions were primarily focused on the projects and skill-set mentioned in the resume",
+      "Operating systems concepts"
+    ],
+    "programming_questions": [],
+    "total_questions": 2
+  },
+  {
+    "id": "2024-25_15",
+    "company": "QSYS",
+    "year": "2024-25",
+    "technical_questions": [
+      "Oops",
+      "Constructors and destructors",
+      "Properties and advantages of java",
+      "Spring boot features",
+      "Example code for inheritance",
+      "Python related basic questions"
+    ],
+    "programming_questions": [
+      "\"Frequency of a substring in a given string Reverse each word of a string \"",
+      "\"Kth element Frequency of substring  Sum of numbers \""
+    ],
+    "total_questions": 8
+  },
+  {
+    "id": "2024-25_16",
+    "company": "KOCH",
+    "year": "2024-25",
+    "technical_questions": [
+      "About project and the technology used in the project.",
+      "Why the particular tech stack is used?",
+      "DBMS related questions"
+    ],
+    "programming_questions": [
+      "Print alternate characters from the given string with a space between them.\n2) Add the two inputs and add leading zeroes to make the output the specified size."
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "2024-25_17",
+    "company": "Ascendion",
+    "year": "2024-25",
+    "technical_questions": [
+      "Define OOPS and its four pillars",
+      "Steps of software development life cycle."
+    ],
+    "programming_questions": [],
+    "total_questions": 2
+  },
+  {
+    "id": "2024-25_18",
+    "company": "Quantum Street AI",
+    "year": "2024-25",
+    "technical_questions": [
+      "Code of Prime number,",
+      "Difference between Dictionary and List.",
+      "Difference between Set and List.",
+      "Define AI, Machine Learning, ML Model."
+    ],
+    "programming_questions": [
+      "Prime number code and syntax based questions."
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "2024-25_19",
+    "company": "Light & Wonder",
+    "year": "2024-25",
+    "technical_questions": [
+      "State management in React",
+      "Hooks in React",
+      "Inheritance in React",
+      "Polymorphism",
+      "Difference between Java and C++",
+      "Async and await concepts",
+      "Scenario-based question on async and await"
+    ],
+    "programming_questions": [
+      "Reverse a number",
+      "Reverse a string",
+      "Detect a cycle in a linked list",
+      "Check whether a string is a palindrome or not"
+    ],
+    "total_questions": 11
+  },
+  {
+    "id": "2024-25_20",
+    "company": "SophisTex",
+    "year": "2024-25",
+    "technical_questions": [
+      "Related to Abstract class, Exception Handling, Joins and SQL Queries",
+      "What is Abstraction, polymorphism, inheritance?",
+      "Different sorting techniques",
+      "Which is better linear search or the binary search?",
+      "Sql commands",
+      "Queries on joins"
+    ],
+    "programming_questions": [
+      "Binary search Any language can be used"
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "2024-25_21",
+    "company": "ANZ Bank",
+    "year": "2024-25",
+    "technical_questions": [
+      "query on insert,update and delete",
+      "definition of data structure\n3.difference between array and linked list\n4.brief about software testing and tools \n5.brief about mongodb abd its features.\n6.SQL query to find the maximum salary",
+      "About docker",
+      "JavaScript based questions"
+    ],
+    "programming_questions": [
+      "program related to array",
+      "find minimum time required to execute a set of processes(process allocation)",
+      "SQL query",
+      "Meeting rooms II (Leetcode)",
+      "Dominos Coloring (DP Question)"
+    ],
+    "total_questions": 9
+  },
+  {
+    "id": "2024-25_22",
+    "company": "Archle Labs",
+    "year": "2024-25",
+    "technical_questions": [],
+    "programming_questions": [],
+    "total_questions": 0
+  },
+  {
+    "id": "2024-25_23",
+    "company": "Unique HR",
+    "year": "2024-25",
+    "technical_questions": [],
+    "programming_questions": [],
+    "total_questions": 0
+  },
+  {
+    "id": "2024-25_24",
+    "company": "Bottomline",
+    "year": "2024-25",
+    "technical_questions": [
+      "Anagram",
+      "Bubble sort with time complexity",
+      "Stack implementation",
+      "SQL basic to medium level queries\n5.Full conceptual knowledge on Java, Python, C, Javascript",
+      "AI",
+      "OOPS",
+      "SDLC",
+      "OS concepts",
+      "Scenario based api end point creation",
+      "Given an array of numbers bring all the zeros to the end(no using an extra array)",
+      "Docker image creation",
+      "Redis and Mongodb related",
+      "Project related (from Resume)",
+      "Arrays"
+    ],
+    "programming_questions": [
+      "Write a program to  sum numbers from range [1, n] given that it should not be a multiple of x and y. They gave values of n, x and y..",
+      "rite a program to add adjacent numbers until we found the the numbers are not circular which means the forst number and last number are same and increase the count if the sum of those adjacent numbers is divisible by N. They gave arr[], N.",
+      "Sum of all numbers from 1 to N which are not a multiple of X and Y",
+      "Find the sum of the couples in an array that are divisible by N and not a wrap around of the non cur circular array.",
+      "Sum of numbers from 1 to N which are not divisible either by x or t",
+      "Bring all the zeros to the end of the array(the order of other numbers should be preserved and no additional array can be used)",
+      "Array based programs"
+    ],
+    "total_questions": 21
+  },
+  {
+    "id": "2024-25_25",
+    "company": "Diona",
+    "year": "2024-25",
+    "technical_questions": [],
+    "programming_questions": [],
+    "total_questions": 0
+  },
+  {
+    "id": "2024-25_26",
+    "company": "ANZ (Apprentice Role)",
+    "year": "2024-25",
+    "technical_questions": [
+      "Java- data types, multithreading, datstructure",
+      "Python - mutable and immutable, how to pass the value",
+      "SQL Queries"
+    ],
+    "programming_questions": [
+      "Code for Sorting and Searching technique",
+      "Scenario based question\n\"How to move the 1000's terabytes of transaction from one machine to another\" (Asked about approach used for above question)"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "2024-25_27",
+    "company": "Esyasoft Technologies",
+    "year": "2024-25",
+    "technical_questions": [
+      "Sorting and searching"
+    ],
+    "programming_questions": [
+      "Code for sorting algorithm."
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "2024-25_28",
+    "company": "Thought works",
+    "year": "2024-25",
+    "technical_questions": [],
+    "programming_questions": [],
+    "total_questions": 0
+  },
+  {
+    "id": "2024-25_29",
+    "company": "Infosys 3",
+    "year": "2024-25",
+    "technical_questions": [],
+    "programming_questions": [],
+    "total_questions": 0
+  },
+  {
+    "id": "2025-26_1",
+    "company": "SAP",
+    "year": "2025-26",
+    "technical_questions": [
+      "How does debugging happen in javascript",
+      "DSA Questions",
+      "Questions on DFS and BFS",
+      "Difference between Tree and Graph.",
+      "Questions SQL queries.",
+      "Questions on SQL Join",
+      "Questions on DML and DDL.",
+      "What are ACID properties",
+      "Questions on Scheduling algorithms, deadlock and deadlock prevention.",
+      "Linux commands for copying a file when you are not the owner of the file.",
+      "Which language is executes in terms of interpretability and compilability between Java, Python and C.",
+      "String question - to compare two strings and return a result removing the common characters from both strings.",
+      "Questions related to dbms (constraints and indexing).",
+      "What do you mean by encapsulation?",
+      "What do you mean by abstraction? How can you implement it in Java",
+      "What do you know about polymorphism?",
+      "Do you know about SQL join operations?",
+      "Give an example for LEFT join and also write a SQL query for the same.",
+      "What is the difference between MYSQL and MongoDB?",
+      "Tell me about this Hackathon event that you have mentioned in your resume? What was the problem statement and how did you contribute?",
+      "What is react.js and jsx in react? (from resume since i had mentioned)",
+      "What is machine learning?",
+      "What is supervised,unsupervised,reinforcemnt learning?",
+      "Give examples of supervised and unsupervised learning algorithms?",
+      "Is KNN a supervised or unsupervised?",
+      "Tell me about the OSI Model?",
+      "Why is TCP/IP Model different from OSI Model?",
+      "What is IP address and MAC address?"
+    ],
+    "programming_questions": [
+      "Reverse a string",
+      "How do you search in an BST",
+      "SQL question(left join)",
+      "Find the number of palindromic substring in the given palindrome string(what is the approach that you use)\nand the time and space complexity of the approach used.",
+      "longest path in the grid",
+      "sql query question and around 10 mcq questions. Mcq's were related to time complexity, finding errors in the code and choosing the correct queries that return the given output.",
+      "\"01110011010\" This is the pattern. You have to print the maximum times consecutive 1's are there in pattern. Use java and write full code. eg. in this pattern  \"111\" has max consecutive one's so o/p should be 3."
+    ],
+    "total_questions": 35
+  },
+  {
+    "id": "2025-26_2",
+    "company": "iManage",
+    "year": "2025-26",
+    "technical_questions": [],
+    "programming_questions": [
+      "write a python code to open a pdf and then extract images from the pdf and then extract text from the pdf",
+      "write a program for divisibility by 5"
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "2025-26_3",
+    "company": "MAERSK",
+    "year": "2025-26",
+    "technical_questions": [
+      "SQL Window functions",
+      "SQL Joins",
+      "SQL Where Clause",
+      "SQL Joins (Time Complexity)",
+      "Relu and Sigmoid functions",
+      "Basics of Large Language Models",
+      "Basics of Neural Networks",
+      "Introductory questions on transformers"
+    ],
+    "programming_questions": [
+      "Python- List comprehension"
+    ],
+    "total_questions": 9
+  },
+  {
+    "id": "2025-26_4",
+    "company": "Quinbay Technologies",
+    "year": "2025-26",
+    "technical_questions": [
+      "OOPs",
+      "SQL and tech stack of projects"
+    ],
+    "programming_questions": [
+      "palindrome in a list and to return max length palindromic string",
+      "Armstrong",
+      "Binary to decimal conversion",
+      "Anagrams",
+      "buys and sell the stock and leetcode 925 question no."
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "2025-26_5",
+    "company": "Ellucian",
+    "year": "2025-26",
+    "technical_questions": [
+      "Difference between Css and Tailwind, Oops concepts, React basic questions.",
+      "list vs set vs tuple",
+      "singleton",
+      "super,init and few keywords",
+      "c,java easy to med level qns",
+      "coding qn- balanced parentheses",
+      "chatgpt prompt to find code or solution",
+      "Sql quires like 2nd highest salay",
+      "difference between method overloading and overiding",
+      "How to handle cookies and session",
+      "How to secure your website",
+      "HTTPS methods",
+      "HTTPS status",
+      "middleware",
+      "Authentication",
+      "AWS related questions",
+      "What is docker lightweight",
+      "write a LLM prompt to design a TO-DO application with complete front-end and backend and the explain the complete code.",
+      "Basic questions on Javascript",
+      "Basic questions on programming languagues",
+      "Basic to intermediate questions on NodeJS and React",
+      "History and progress of NodeJS and Javascript"
+    ],
+    "programming_questions": [
+      "Reverse the string",
+      "Fibonacci number.",
+      "Gcd using java",
+      "bit manipulation.",
+      "Write a program to add the digits of a number (integer) in Python and C++."
+    ],
+    "total_questions": 27
+  },
+  {
+    "id": "2025-26_6",
+    "company": "Plivo",
+    "year": "2025-26",
+    "technical_questions": [
+      "List, Dictionary"
+    ],
+    "programming_questions": [
+      "Questions on list",
+      "dictionary"
+    ],
+    "total_questions": 3
+  },
+  {
+    "id": "2025-26_7",
+    "company": "Eurofins",
+    "year": "2025-26",
+    "technical_questions": [
+      "Python Concepts",
+      "java oops",
+      "DBMS - sql queries"
+    ],
+    "programming_questions": [
+      "Subarray, \n2.peak no, \n3.tapping rain water, \n4.first repeating no, 5.index_number"
+    ],
+    "total_questions": 4
+  },
+  {
+    "id": "2025-26_8",
+    "company": "Cognizant",
+    "year": "2025-26",
+    "technical_questions": [
+      "What is a join?",
+      "Explain different types of joins in SQL.",
+      "What is diamond inheritence?",
+      "What is the difference between group and cogroup?",
+      "What is encapsulation?"
+    ],
+    "programming_questions": [
+      "Addition of the matrix"
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "2025-26_9",
+    "company": "Infosys",
+    "year": "2025-26",
+    "technical_questions": [
+      "About the projects",
+      "Basic oops",
+      "SDE",
+      "DBMS questions",
+      "mysql",
+      "python",
+      "cloud technology AWS",
+      "DBMS related questions",
+      "What is DSA?",
+      "What are OOPs concepts?",
+      "Difference between DBMS and RDBMS",
+      "computer networks",
+      "Explain Bellman Ford algorithm",
+      "What is Trigger ?",
+      "Explain your project (Default question)"
+    ],
+    "programming_questions": [
+      "Write the sql query to find maximum marks got in maths subject and print the student name.",
+      "python ,js related question"
+    ],
+    "total_questions": 17
+  },
+  {
+    "id": "2025-26_10",
+    "company": "Oracle",
+    "year": "2025-26",
+    "technical_questions": [
+      "All core subject related questions",
+      "DFS,BFS",
+      "serial link",
+      "encryption ,decryption",
+      "semaphore",
+      "LRU cache",
+      "Paging TLB",
+      "LLM activation functions",
+      "in-contect gradient update",
+      "REST API",
+      "SQL pusedo code",
+      "subnetting",
+      "security questions",
+      "AWS- IAM"
+    ],
+    "programming_questions": [
+      "load spike detector question\n2.Roll the string problem",
+      "implement binary search tree,",
+      "bubble and merge sort",
+      "swapping 2 numbers without using third variable",
+      "To remove duplicates using sql",
+      "To implement CTE in sql"
+    ],
+    "total_questions": 20
+  },
+  {
+    "id": "2025-26_11",
+    "company": "Thermofisher",
+    "year": "2025-26",
+    "technical_questions": [
+      "Ai, ml, dl difference.",
+      "Types of ml models",
+      "What is llm and hallucinations",
+      "Which ai tool do you use frequently and why do you use it.",
+      "How did you make the admin and user logins and what to do if there is any security threat.",
+      "How did you collect data set for your projects. What to do with error or faulty data."
+    ],
+    "programming_questions": [
+      "Python program."
+    ],
+    "total_questions": 7
+  },
+  {
+    "id": "2025-26_12",
+    "company": "Koch",
+    "year": "2025-26",
+    "technical_questions": [
+      "SQL based question",
+      "types of join",
+      "SDLC Lifecycle"
+    ],
+    "programming_questions": [],
+    "total_questions": 3
+  },
+  {
+    "id": "2025-26_13",
+    "company": "Heartsmiths UK Pvt. Ltd",
+    "year": "2025-26",
+    "technical_questions": [
+      "questions related to React.js"
+    ],
+    "programming_questions": [],
+    "total_questions": 1
+  },
+  {
+    "id": "2025-26_14",
+    "company": "Altair india (HPC)",
+    "year": "2025-26",
+    "technical_questions": [
+      "Install tomcat and configure it on Linux",
+      "what is tomcat",
+      "name some linux os",
+      "Explain projects Done by you related to HPC or linux"
+    ],
+    "programming_questions": [
+      "add a user with password ( linux) and secure it"
+    ],
+    "total_questions": 5
+  },
+  {
+    "id": "2025-26_15",
+    "company": "SophisTex",
+    "year": "2025-26",
+    "technical_questions": [
+      "DSA: search algorithm",
+      "Difference between loop and condition, loop in condition and condition in loop",
+      "Questionsabout final and super key in java",
+      "Difference between Javascript and python, Inheritance, SQL joins, Classes and objects"
+    ],
+    "programming_questions": [
+      "piece of code for implementing inheritance, encapsulation and it's real time example, abstraction, interface and it's properties, sql queries.",
+      "Must know java and python"
+    ],
+    "total_questions": 6
+  },
+  {
+    "id": "2025-26_16",
+    "company": "Microland",
+    "year": "2025-26",
+    "technical_questions": [
+      "Project based questions.",
+      "Basics of Networking protocols - Computer network concepts"
+    ],
+    "programming_questions": [],
+    "total_questions": 2
+  },
+  {
+    "id": "2025-26_17",
+    "company": "Beghou",
+    "year": "2025-26",
+    "technical_questions": [
+      "Python basics",
+      "List tuple",
+      "Explain your projects in detail, including problem statement, approach, and tools used.",
+      "Questions on SQL such as writing queries on a given dataset (e.g., aggregation, filtering, and joins).",
+      "Basic Python programming questions including logic building (loops, string manipulation, and simple problem-solving like Fibonacci or traversal).",
+      "Concepts related to data analysis and interpretation.",
+      "Questions on statistics such as mean vs median, percentile, and accuracy vs precision.",
+      "Questions on PySpark basics and how it is used for handling large datasets."
+    ],
+    "programming_questions": [
+      "Palindrome",
+      "Reversing a string",
+      "SQL Queries"
+    ],
+    "total_questions": 11
+  },
+  {
+    "id": "2025-26_18",
+    "company": "Huron",
+    "year": "2025-26",
+    "technical_questions": [
+      "DBMS (Database Management System) Concepts and Fundamentals\n2.SQL Query-Based Questions\n3.Questions on DDL, DML, and DCL Commands\n4.SQL Clauses and Their Applications\n5.Artificial Intelligence (AI) Concepts and Applications"
+    ],
+    "programming_questions": [],
+    "total_questions": 1
+  },
+  {
+    "id": "2025-26_19",
+    "company": "ANZ",
+    "year": "2025-26",
+    "technical_questions": [
+      "Basic Qustions on Data Structures"
+    ],
+    "programming_questions": [
+      "String Manipulation Program(Reversing, finding substring)"
+    ],
+    "total_questions": 2
+  },
+  {
+    "id": "2026-27_1",
+    "company": "Epicor",
+    "year": "2026-27",
+    "technical_questions": [
+      "Explain about python and java difference",
+      "advantages of each (contd with previous question)",
+      "Architecture Diagram of your Favourite App",
+      "Fundamentals of DBMS",
+      "Differences between unique and primary keys.",
+      "Explain foreign keys.",
+      "ACID properties.",
+      "What are the criteria used for your projects database.",
+      "High level architecture diagram for your project .",
+      "Various encryption methods.",
+      "Fundamentals of OOPS- the 4 pillars. What are the issues faced.",
+      "Difference between abstract class and interface."
+    ],
+    "programming_questions": [],
+    "total_questions": 12
+  }
+]
