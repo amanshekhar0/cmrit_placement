@@ -7,6 +7,7 @@ import QuestionList from "./components/QuestionList";
 import CompanyGrid from "./components/CompanyGrid";
 import ChatBot from "./components/ChatBot";
 import AdminPanel from "./components/AdminPanel";
+import NotesSection from "./components/NotesSection";
 import { useBookmarks } from "./hooks/useBookmarks";
 import { useProgress } from "./hooks/useProgress";
 
@@ -116,6 +117,7 @@ export default function App() {
     return params.get("bookmarks") === "true";
   });
   const [showAdminPanel, setShowAdminPanel] = useState(false);
+  const [showNotes, setShowNotes] = useState(false);
   const { bookmarks, toggle } = useBookmarks();
   const { completed, toggleCompleted } = useProgress();
 
@@ -323,6 +325,7 @@ export default function App() {
     setUser(null);
     setAuthError("");
     setShowAdminPanel(false);
+    setShowNotes(false);
   };
 
   const isSearching = query.trim().length > 0;
@@ -348,6 +351,7 @@ export default function App() {
     setActiveCompany(null);
     setShowBookmarks(false);
     setShowAdminPanel(false);
+    setShowNotes(false);
   };
 
   const handleSelectCompany = (company) => {
@@ -355,12 +359,22 @@ export default function App() {
     setQuery("");
     setShowBookmarks(false);
     setShowAdminPanel(false);
+    setShowNotes(false);
   };
 
   const handleToggleBookmarks = () => {
     setShowBookmarks((v) => !v);
     setQuery("");
     setActiveCompany(null);
+    setShowAdminPanel(false);
+    setShowNotes(false);
+  };
+
+  const handleToggleNotes = () => {
+    setShowNotes((v) => !v);
+    setQuery("");
+    setActiveCompany(null);
+    setShowBookmarks(false);
     setShowAdminPanel(false);
   };
 
@@ -513,6 +527,7 @@ export default function App() {
           setQuery("");
           setShowBookmarks(false);
           setShowAdminPanel(false);
+          setShowNotes(false);
         }}
         showAdminPanel={showAdminPanel}
         onToggleAdmin={() => {
@@ -520,11 +535,14 @@ export default function App() {
           setQuery("");
           setActiveCompany(null);
           setShowBookmarks(false);
+          setShowNotes(false);
         }}
+        showNotes={showNotes}
+        onToggleNotes={handleToggleNotes}
       />
 
-      {/* Hero — Hidden when viewing a company, bookmarks, or admin panel */}
-      {!activeCompany && !showAdminPanel && !showBookmarks && (
+      {/* Hero — Hidden when viewing a company, bookmarks, notes, or admin panel */}
+      {!activeCompany && !showAdminPanel && !showBookmarks && !showNotes && (
         <div className="bg-white border-b border-zinc-200/60 pt-10 pb-10 px-4 animate-fadeIn">
           <div className="max-w-3xl mx-auto text-center">
             {/* Status badge */}
@@ -588,6 +606,11 @@ export default function App() {
           <AdminPanel user={user} />
         )}
 
+        {/* Premium Notes */}
+        {showNotes && !showAdminPanel && (
+          <NotesSection user={user} />
+        )}
+
         {/* Bookmarks */}
         {isBookmarking && !showAdminPanel && (
           <div className="animate-fadeIn">
@@ -641,7 +664,7 @@ export default function App() {
         )}
 
         {/* Company Grid */}
-        {!isSearching && !isBookmarking && !showAdminPanel && (
+        {!isSearching && !isBookmarking && !showAdminPanel && !showNotes && (
           <div className="animate-fadeIn">
             <div className="flex items-center justify-between mb-4">
               <div className="text-left">

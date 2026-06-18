@@ -7,6 +7,7 @@ const technicalRoutes = require('./routes/technicalRoutes');
 const hrRoutes = require('./routes/hrRoutes');
 const statsRoutes = require('./routes/statsRoutes');
 const authRoutes = require('./routes/authRoutes');
+const notesRoutes = require('./routes/notesRoutes');
 const { apiLimiter } = require('./middleware/rateLimiter');
 
 const app = express();
@@ -33,7 +34,12 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
-app.use(express.json({ limit: '10mb' }));
+app.use(express.json({
+  limit: '10mb',
+  // Stash the raw body so the Razorpay webhook can verify its signature
+  // (the HMAC is computed over the exact bytes Razorpay sent).
+  verify: (req, res, buf) => { req.rawBody = buf; },
+}));
 
 // Health check
 app.get('/', (req, res) => {
@@ -52,6 +58,7 @@ app.get('/', (req, res) => {
 // API Routes
 app.use('/api', apiLimiter);
 app.use('/api/auth', authRoutes);
+app.use('/api/notes', notesRoutes);
 app.use('/api/technical', technicalRoutes);
 app.use('/api/hr', hrRoutes);
 app.use('/api/stats', statsRoutes);

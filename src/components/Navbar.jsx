@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function Navbar({ bookmarkCount, showBookmarks, onToggleBookmarks, user, onLogout, onGoHome, showAdminPanel, onToggleAdmin }) {
+export default function Navbar({ bookmarkCount, showBookmarks, onToggleBookmarks, user, onLogout, onGoHome, showAdminPanel, onToggleAdmin, showNotes, onToggleNotes }) {
   const [showSettings, setShowSettings] = useState(false);
   const [navApiKey, setNavApiKey] = useState(() => localStorage.getItem("cmrit_groq_api_key") || "");
 
@@ -74,6 +74,22 @@ export default function Navbar({ bookmarkCount, showBookmarks, onToggleBookmarks
                   <span className="hidden sm:inline">Admin</span>
                 </button>
               )}
+
+              {/* Notes Toggle */}
+              <button
+                onClick={onToggleNotes}
+                aria-pressed={showNotes}
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-medium transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
+                  showNotes
+                    ? "bg-zinc-900 text-white shadow-sm"
+                    : "text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100/80"
+                }`}
+              >
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                <span className="hidden sm:inline">Notes</span>
+              </button>
 
               {/* Bookmark Toggle */}
               <button
