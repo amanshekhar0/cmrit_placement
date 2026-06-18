@@ -121,26 +121,51 @@ export default function App() {
   const [hrData, setHrData] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
 
-  // Fetch combined questions data
+  // Fetch questions data — try backend API first, fallback to static JSON
   useEffect(() => {
-    Promise.all([
-      fetch("/interview_questions_combined.json").then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch technical questions");
-        return res.json();
-      }),
-      fetch("/hr_questions_company_wise.json").then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch HR questions");
-        return res.json();
-      })
-    ])
-      .then(([techData, hrQuestionsData]) => {
+    const API_URL = import.meta.env.VITE_API_URL || "";
+
+    const fetchFromAPI = async () => {
+      const [techRes, hrRes] = await Promise.all([
+        fetch(`${API_URL}/api/technical`),
+        fetch(`${API_URL}/api/hr`)
+      ]);
+      if (!techRes.ok || !hrRes.ok) throw new Error("API response not OK");
+      const techJson = await techRes.json();
+      const hrJson = await hrRes.json();
+      return { techData: techJson.data, hrData: hrJson.data };
+    };
+
+    const fetchFromStatic = async () => {
+      const [techRes, hrRes] = await Promise.all([
+        fetch("/interview_questions_combined.json"),
+        fetch("/hr_questions_company_wise.json")
+      ]);
+      if (!techRes.ok || !hrRes.ok) throw new Error("Failed to fetch static JSON");
+      const techData = await techRes.json();
+      const hrData = await hrRes.json();
+      return { techData, hrData };
+    };
+
+    fetchFromAPI()
+      .then(({ techData, hrData }) => {
+        console.log("📡 Loaded data from API");
         setRawData(techData);
-        setHrData(hrQuestionsData);
+        setHrData(hrData);
         setLoadingData(false);
       })
-      .catch((err) => {
-        console.error("Error fetching questions data:", err);
-        setLoadingData(false);
+      .catch(() => {
+        console.log("⚠️ API unavailable, falling back to static JSON");
+        fetchFromStatic()
+          .then(({ techData, hrData }) => {
+            setRawData(techData);
+            setHrData(hrData);
+            setLoadingData(false);
+          })
+          .catch((err) => {
+            console.error("Error fetching questions data:", err);
+            setLoadingData(false);
+          });
       });
   }, []);
 
