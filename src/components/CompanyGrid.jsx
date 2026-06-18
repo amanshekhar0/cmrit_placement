@@ -33,7 +33,12 @@ function CompanyCardButton({ company, count, isActive, onSelect, cards, complete
   const [imgError, setImgError] = useState(false);
   const initials = getInitials(company);
   const domain = COMPANY_DOMAINS[company] || COMPANY_DOMAINS[company.trim()];
-  const logoUrl = domain ? `https://logos.hunter.io/${domain}` : null;
+  const brandfetchId = import.meta.env.VITE_BRANDFETCH_CLIENT_ID;
+  const logoUrl = domain
+    ? (brandfetchId
+        ? `https://cdn.brandfetch.io/domain/${domain}?c=${brandfetchId}`
+        : `https://logos.hunter.io/${domain}`)
+    : null;
 
   return (
     <button
@@ -81,7 +86,12 @@ function DrawerHeader({ company, cards, completed }) {
   const [imgError, setImgError] = useState(false);
   const initials = getInitials(company);
   const domain = COMPANY_DOMAINS[company] || COMPANY_DOMAINS[company.trim()];
-  const logoUrl = domain ? `https://logos.hunter.io/${domain}` : null;
+  const brandfetchId = import.meta.env.VITE_BRANDFETCH_CLIENT_ID;
+  const logoUrl = domain
+    ? (brandfetchId
+        ? `https://cdn.brandfetch.io/domain/${domain}?c=${brandfetchId}`
+        : `https://logos.hunter.io/${domain}`)
+    : null;
 
   const done = cards ? cards.filter((c) => completed.has(c.id)).length : 0;
   const total = cards ? cards.length : 0;

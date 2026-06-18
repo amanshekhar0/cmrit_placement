@@ -62,7 +62,12 @@ function buildCards(techData, hrData) {
 function CompanyChip({ company, count, onClick }) {
   const [imgError, setImgError] = useState(false);
   const domain = COMPANY_DOMAINS[company] || COMPANY_DOMAINS[company.trim()];
-  const logoUrl = domain ? `https://logos.hunter.io/${domain}` : null;
+  const brandfetchId = import.meta.env.VITE_BRANDFETCH_CLIENT_ID;
+  const logoUrl = domain
+    ? (brandfetchId
+        ? `https://cdn.brandfetch.io/domain/${domain}?c=${brandfetchId}`
+        : `https://logos.hunter.io/${domain}`)
+    : null;
 
   return (
     <button

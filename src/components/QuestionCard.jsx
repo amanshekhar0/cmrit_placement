@@ -39,7 +39,12 @@ const TYPE_CONFIG = {
 export default function QuestionCard({ card, bookmarked, onToggle, isCompleted, onToggleCompleted }) {
   const { question, type, company, year } = card;
   const domain = COMPANY_DOMAINS[company] || COMPANY_DOMAINS[company.trim()];
-  const logoUrl = domain ? `https://logos.hunter.io/${domain}` : null;
+  const brandfetchId = import.meta.env.VITE_BRANDFETCH_CLIENT_ID;
+  const logoUrl = domain
+    ? (brandfetchId
+        ? `https://cdn.brandfetch.io/domain/${domain}?c=${brandfetchId}`
+        : `https://logos.hunter.io/${domain}`)
+    : null;
   const [open, setOpen] = useState(false);
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
