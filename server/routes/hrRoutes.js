@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const HRQuestion = require('../models/HRQuestion');
 const escapeRegex = require('../utils/escapeRegex');
+const { verifyAdmin } = require('../middleware/authMiddleware');
+const { adminLimiter } = require('../middleware/rateLimiter');
+
 
 // GET /api/hr - Get all HR question entries
 router.get('/', async (req, res) => {
@@ -59,7 +62,7 @@ router.get('/company/:company', async (req, res) => {
 });
 
 // POST /api/hr - Create new entry
-router.post('/', async (req, res) => {
+router.post('/', adminLimiter, verifyAdmin, async (req, res) => {
   try {
     const entry = await HRQuestion.create(req.body);
     res.status(201).json({ success: true, data: entry });
@@ -72,7 +75,7 @@ router.post('/', async (req, res) => {
 });
 
 // PUT /api/hr/:id - Update entry by ID
-router.put('/:id', async (req, res) => {
+router.put('/:id', adminLimiter, verifyAdmin, async (req, res) => {
   try {
     const entry = await HRQuestion.findOneAndUpdate(
       { id: req.params.id },
@@ -89,7 +92,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // DELETE /api/hr/:id - Delete entry by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', adminLimiter, verifyAdmin, async (req, res) => {
   try {
     const entry = await HRQuestion.findOneAndDelete({ id: req.params.id });
     if (!entry) {

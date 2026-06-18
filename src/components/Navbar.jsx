@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function Navbar({ bookmarkCount, showBookmarks, onToggleBookmarks, user, onLogout, onGoHome }) {
+export default function Navbar({ bookmarkCount, showBookmarks, onToggleBookmarks, user, onLogout, onGoHome, showAdminPanel, onToggleAdmin }) {
   const [showSettings, setShowSettings] = useState(false);
   const [navApiKey, setNavApiKey] = useState(() => localStorage.getItem("cmrit_groq_api_key") || "");
 
@@ -57,6 +57,24 @@ export default function Navbar({ bookmarkCount, showBookmarks, onToggleBookmarks
         <div className="flex items-center gap-1.5 sm:gap-2">
           {user ? (
             <>
+              {/* Admin Panel Toggle */}
+              {user.email === 'amsh23ise@cmrit.ac.in' && (
+                <button
+                  onClick={onToggleAdmin}
+                  aria-pressed={showAdminPanel}
+                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-medium transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 ${
+                    showAdminPanel
+                      ? "bg-emerald-600 text-white shadow-sm"
+                      : "text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50"
+                  }`}
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                  </svg>
+                  <span className="hidden sm:inline">Admin</span>
+                </button>
+              )}
+
               {/* Bookmark Toggle */}
               <button
                 onClick={onToggleBookmarks}

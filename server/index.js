@@ -6,9 +6,14 @@ const connectDB = require('./config/db');
 const technicalRoutes = require('./routes/technicalRoutes');
 const hrRoutes = require('./routes/hrRoutes');
 const statsRoutes = require('./routes/statsRoutes');
+const authRoutes = require('./routes/authRoutes');
+const { apiLimiter } = require('./middleware/rateLimiter');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Trust Vercel's proxy for accurate IP rate limiting
+app.set('trust proxy', 1);
 
 // Middleware
 app.use(cors({
@@ -45,6 +50,8 @@ app.get('/', (req, res) => {
 });
 
 // API Routes
+app.use('/api', apiLimiter);
+app.use('/api/auth', authRoutes);
 app.use('/api/technical', technicalRoutes);
 app.use('/api/hr', hrRoutes);
 app.use('/api/stats', statsRoutes);

@@ -6,6 +6,7 @@ import SearchBar from "./components/SearchBar";
 import QuestionList from "./components/QuestionList";
 import CompanyGrid from "./components/CompanyGrid";
 import ChatBot from "./components/ChatBot";
+import AdminPanel from "./components/AdminPanel";
 import { useBookmarks } from "./hooks/useBookmarks";
 import { useProgress } from "./hooks/useProgress";
 
@@ -114,6 +115,7 @@ export default function App() {
     const params = new URLSearchParams(window.location.search);
     return params.get("bookmarks") === "true";
   });
+  const [showAdminPanel, setShowAdminPanel] = useState(false);
   const { bookmarks, toggle } = useBookmarks();
   const { completed, toggleCompleted } = useProgress();
 
@@ -123,7 +125,7 @@ export default function App() {
 
   // Fetch questions data — try backend API first, fallback to static JSON
   useEffect(() => {
-    const API_URL = import.meta.env.VITE_API_URL || "";
+    const API_URL = import.meta.env.DEV ? (import.meta.env.VITE_API_URL || "") : "";
 
     const fetchFromAPI = async () => {
       const [techRes, hrRes] = await Promise.all([
@@ -277,7 +279,7 @@ export default function App() {
     initGsi();
   }, [user]);
 
-  const handleCredentialResponse = (response) => {
+  const handleCredentialResponse = async (response) => {
     const payload = decodeJwt(response.credential);
     if (!payload) {
       setAuthError("Failed to parse identity token. Please try again.");
@@ -294,17 +296,33 @@ export default function App() {
       email,
       name: payload.name,
       picture: payload.picture,
+      token: response.credential,
     };
 
     localStorage.setItem("cmrit_user", JSON.stringify(userData));
     setUser(userData);
     setAuthError("");
+
+    // Notify backend
+    try {
+      const API_URL = import.meta.env.DEV ? (import.meta.env.VITE_API_URL || "") : "";
+      await fetch(`${API_URL}/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${response.credential}`,
+        },
+      });
+    } catch (error) {
+      console.error("Failed to log auth event:", error);
+    }
   };
 
   const handleLogout = () => {
     localStorage.removeItem("cmrit_user");
     setUser(null);
     setAuthError("");
+    setShowAdminPanel(false);
   };
 
   const isSearching = query.trim().length > 0;
@@ -329,18 +347,21 @@ export default function App() {
     setQuery(val);
     setActiveCompany(null);
     setShowBookmarks(false);
+    setShowAdminPanel(false);
   };
 
   const handleSelectCompany = (company) => {
     setActiveCompany(company);
     setQuery("");
     setShowBookmarks(false);
+    setShowAdminPanel(false);
   };
 
   const handleToggleBookmarks = () => {
     setShowBookmarks((v) => !v);
     setQuery("");
     setActiveCompany(null);
+    setShowAdminPanel(false);
   };
 
   const handleSearchSubmit = () => {
@@ -367,7 +388,10 @@ export default function App() {
             setActiveCompany(null);
             setQuery("");
             setShowBookmarks(false);
+            setShowAdminPanel(false);
           }}
+          showAdminPanel={false}
+          onToggleAdmin={() => {}}
         />
 
         {/* Centered Content */}
@@ -488,11 +512,19 @@ export default function App() {
           setActiveCompany(null);
           setQuery("");
           setShowBookmarks(false);
+          setShowAdminPanel(false);
+        }}
+        showAdminPanel={showAdminPanel}
+        onToggleAdmin={() => {
+          setShowAdminPanel((v) => !v);
+          setQuery("");
+          setActiveCompany(null);
+          setShowBookmarks(false);
         }}
       />
 
-      {/* Hero — Hidden when viewing a company */}
-      {!activeCompany && (
+      {/* Hero — Hidden when viewing a company, bookmarks, or admin panel */}
+      {!activeCompany && !showAdminPanel && !showBookmarks && (
         <div className="bg-white border-b border-zinc-200/60 pt-10 pb-10 px-4 animate-fadeIn">
           <div className="max-w-3xl mx-auto text-center">
             {/* Status badge */}
@@ -551,8 +583,13 @@ export default function App() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-8">
+        {/* Admin Panel */}
+        {showAdminPanel && user?.email === 'amsh23ise@cmrit.ac.in' && (
+          <AdminPanel user={user} />
+        )}
+
         {/* Bookmarks */}
-        {isBookmarking && (
+        {isBookmarking && !showAdminPanel && (
           <div className="animate-fadeIn">
             <div className="flex items-center gap-2 mb-4">
               <svg className="w-4 h-4 text-zinc-400" fill="currentColor" viewBox="0 0 24 24">
@@ -566,7 +603,7 @@ export default function App() {
         )}
 
         {/* Search Results */}
-        {isSearching && !isBookmarking && (
+        {isSearching && !isBookmarking && !showAdminPanel && (
           <div className="animate-fadeIn">
             <div className="flex items-center gap-2 mb-4">
               <svg className="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -604,7 +641,7 @@ export default function App() {
         )}
 
         {/* Company Grid */}
-        {!isSearching && !isBookmarking && (
+        {!isSearching && !isBookmarking && !showAdminPanel && (
           <div className="animate-fadeIn">
             <div className="flex items-center justify-between mb-4">
               <div className="text-left">

@@ -2,6 +2,42 @@ const express = require('express');
 const router = express.Router();
 const TechnicalQuestion = require('../models/TechnicalQuestion');
 const HRQuestion = require('../models/HRQuestion');
+const User = require('../models/User');
+const { verifyAdmin } = require('../middleware/authMiddleware');
+
+// GET /api/stats/users - Admin only route to get user stats
+router.get('/users', verifyAdmin, async (req, res) => {
+  try {
+    const totalUsers = await User.countDocuments();
+    const result = await User.aggregate([
+      {
+        $group: {
+          _id: null,
+          totalLogins: { $sum: '$loginCount' }
+        }
+      }
+    ]);
+    
+    const totalLogins = result.length > 0 ? result[0].totalLogins : 0;
+    
+    // Get recent users
+    const recentUsers = await User.find()
+      .sort({ lastLogin: -1 })
+      .limit(10)
+      .select('name email loginCount lastLogin');
+
+    res.json({
+      success: true,
+      data: {
+        totalUsers,
+        totalLogins,
+        recentUsers
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
 
 // GET /api/stats - Get aggregate statistics
 router.get('/', async (req, res) => {

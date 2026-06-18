@@ -35,3 +35,4 @@ server/.env
 .gemini/
 
 .vercel
+.env*
