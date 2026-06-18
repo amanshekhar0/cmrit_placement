@@ -70,12 +70,16 @@ app.use((err, req, res, next) => {
 // Start server
 const startServer = async () => {
   await connectDB();
-  app.listen(PORT, () => {
-    console.log(`\n🚀 Server running on http://localhost:${PORT}`);
-    console.log(`📚 Technical API: http://localhost:${PORT}/api/technical`);
-    console.log(`💬 HR API:        http://localhost:${PORT}/api/hr`);
-    console.log(`📊 Stats API:     http://localhost:${PORT}/api/stats\n`);
-  });
+  if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+      console.log(`\n🚀 Server running on http://localhost:${PORT}`);
+      console.log(`📚 Technical API: http://localhost:${PORT}/api/technical`);
+      console.log(`💬 HR API:        http://localhost:${PORT}/api/hr`);
+      console.log(`📊 Stats API:     http://localhost:${PORT}/api/stats\n`);
+    });
+  }
 };
 
 startServer();
+
+module.exports = app;
