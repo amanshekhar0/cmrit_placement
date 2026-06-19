@@ -158,11 +158,15 @@ router.get('/:id/download', verifyToken, async (req, res) => {
       format = '';
     }
 
-    const url = cloudinary.utils.private_download_url(note.publicId, format || 'pdf', {
+    // Use an authenticated delivery URL instead of private_download_url.
+    // This ensures the CDN serves the file with proper CORS headers so our
+    // frontend pdfjs-dist custom viewer can fetch and render it into canvases.
+    const url = cloudinary.url(note.publicId, {
       resource_type: note.resourceType || 'image',
       type: 'authenticated',
-      expires_at: expiresAt,
-      attachment: false,
+      sign_url: true,
+      secure: true,
+      format: format || 'pdf',
     });
 
     res.json({ success: true, url, expiresAt });
