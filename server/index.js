@@ -8,6 +8,7 @@ const hrRoutes = require('./routes/hrRoutes');
 const statsRoutes = require('./routes/statsRoutes');
 const authRoutes = require('./routes/authRoutes');
 const notesRoutes = require('./routes/notesRoutes');
+const mustReadRoutes = require('./routes/mustReadRoutes');
 const { apiLimiter } = require('./middleware/rateLimiter');
 
 const app = express();
@@ -59,6 +60,7 @@ app.get('/', (req, res) => {
 app.use('/api', apiLimiter);
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', notesRoutes);
+app.use('/api/mustread', mustReadRoutes);
 app.use('/api/technical', technicalRoutes);
 app.use('/api/hr', hrRoutes);
 app.use('/api/stats', statsRoutes);

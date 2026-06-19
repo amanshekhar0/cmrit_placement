@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, lazy, Suspense } from "react";
 import Fuse from "fuse.js";
 import { COMPANY_DOMAINS } from "./utils/companyDomains";
 import Navbar from "./components/Navbar";
@@ -8,6 +8,10 @@ import CompanyGrid from "./components/CompanyGrid";
 import ChatBot from "./components/ChatBot";
 import AdminPanel from "./components/AdminPanel";
 import NotesSection from "./components/NotesSection";
+import OffCampus from "./components/OffCampus";
+import MustRead from "./components/MustRead";
+// Lazy-loaded: pulls in pdf.js (~400KB), so only load it when actually opened.
+const MockInterview = lazy(() => import("./components/MockInterview"));
 import { useBookmarks } from "./hooks/useBookmarks";
 import { useProgress } from "./hooks/useProgress";
 
@@ -118,6 +122,9 @@ export default function App() {
   });
   const [showAdminPanel, setShowAdminPanel] = useState(false);
   const [showNotes, setShowNotes] = useState(false);
+  const [showMockInterview, setShowMockInterview] = useState(false);
+  const [showOffCampus, setShowOffCampus] = useState(false);
+  const [showMustRead, setShowMustRead] = useState(false);
   const { bookmarks, toggle } = useBookmarks();
   const { completed, toggleCompleted } = useProgress();
 
@@ -219,6 +226,18 @@ export default function App() {
     localStorage.removeItem("cmrit_theme");
   }, []);
 
+  // One-time migration: invalidate sessions created with the old 1-hour Google
+  // token so everyone re-logs in once and receives a 30-day app session token.
+  useEffect(() => {
+    if (localStorage.getItem("cmrit_session_v") !== "2") {
+      localStorage.setItem("cmrit_session_v", "2");
+      if (localStorage.getItem("cmrit_user")) {
+        localStorage.removeItem("cmrit_user");
+        setUser(null);
+      }
+    }
+  }, []);
+
   // URL sync
   useEffect(() => {
     const params = new URLSearchParams();
@@ -288,35 +307,39 @@ export default function App() {
       return;
     }
     
-    const email = payload.email || "";
-    if (!email.toLowerCase().endsWith("@cmrit.ac.in")) {
+    const email = (payload.email || "").toLowerCase();
+    if (!email.endsWith("@cmrit.ac.in")) {
       setAuthError(`Access denied: ${email} is not a valid CMRIT student email.`);
       return;
     }
 
-    const userData = {
-      email,
-      name: payload.name,
-      picture: payload.picture,
-      token: response.credential,
-    };
-
-    localStorage.setItem("cmrit_user", JSON.stringify(userData));
-    setUser(userData);
-    setAuthError("");
-
-    // Notify backend
+    // Exchange the short-lived Google token (~1h) for our own 30-day session
+    // token so users — including paid ones — aren't logged out every hour.
     try {
       const API_URL = import.meta.env.DEV ? (import.meta.env.VITE_API_URL || "") : "";
-      await fetch(`${API_URL}/api/auth/login`, {
+      const res = await fetch(`${API_URL}/api/auth/google`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${response.credential}`,
-        },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ credential: response.credential }),
       });
+      const data = await res.json();
+      if (!data.success) {
+        setAuthError(data.message || "Sign-in failed. Please try again.");
+        return;
+      }
+
+      const userData = {
+        email: data.user.email,
+        name: data.user.name,
+        picture: data.user.picture,
+        token: data.token, // long-lived app JWT
+      };
+      localStorage.setItem("cmrit_user", JSON.stringify(userData));
+      setUser(userData);
+      setAuthError("");
     } catch (error) {
-      console.error("Failed to log auth event:", error);
+      console.error("Sign-in failed:", error);
+      setAuthError("Could not reach the server. Please try again.");
     }
   };
 
@@ -326,6 +349,9 @@ export default function App() {
     setAuthError("");
     setShowAdminPanel(false);
     setShowNotes(false);
+    setShowMockInterview(false);
+    setShowOffCampus(false);
+    setShowMustRead(false);
   };
 
   const isSearching = query.trim().length > 0;
@@ -346,36 +372,65 @@ export default function App() {
     return [...new Set([...byName, ...byQuestion])];
   }, [query, isSearching, searchResults, companies, companyFuse, loadingData]);
 
-  const handleSearch = (val) => {
-    setQuery(val);
-    setActiveCompany(null);
+  const closeOtherViews = () => {
     setShowBookmarks(false);
     setShowAdminPanel(false);
     setShowNotes(false);
+    setShowMockInterview(false);
+    setShowOffCampus(false);
+    setShowMustRead(false);
+  };
+
+  const handleSearch = (val) => {
+    setQuery(val);
+    setActiveCompany(null);
+    closeOtherViews();
   };
 
   const handleSelectCompany = (company) => {
     setActiveCompany(company);
     setQuery("");
-    setShowBookmarks(false);
-    setShowAdminPanel(false);
-    setShowNotes(false);
+    closeOtherViews();
   };
 
   const handleToggleBookmarks = () => {
-    setShowBookmarks((v) => !v);
+    const next = !showBookmarks;
     setQuery("");
     setActiveCompany(null);
-    setShowAdminPanel(false);
-    setShowNotes(false);
+    closeOtherViews();
+    setShowBookmarks(next);
   };
 
   const handleToggleNotes = () => {
-    setShowNotes((v) => !v);
+    const next = !showNotes;
     setQuery("");
     setActiveCompany(null);
-    setShowBookmarks(false);
-    setShowAdminPanel(false);
+    closeOtherViews();
+    setShowNotes(next);
+  };
+
+  const handleToggleMockInterview = () => {
+    const next = !showMockInterview;
+    setQuery("");
+    setActiveCompany(null);
+    closeOtherViews();
+    setShowMockInterview(next);
+  };
+
+  const handleToggleOffCampus = () => {
+    const next = !showOffCampus;
+    setQuery("");
+    setActiveCompany(null);
+    closeOtherViews();
+    setShowOffCampus(next);
+  };
+
+  const handleToggleMustRead = () => {
+    const next = !showMustRead;
+    setQuery("");
+    setActiveCompany(null);
+    closeOtherViews();
+    setShowMustRead(next);
   };
 
   const handleSearchSubmit = () => {
@@ -525,24 +580,28 @@ export default function App() {
         onGoHome={() => {
           setActiveCompany(null);
           setQuery("");
-          setShowBookmarks(false);
-          setShowAdminPanel(false);
-          setShowNotes(false);
+          closeOtherViews();
         }}
         showAdminPanel={showAdminPanel}
         onToggleAdmin={() => {
-          setShowAdminPanel((v) => !v);
+          const next = !showAdminPanel;
           setQuery("");
           setActiveCompany(null);
-          setShowBookmarks(false);
-          setShowNotes(false);
+          closeOtherViews();
+          setShowAdminPanel(next);
         }}
         showNotes={showNotes}
         onToggleNotes={handleToggleNotes}
+        showMockInterview={showMockInterview}
+        onToggleMockInterview={handleToggleMockInterview}
+        showOffCampus={showOffCampus}
+        onToggleOffCampus={handleToggleOffCampus}
+        showMustRead={showMustRead}
+        onToggleMustRead={handleToggleMustRead}
       />
 
-      {/* Hero — Hidden when viewing a company, bookmarks, notes, or admin panel */}
-      {!activeCompany && !showAdminPanel && !showBookmarks && !showNotes && (
+      {/* Hero — Hidden when any panel/view is active */}
+      {!activeCompany && !showAdminPanel && !showBookmarks && !showNotes && !showMockInterview && !showOffCampus && !showMustRead && (
         <div className="bg-white border-b border-zinc-200/60 pt-10 pb-10 px-4 animate-fadeIn">
           <div className="max-w-3xl mx-auto text-center">
             {/* Status badge */}
@@ -611,6 +670,27 @@ export default function App() {
           <NotesSection user={user} />
         )}
 
+        {/* Mock Interview */}
+        {showMockInterview && (
+          <Suspense fallback={
+            <div className="flex justify-center py-20">
+              <div className="w-8 h-8 rounded-full border-2 border-zinc-200 border-t-zinc-800 animate-spin" />
+            </div>
+          }>
+            <MockInterview />
+          </Suspense>
+        )}
+
+        {/* Apply Off Campus */}
+        {showOffCampus && (
+          <OffCampus />
+        )}
+
+        {/* Must Read */}
+        {showMustRead && (
+          <MustRead />
+        )}
+
         {/* Bookmarks */}
         {isBookmarking && !showAdminPanel && (
           <div className="animate-fadeIn">
@@ -664,7 +744,7 @@ export default function App() {
         )}
 
         {/* Company Grid */}
-        {!isSearching && !isBookmarking && !showAdminPanel && !showNotes && (
+        {!isSearching && !isBookmarking && !showAdminPanel && !showNotes && !showMockInterview && !showOffCampus && !showMustRead && (
           <div className="animate-fadeIn">
             <div className="flex items-center justify-between mb-4">
               <div className="text-left">

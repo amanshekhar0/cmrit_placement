@@ -1,27 +1,45 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const { verifyToken } = require('../middleware/authMiddleware');
+const { verifyGoogleCredential, issueSessionToken } = require('../middleware/authMiddleware');
 
-// POST /api/auth/login
-// Called after frontend verifies Google token to track login
-router.post('/login', verifyToken, async (req, res) => {
+// POST /api/auth/google
+// Exchange a Google ID token for a long-lived app session token (30 days),
+// and upsert the user / track the login.
+router.post('/google', async (req, res) => {
   try {
-    const { email, name, picture } = req.user;
-    
-    let user = await User.findOne({ email });
-    
+    const credential = req.body.credential || (req.headers.authorization || '').replace('Bearer ', '');
+    if (!credential) {
+      return res.status(400).json({ success: false, message: 'Missing Google credential' });
+    }
+
+    let profile;
+    try {
+      profile = await verifyGoogleCredential(credential);
+    } catch (e) {
+      const msg = e.code === 'INVALID_DOMAIN'
+        ? 'Please sign in with your @cmrit.ac.in email.'
+        : 'Invalid or expired Google token.';
+      return res.status(401).json({ success: false, message: msg });
+    }
+
+    let user = await User.findOne({ email: profile.email });
     if (user) {
       user.loginCount += 1;
       user.lastLogin = Date.now();
-      user.name = name; // Update in case it changed
-      user.picture = picture;
+      user.name = profile.name;
+      user.picture = profile.picture;
       await user.save();
     } else {
-      user = await User.create({ email, name, picture });
+      user = await User.create({ email: profile.email, name: profile.name, picture: profile.picture });
     }
-    
-    res.json({ success: true, data: user });
+
+    const token = issueSessionToken(profile);
+    res.json({
+      success: true,
+      token,
+      user: { email: profile.email, name: profile.name, picture: profile.picture },
+    });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
