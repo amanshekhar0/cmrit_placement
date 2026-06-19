@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect, lazy, Suspense } from "react";
 import Fuse from "fuse.js";
+import Clarity from "@microsoft/clarity";
 import { COMPANY_DOMAINS } from "./utils/companyDomains";
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
@@ -105,6 +106,19 @@ export default function App() {
     const cached = localStorage.getItem("cmrit_user");
     return cached ? JSON.parse(cached) : null;
   });
+
+  // Track user in Clarity whenever the user state changes (login or load from cache)
+  useEffect(() => {
+    if (user) {
+      try {
+        Clarity.identify(user.email, undefined, undefined, user.name);
+        Clarity.setTag("userType", "student");
+      } catch (e) {
+        console.error("Clarity tracking error:", e);
+      }
+    }
+  }, [user]);
+
   const [authError, setAuthError] = useState("");
   const [apiKeyInput, setApiKeyInput] = useState(() => localStorage.getItem("cmrit_groq_api_key") || "");
 
@@ -388,6 +402,10 @@ export default function App() {
   };
 
   const handleSelectCompany = (company) => {
+    try {
+      Clarity.event("view_company");
+      Clarity.setTag("company", company);
+    } catch (e) {}
     setActiveCompany(company);
     setQuery("");
     closeOtherViews();
@@ -434,6 +452,7 @@ export default function App() {
   };
 
   const handleSearchSubmit = () => {
+    try { Clarity.event("search"); } catch (e) {}
     const filtered = matchedCompanies.filter((c) => c !== "General Question Bank");
     if (filtered.length > 0) {
       handleSelectCompany(filtered[0]);
