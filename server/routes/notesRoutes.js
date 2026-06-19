@@ -162,7 +162,7 @@ router.get('/:id/download', verifyToken, async (req, res) => {
       resource_type: note.resourceType || 'image',
       type: 'authenticated',
       expires_at: expiresAt,
-      attachment: true,
+      attachment: false,
     });
 
     res.json({ success: true, url, expiresAt });

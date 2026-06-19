@@ -30,6 +30,7 @@ export default function NotesSection({ user }) {
   const [buying, setBuying] = useState(false);
   const [downloadingId, setDownloadingId] = useState(null);
   const [toast, setToast] = useState("");
+  const [previewUrl, setPreviewUrl] = useState(null);
 
   const fetchNotes = useCallback(async () => {
     try {
@@ -144,7 +145,7 @@ export default function NotesSection({ user }) {
     }
   };
 
-  const handleDownload = async (note) => {
+  const handleView = async (note) => {
     setDownloadingId(note._id);
     setError("");
     try {
@@ -153,9 +154,10 @@ export default function NotesSection({ user }) {
       });
       const data = await res.json();
       if (data.success && data.url) {
-        window.open(data.url, "_blank", "noopener,noreferrer");
+        // Display in our in-app modal instead of redirecting
+        setPreviewUrl(data.url + "#toolbar=0&navpanes=0&scrollbar=0");
       } else {
-        setError(data.message || "Could not generate the download link.");
+        setError(data.message || "Could not generate the secure link.");
       }
     } catch (err) {
       setError(err.message);
@@ -329,7 +331,7 @@ export default function NotesSection({ user }) {
                   </span>
                   {hasAccess ? (
                     <button
-                      onClick={() => handleDownload(note)}
+                      onClick={() => handleView(note)}
                       disabled={downloadingId === note._id}
                       className="inline-flex items-center gap-1.5 bg-zinc-900 hover:bg-zinc-800 disabled:opacity-60 text-white text-[12px] font-medium px-3 py-1.5 rounded-lg transition-all duration-200 active:scale-[0.97]"
                     >
@@ -337,10 +339,11 @@ export default function NotesSection({ user }) {
                         <span className="w-3.5 h-3.5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
                       ) : (
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.9}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                         </svg>
                       )}
-                      Download
+                      View Note
                     </button>
                   ) : (
                     <button
@@ -358,6 +361,40 @@ export default function NotesSection({ user }) {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {/* PDF Preview Fullscreen Modal */}
+      {previewUrl && (
+        <div className="fixed inset-0 z-[100] flex flex-col bg-zinc-950 animate-fadeIn">
+          {/* Header */}
+          <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-md z-10">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setPreviewUrl(null)}
+                className="flex items-center gap-2 bg-white text-zinc-900 hover:bg-zinc-200 text-[13px] font-semibold px-4 py-2 rounded-xl transition-colors shadow-sm"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back
+              </button>
+              <h3 className="text-white text-[14px] sm:text-[15px] font-medium hidden sm:flex items-center gap-2 ml-2 border-l border-zinc-800 pl-4">
+                <svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                Document Preview
+              </h3>
+            </div>
+          </div>
+          {/* Iframe Body */}
+          <div className="flex-1 w-full bg-zinc-900 relative">
+            <iframe
+              src={previewUrl}
+              className="absolute inset-0 w-full h-full border-0"
+              title="PDF Preview"
+            />
+          </div>
         </div>
       )}
     </div>
