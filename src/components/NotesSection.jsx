@@ -146,7 +146,7 @@ export default function NotesSection({ user }) {
   };
 
   const handleView = async (note) => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isMobile = window.innerWidth <= 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile) {
       setPreviewUrl("mobile_warning");
       return;
