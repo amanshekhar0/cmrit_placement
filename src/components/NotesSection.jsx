@@ -154,8 +154,14 @@ export default function NotesSection({ user }) {
       });
       const data = await res.json();
       if (data.success && data.url) {
-        // Display in our in-app modal instead of redirecting
-        setPreviewUrl(data.url + "#toolbar=0&navpanes=0&scrollbar=0");
+        // Mobile browsers don't natively render PDFs in iframes, so use Google Docs Viewer for them
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (isMobile) {
+          setPreviewUrl(`https://docs.google.com/viewer?url=${encodeURIComponent(data.url)}&embedded=true`);
+        } else {
+          // Display in our in-app modal instead of redirecting
+          setPreviewUrl(data.url + "#toolbar=0&navpanes=0&scrollbar=0");
+        }
       } else {
         setError(data.message || "Could not generate the secure link.");
       }
