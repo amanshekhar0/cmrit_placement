@@ -57,6 +57,30 @@ export default function NotesSection({ user }) {
     fetchNotes();
   }, [fetchNotes]);
 
+  // Prevent right-click and Inspect Element shortcuts
+  useEffect(() => {
+    const handleContextMenu = (e) => e.preventDefault();
+    const handleKeyDown = (e) => {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) ||
+        (e.ctrlKey && e.key.toUpperCase() === "U") ||
+        (e.metaKey && e.altKey && ["I", "J", "C"].includes(e.key.toUpperCase())) ||
+        (e.metaKey && e.key.toUpperCase() === "U")
+      ) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const showToast = (msg) => {
     setToast(msg);
     setTimeout(() => setToast(""), 4000);
@@ -172,7 +196,7 @@ export default function NotesSection({ user }) {
   };
 
   return (
-    <div className="max-w-3xl mx-auto animate-fadeIn">
+    <div className="max-w-3xl mx-auto animate-fadeIn" onContextMenu={(e) => e.preventDefault()}>
       {/* Toast */}
       {toast && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-emerald-600 text-white text-[13px] font-medium px-4 py-2.5 rounded-xl shadow-lg animate-fadeInScale">
@@ -305,6 +329,7 @@ export default function NotesSection({ user }) {
                     src={note.previewUrl}
                     alt={note.title}
                     loading="lazy"
+                    onContextMenu={(e) => e.preventDefault()}
                     className={`w-full h-full object-cover object-top ${hasAccess ? "" : "blur-[3px] scale-105"}`}
                     onError={(e) => { e.currentTarget.style.visibility = "hidden"; }}
                   />
@@ -371,7 +396,7 @@ export default function NotesSection({ user }) {
 
       {/* PDF Preview Fullscreen Modal */}
       {previewUrl && (
-        <div className="fixed inset-0 z-[100] flex flex-col bg-zinc-950 animate-fadeIn">
+        <div className="fixed inset-0 z-[100] flex flex-col bg-zinc-950 animate-fadeIn" onContextMenu={(e) => e.preventDefault()}>
           {/* Header */}
           <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-md z-10">
             <div className="flex items-center gap-3">
@@ -411,6 +436,7 @@ export default function NotesSection({ user }) {
                 src={previewUrl}
                 className="absolute inset-0 w-full h-full border-0"
                 title="PDF Preview"
+                onContextMenu={(e) => e.preventDefault()}
               />
             )}
           </div>
