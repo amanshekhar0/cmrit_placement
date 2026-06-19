@@ -146,6 +146,12 @@ export default function NotesSection({ user }) {
   };
 
   const handleView = async (note) => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      setPreviewUrl("mobile_warning");
+      return;
+    }
+
     setDownloadingId(note._id);
     setError("");
     try {
@@ -154,14 +160,7 @@ export default function NotesSection({ user }) {
       });
       const data = await res.json();
       if (data.success && data.url) {
-        // Mobile browsers don't natively render PDFs in iframes, so use Google Docs Viewer for them
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        if (isMobile) {
-          setPreviewUrl(`https://docs.google.com/viewer?url=${encodeURIComponent(data.url)}&embedded=true`);
-        } else {
-          // Display in our in-app modal instead of redirecting
-          setPreviewUrl(data.url + "#toolbar=0&navpanes=0&scrollbar=0");
-        }
+        setPreviewUrl(data.url + "#toolbar=0&navpanes=0&scrollbar=0");
       } else {
         setError(data.message || "Could not generate the secure link.");
       }
@@ -394,12 +393,26 @@ export default function NotesSection({ user }) {
             </div>
           </div>
           {/* Iframe Body */}
-          <div className="flex-1 w-full bg-zinc-900 relative">
-            <iframe
-              src={previewUrl}
-              className="absolute inset-0 w-full h-full border-0"
-              title="PDF Preview"
-            />
+          <div className="flex-1 w-full bg-zinc-900 relative flex items-center justify-center">
+            {previewUrl === "mobile_warning" ? (
+              <div className="text-center px-6 max-w-sm">
+                <div className="w-16 h-16 mx-auto bg-zinc-800 rounded-2xl flex items-center justify-center mb-5 shadow-lg border border-zinc-700">
+                  <svg className="w-8 h-8 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-white text-lg font-semibold mb-2">Please view on a laptop</h3>
+                <p className="text-zinc-400 text-[14px] leading-relaxed">
+                  Mobile PDF previews are currently unavailable. Please open this portal on your desktop or laptop computer to read the notes.
+                </p>
+              </div>
+            ) : (
+              <iframe
+                src={previewUrl}
+                className="absolute inset-0 w-full h-full border-0"
+                title="PDF Preview"
+              />
+            )}
           </div>
         </div>
       )}
