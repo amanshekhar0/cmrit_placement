@@ -1,6 +1,8 @@
 const express = require('express');
 const crypto = require('crypto');
 const Razorpay = require('razorpay');
+const https = require('https');
+const http = require('http');
 const router = express.Router();
 
 const cloudinary = require('../config/cloudinary');
@@ -158,18 +160,66 @@ router.get('/:id/download', verifyToken, async (req, res) => {
       format = '';
     }
 
-    // Use an authenticated delivery URL instead of private_download_url.
-    // This ensures the CDN serves the file with proper CORS headers so our
-    // frontend pdfjs-dist custom viewer can fetch and render it into canvases.
-    const url = cloudinary.url(note.publicId, {
+    const url = cloudinary.utils.private_download_url(note.publicId, format || 'pdf', {
       resource_type: note.resourceType || 'image',
       type: 'authenticated',
-      sign_url: true,
-      secure: true,
-      format: format || 'pdf',
+      expires_at: expiresAt,
+      attachment: false,
     });
 
     res.json({ success: true, url, expiresAt });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// GET /api/notes/:id/proxy — streams the PDF through our server so pdfjs-dist
+// can load it without running into Cloudinary's CORS restrictions.
+router.get('/:id/proxy', verifyToken, async (req, res) => {
+  try {
+    const hasAccess = await userHasAccess(req.user.email);
+    if (!hasAccess) {
+      return res.status(403).json({ success: false, message: 'Purchase the notes bundle to access downloads.' });
+    }
+
+    const note = await Note.findById(req.params.id);
+    if (!note) {
+      return res.status(404).json({ success: false, message: 'Note not found' });
+    }
+
+    const expiresAt = Math.floor(Date.now() / 1000) + 300;
+    let format = note.format || '';
+    if (format && note.publicId.toLowerCase().endsWith('.' + format.toLowerCase())) {
+      format = '';
+    }
+
+    // Generate a short-lived Cloudinary URL to fetch from server-side
+    const cloudinaryUrl = cloudinary.utils.private_download_url(note.publicId, format || 'pdf', {
+      resource_type: note.resourceType || 'image',
+      type: 'authenticated',
+      expires_at: expiresAt,
+      attachment: false,
+    });
+
+    // Stream the PDF from Cloudinary through our server so the browser
+    // never touches Cloudinary directly (avoids CORS issues in pdfjs-dist).
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    // Prevent the browser from treating this as a download
+    res.setHeader('Content-Disposition', 'inline');
+
+    const protocol = cloudinaryUrl.startsWith('https') ? https : http;
+    protocol.get(cloudinaryUrl, (proxyRes) => {
+      if (proxyRes.statusCode !== 200) {
+        res.status(proxyRes.statusCode).end();
+        return;
+      }
+      proxyRes.pipe(res);
+    }).on('error', (err) => {
+      console.error('Proxy fetch error:', err);
+      if (!res.headersSent) res.status(502).json({ success: false, message: 'Failed to fetch document.' });
+    });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

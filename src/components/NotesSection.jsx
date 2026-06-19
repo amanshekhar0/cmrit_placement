@@ -1,4 +1,8 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import * as pdfjsLib from "pdfjs-dist";
+import pdfWorker from "pdfjs-dist/build/pdf.worker.min.mjs?url";
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 const API_URL = import.meta.env.DEV ? (import.meta.env.VITE_API_URL || "") : "";
 
@@ -179,15 +183,14 @@ export default function NotesSection({ user }) {
     setDownloadingId(note._id);
     setError("");
     try {
-      const res = await fetch(`${API_URL}/api/notes/${note._id}/download`, {
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
-      const data = await res.json();
-      if (data.success && data.url) {
-        setPreviewUrl(data.url + "#toolbar=0&navpanes=0&scrollbar=0");
-      } else {
-        setError(data.message || "Could not generate the secure link.");
-      }
+      // Use the proxy endpoint so pdfjs-dist fetches through our own server
+      // (avoids Cloudinary CORS restrictions on direct CDN URLs)
+      const proxyUrl = `${API_URL}/api/notes/${note._id}/proxy`;
+      // Pass the auth token as a query param for the proxy fetch (pdfjs-dist
+      // doesn't support custom headers, but our proxy endpoint uses verifyToken
+      // which reads from Authorization header — so we pass the token in-band
+      // by just setting previewUrl to a special object with the id and token)
+      setPreviewUrl({ noteId: note._id, token: user.token });
     } catch (err) {
       setError(err.message);
     } finally {
@@ -417,7 +420,7 @@ export default function NotesSection({ user }) {
               </h3>
             </div>
           </div>
-          {/* Iframe Body */}
+          {/* Body */}
           <div className="flex-1 w-full bg-zinc-900 relative flex items-center justify-center">
             {previewUrl === "mobile_warning" ? (
               <div className="text-center px-6 max-w-sm">
@@ -432,16 +435,119 @@ export default function NotesSection({ user }) {
                 </p>
               </div>
             ) : (
-              <iframe
-                src={previewUrl}
-                className="absolute inset-0 w-full h-full border-0"
-                title="PDF Preview"
-                onContextMenu={(e) => e.preventDefault()}
-              />
+              <PdfViewer noteId={previewUrl.noteId} token={previewUrl.token} apiUrl={API_URL} />
             )}
           </div>
         </div>
       )}
     </div>
+  );
+}
+
+function PdfViewer({ noteId, token, apiUrl }) {
+  const [pdf, setPdf] = useState(null);
+  const [pages, setPages] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [viewError, setViewError] = useState("");
+
+  useEffect(() => {
+    if (!noteId || !token) return;
+    let isMounted = true;
+    setLoading(true);
+    setViewError("");
+    setPdf(null);
+
+    const loadPdf = async () => {
+      try {
+        // Fetch raw bytes through our authenticated proxy
+        const res = await fetch(`${apiUrl}/api/notes/${noteId}/proxy`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (!res.ok) {
+          throw new Error(`Server returned ${res.status}`);
+        }
+        const arrayBuffer = await res.arrayBuffer();
+        const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+        const loadedPdf = await loadingTask.promise;
+        if (isMounted) {
+          setPdf(loadedPdf);
+          setPages(loadedPdf.numPages);
+        }
+      } catch (err) {
+        console.error("Failed to load PDF:", err);
+        if (isMounted) setViewError("Could not load the document. Please try again.");
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+    loadPdf();
+    return () => { isMounted = false; };
+  }, [noteId, token, apiUrl]);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center text-zinc-400">
+        <div className="w-8 h-8 rounded-full border-2 border-zinc-700 border-t-zinc-300 animate-spin mb-4" />
+        <p className="text-[13px] font-medium">Rendering secure document…</p>
+      </div>
+    );
+  }
+
+  if (viewError) {
+    return (
+      <div className="flex flex-col items-center justify-center text-zinc-400 px-6 text-center">
+        <svg className="w-10 h-10 text-zinc-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <p className="text-[13px] font-semibold text-zinc-300 mb-1">Failed to load document</p>
+        <p className="text-[12px] text-zinc-500">{viewError}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="absolute inset-0 overflow-y-auto flex flex-col items-center gap-6 py-6 bg-zinc-900 custom-scrollbar pointer-events-auto">
+      {Array.from({ length: pages }, (_, i) => (
+        <PdfPage key={i + 1} pdf={pdf} pageNumber={i + 1} />
+      ))}
+    </div>
+  );
+}
+
+function PdfPage({ pdf, pageNumber }) {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    let renderTask;
+    let isMounted = true;
+
+    pdf.getPage(pageNumber).then((page) => {
+      if (!isMounted) return;
+      const viewport = page.getViewport({ scale: 1.5 });
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      
+      const context = canvas.getContext("2d");
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      renderTask = page.render({
+        canvasContext: context,
+        viewport: viewport,
+      });
+    });
+
+    return () => {
+      isMounted = false;
+      if (renderTask) renderTask.cancel();
+    };
+  }, [pdf, pageNumber]);
+
+  return (
+    <canvas 
+      ref={canvasRef} 
+      className="max-w-[95%] lg:max-w-4xl h-auto shadow-2xl bg-white rounded-md select-none"
+      onContextMenu={(e) => e.preventDefault()}
+    />
   );
 }
