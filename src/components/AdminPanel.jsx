@@ -369,10 +369,10 @@ export default function AdminPanel({ user }) {
                   <td className="px-5 py-3 text-zinc-900 font-medium">{g.email}</td>
                   <td className="px-5 py-3">
                     <span className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${
-                      g.grantedVia === "payment"
-                        ? "bg-emerald-50 text-emerald-700"
-                        : "bg-zinc-100 text-zinc-600"
-                    }`}>
+ g.grantedVia ==="payment"
+ ?"bg-emerald-50 text-emerald-700"
+ :"bg-zinc-100 text-zinc-600"
+ }`}>
                       {g.grantedVia}
                     </span>
                   </td>

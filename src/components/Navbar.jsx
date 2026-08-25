@@ -79,10 +79,10 @@ export default function Navbar({ bookmarkCount, showBookmarks, onToggleBookmarks
                 data-settings-trigger
                 onClick={() => setShowSettings(!showSettings)}
                 className={`p-1.5 rounded-lg transition-all duration-200 active:scale-[0.95] ${
-                  showSettings 
-                    ? "text-zinc-900 bg-zinc-100" 
-                    : "text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100/60"
-                }`}
+ showSettings 
+ ?"text-zinc-900 bg-zinc-100" 
+ :"text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100/60"
+ }`}
                 title="Settings"
               >
                 <svg className="w-[15px] h-[15px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,10 +150,10 @@ export default function Navbar({ bookmarkCount, showBookmarks, onToggleBookmarks
                 onClick={onToggleAdmin}
                 aria-pressed={showAdminPanel}
                 className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-medium transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 ${
-                  showAdminPanel
-                    ? "bg-emerald-600 text-white shadow-sm"
-                    : "text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50"
-                }`}
+ showAdminPanel
+ ?"bg-emerald-600 text-white shadow-sm"
+ :"text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50"
+ }`}
               >
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
@@ -167,10 +167,10 @@ export default function Navbar({ bookmarkCount, showBookmarks, onToggleBookmarks
               onClick={onToggleMustRead}
               aria-pressed={showMustRead}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-medium transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
-                showMustRead
-                  ? "bg-zinc-900 text-white shadow-sm"
-                  : "text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100/80"
-              }`}
+ showMustRead
+ ?"bg-zinc-900 text-white shadow-sm"
+ :"text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100/80"
+ }`}
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.182 16.318A4.486 4.486 0 0012.016 15a4.486 4.486 0 00-3.198 1.318M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
@@ -183,10 +183,10 @@ export default function Navbar({ bookmarkCount, showBookmarks, onToggleBookmarks
               onClick={onToggleMockInterview}
               aria-pressed={showMockInterview}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-medium transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
-                showMockInterview
-                  ? "bg-zinc-900 text-white shadow-sm"
-                  : "text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100/80"
-              }`}
+ showMockInterview
+ ?"bg-zinc-900 text-white shadow-sm"
+ :"text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100/80"
+ }`}
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
@@ -199,10 +199,10 @@ export default function Navbar({ bookmarkCount, showBookmarks, onToggleBookmarks
               onClick={onToggleOffCampus}
               aria-pressed={showOffCampus}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-medium transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
-                showOffCampus
-                  ? "bg-zinc-900 text-white shadow-sm"
-                  : "text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100/80"
-              }`}
+ showOffCampus
+ ?"bg-zinc-900 text-white shadow-sm"
+ :"text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100/80"
+ }`}
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -215,26 +215,25 @@ export default function Navbar({ bookmarkCount, showBookmarks, onToggleBookmarks
               onClick={onToggleNotes}
               aria-pressed={showNotes}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-medium transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
-                showNotes
-                  ? "bg-zinc-900 text-white shadow-sm"
-                  : "text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100/80"
-              }`}
+ showNotes
+ ?"bg-zinc-900 text-white shadow-sm"
+ :"text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100/80"
+ }`}
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
               <span className="hidden sm:inline">Notes</span>
             </button>
-
             {/* Bookmark Toggle */}
             <button
               onClick={onToggleBookmarks}
               aria-pressed={showBookmarks}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-medium transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
-                showBookmarks
-                  ? "bg-zinc-900 text-white shadow-sm"
-                  : "text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100/80"
-              }`}
+ showBookmarks
+ ?"bg-zinc-900 text-white shadow-sm"
+ :"text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100/80"
+ }`}
             >
               <svg className="w-3.5 h-3.5" fill={showBookmarks ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
@@ -242,10 +241,10 @@ export default function Navbar({ bookmarkCount, showBookmarks, onToggleBookmarks
               <span className="hidden sm:inline">Saved</span>
               {bookmarkCount > 0 && (
                 <span className={`text-[10px] rounded-md min-w-[18px] h-[18px] px-1 flex items-center justify-center font-semibold tabular-nums ${
-                  showBookmarks 
-                    ? "bg-white/20 text-white" 
-                    : "bg-zinc-200/70 text-zinc-600"
-                }`}>{bookmarkCount}</span>
+ showBookmarks 
+ ?"bg-white/20 text-white" 
+ :"bg-zinc-200/70 text-zinc-600"
+ }`}>{bookmarkCount}</span>
               )}
             </button>
           </div>

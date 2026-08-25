@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, lazy, Suspense } from "react";
+import { Link } from "react-router-dom";
 import Fuse from "fuse.js";
 import Clarity from "@microsoft/clarity";
 import { COMPANY_DOMAINS } from "./utils/companyDomains";
@@ -11,6 +12,7 @@ import AdminPanel from "./components/AdminPanel";
 import NotesSection from "./components/NotesSection";
 import OffCampus from "./components/OffCampus";
 import MustRead from "./components/MustRead";
+import UpgradeModal, { LockedQuestions, ExpiryBanner } from "./components/Paywall";
 // Lazy-loaded: pulls in pdf.js (~400KB), so only load it when actually opened.
 const MockInterview = lazy(() => import("./components/MockInterview"));
 import { useBookmarks } from "./hooks/useBookmarks";
@@ -145,54 +147,91 @@ export default function App() {
   const [rawData, setRawData] = useState([]);
   const [hrData, setHrData] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
+  const [dataError, setDataError] = useState(false);
+  // Mirrors the server's entitlement decision for the current session. Never
+  // the source of truth -- the server re-checks on every request -- this only
+  // drives what the UI renders.
+  const [hasQuestionAccess, setHasQuestionAccess] = useState(false);
+  const [subscription, setSubscription] = useState(null);
 
-  // Fetch questions data — try backend API first, fallback to static JSON
+  // Fetch questions data from the API, sending the session token so the server
+  // can decide how much of each entry to return.
+  //
+  // There is deliberately NO static-JSON fallback any more: the old one read
+  // /interview_questions_combined.json straight from public/, which handed the
+  // entire question bank to anyone who opened the network tab. Sampling is
+  // enforced server-side, so the API is now the only source.
   useEffect(() => {
     const API_URL = import.meta.env.DEV ? (import.meta.env.VITE_API_URL || "") : "";
+    // The session JWT is stored inside the cached user object, not as its own key.
+    const token = user && user.token;
+    const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-    const fetchFromAPI = async () => {
-      const [techRes, hrRes] = await Promise.all([
-        fetch(`${API_URL}/api/technical`),
-        fetch(`${API_URL}/api/hr`)
-      ]);
-      if (!techRes.ok || !hrRes.ok) throw new Error("API response not OK");
-      const techJson = await techRes.json();
-      const hrJson = await hrRes.json();
-      return { techData: techJson.data, hrData: hrJson.data };
-    };
-
-    const fetchFromStatic = async () => {
-      const [techRes, hrRes] = await Promise.all([
-        fetch("/interview_questions_combined.json"),
-        fetch("/hr_questions_company_wise.json")
-      ]);
-      if (!techRes.ok || !hrRes.ok) throw new Error("Failed to fetch static JSON");
-      const techData = await techRes.json();
-      const hrData = await hrRes.json();
-      return { techData, hrData };
-    };
-
-    fetchFromAPI()
-      .then(({ techData, hrData }) => {
-        console.log("📡 Loaded data from API");
-        setRawData(techData);
-        setHrData(hrData);
+    Promise.all([
+      fetch(`${API_URL}/api/technical`, { headers }),
+      fetch(`${API_URL}/api/hr`, { headers }),
+    ])
+      .then(async ([techRes, hrRes]) => {
+        if (!techRes.ok || !hrRes.ok) throw new Error("API response not OK");
+        const techJson = await techRes.json();
+        const hrJson = await hrRes.json();
+        setRawData(techJson.data || []);
+        setHrData(hrJson.data || []);
+        // The server is the authority on entitlement; mirror its answer so the
+        // UI can show the lock state without a second round-trip.
+        setHasQuestionAccess(!!techJson.hasAccess);
         setLoadingData(false);
       })
-      .catch(() => {
-        console.log("⚠️ API unavailable, falling back to static JSON");
-        fetchFromStatic()
-          .then(({ techData, hrData }) => {
-            setRawData(techData);
-            setHrData(hrData);
-            setLoadingData(false);
-          })
-          .catch((err) => {
-            console.error("Error fetching questions data:", err);
-            setLoadingData(false);
-          });
+      .catch((err) => {
+        console.error("Error fetching questions data:", err);
+        setDataError(true);
+        setLoadingData(false);
       });
-  }, []);
+  }, [user]);
+
+  // Pull the full entitlement record once signed in, for the expiry banner and
+  // the upgrade card. The question payload already carries `hasAccess`; this
+  // adds the expiry date and days-left that the banner needs.
+  useEffect(() => {
+    // Logout clears this state directly; the effect only ever fetches.
+    if (!user || !user.token) return;
+    const API_URL = import.meta.env.DEV ? (import.meta.env.VITE_API_URL || "") : "";
+    fetch(`${API_URL}/api/subscription/status`, {
+      headers: { Authorization: `Bearer ${user.token}` },
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (d && d.success) setSubscription(d);
+      })
+      .catch(() => setSubscription(null));
+  }, [user]);
+
+  const [showUpgrade, setShowUpgrade] = useState(false);
+
+  // How many questions the server withheld, in total and per company. The
+  // counts arrive alongside the sampled payload; the question text does not.
+  const lockedByCompany = useMemo(() => {
+    const map = {};
+    [...rawData, ...hrData].forEach((e) => {
+      if (!e || !e.lockedCount) return;
+      const key = (e.company || "").trim();
+      map[key] = (map[key] || 0) + e.lockedCount;
+    });
+    return map;
+  }, [rawData, hrData]);
+
+  const lockedTotal = useMemo(
+    () => Object.values(lockedByCompany).reduce((a, b) => a + b, 0),
+    [lockedByCompany]
+  );
+
+  // Re-fetch questions and entitlements after a successful payment so the
+  // newly unlocked questions appear without a manual reload.
+  const handleUpgradeSuccess = () => {
+    setShowUpgrade(false);
+    setHasQuestionAccess(true);
+    setUser((u) => (u ? { ...u } : u)); // new identity retriggers both fetch effects
+  };
 
   const allCards = useMemo(() => buildCards(rawData, hrData), [rawData, hrData]);
   const companies = useMemo(() => {
@@ -349,6 +388,7 @@ export default function App() {
         token: data.token, // long-lived app JWT
       };
       localStorage.setItem("cmrit_user", JSON.stringify(userData));
+      window.dispatchEvent(new Event("cmrit:auth"));
       setUser(userData);
       setAuthError("");
     } catch (error) {
@@ -359,6 +399,7 @@ export default function App() {
 
   const handleLogout = () => {
     localStorage.removeItem("cmrit_user");
+    window.dispatchEvent(new Event("cmrit:auth"));
     setUser(null);
     setAuthError("");
     setShowAdminPanel(false);
@@ -366,6 +407,8 @@ export default function App() {
     setShowMockInterview(false);
     setShowOffCampus(false);
     setShowMustRead(false);
+    setSubscription(null);
+    setHasQuestionAccess(false);
   };
 
   const isSearching = query.trim().length > 0;
@@ -578,7 +621,13 @@ export default function App() {
         <footer className="text-[11px] text-zinc-300 py-4 border-t border-zinc-100 w-full bg-white">
           <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <span>&copy; {new Date().getFullYear()} CMRIT · <a href="https://amanshekhar.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-500 transition-colors">by Aman Shekhar</a></span>
-            <span>Placement Portal</span>
+            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+              <Link to="/pricing" className="hover:text-zinc-500 transition-colors">Pricing</Link>
+              <Link to="/terms" className="hover:text-zinc-500 transition-colors">Terms</Link>
+              <Link to="/privacy" className="hover:text-zinc-500 transition-colors">Privacy</Link>
+              <Link to="/refund" className="hover:text-zinc-500 transition-colors">Refunds</Link>
+              <Link to="/contact" className="hover:text-zinc-500 transition-colors">Contact</Link>
+            </nav>
           </div>
         </footer>
       </div>
@@ -618,6 +667,38 @@ export default function App() {
         showMustRead={showMustRead}
         onToggleMustRead={handleToggleMustRead}
       />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4">
+        {/* Renewal nudge: only renders inside the last 7 days of a pass. */}
+        <ExpiryBanner subscription={subscription} onRenew={() => setShowUpgrade(true)} />
+
+        {/* There is no static fallback any more, so a failed fetch means an
+            empty portal. Say so rather than rendering a silent blank state. */}
+        {dataError && (
+          <div className="mb-4 rounded-xl border border-red-200/60 bg-red-50/70 px-4 py-3 text-[13px] text-red-700">
+            Could not load the question bank. Check your connection and refresh.
+          </div>
+        )}
+
+        {/* Standing upsell for signed-in users without a pass. */}
+        {!hasQuestionAccess && !loadingData && !dataError && lockedTotal > 0 && (
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-zinc-200/80 bg-white px-4 py-3">
+            <p className="text-[13px] text-zinc-600">
+              You are seeing a free preview.{" "}
+              <span className="font-medium text-zinc-900">
+                {lockedTotal.toLocaleString()} questions
+              </span>{" "}
+              are locked.
+            </p>
+            <button
+              onClick={() => setShowUpgrade(true)}
+              className="rounded-lg bg-zinc-900 px-3.5 py-1.5 text-[12px] font-medium text-white transition-colors hover:bg-zinc-800"
+            >
+              Unlock for &#8377;99
+            </button>
+          </div>
+        )}
+      </div>
 
       {/* Hero — Hidden when any panel/view is active */}
       {!activeCompany && !showAdminPanel && !showBookmarks && !showNotes && !showMockInterview && !showOffCampus && !showMustRead && (
@@ -759,6 +840,11 @@ export default function App() {
             )}
 
             <QuestionList cards={searchResults} bookmarks={bookmarks} onToggleBookmark={toggle} completed={completed} onToggleCompleted={toggleCompleted} />
+            <LockedQuestions
+              lockedCount={activeCompany ? (lockedByCompany[activeCompany] || 0) : lockedTotal}
+              company={activeCompany}
+              onUpgrade={() => setShowUpgrade(true)}
+            />
           </div>
         )}
 
@@ -809,11 +895,25 @@ export default function App() {
       <footer className="border-t border-zinc-100 bg-white mt-12 py-5 text-[12px] text-zinc-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p>&copy; {new Date().getFullYear()} CMRIT · <a href="https://amanshekhar.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-500 transition-colors text-[11px]">by Aman Shekhar</a></p>
-          <p className="text-[11px]">Placement Portal</p>
+          <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+              <Link to="/pricing" className="hover:text-zinc-500 transition-colors">Pricing</Link>
+              <Link to="/terms" className="hover:text-zinc-500 transition-colors">Terms</Link>
+              <Link to="/privacy" className="hover:text-zinc-500 transition-colors">Privacy</Link>
+              <Link to="/refund" className="hover:text-zinc-500 transition-colors">Refunds</Link>
+              <Link to="/contact" className="hover:text-zinc-500 transition-colors">Contact</Link>
+            </nav>
         </div>
       </footer>
 
       <ChatBot />
+
+      <UpgradeModal
+        open={showUpgrade}
+        onClose={() => setShowUpgrade(false)}
+        user={user}
+        subscription={subscription}
+        onSuccess={handleUpgradeSuccess}
+      />
     </div>
   );
 }

@@ -100,3 +100,90 @@ html, body {
 ::selection {
   background: rgba(0, 0, 0, 0.08);
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Accessibility
+   ───────────────────────────────────────────────────────────── */
+
+/* Keyboard focus ring.
+   :focus-visible rather than :focus, so the ring appears for keyboard and
+   assistive-tech users without putting an outline on every mouse click.
+   Previously nothing was styled, so Tailwind's preflight reset left keyboard
+   users with no visible focus at all. */
+:focus-visible {
+  outline: 2px solid #18181b;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Anything that explicitly clears the outline must still show a ring. */
+.focus\:outline-none:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #18181b;
+  outline-offset: 2px;
+}
+
+/* Skip link: first tab stop, hidden until focused. Lets keyboard users jump
+   past the nav instead of tabbing through it on every page. */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -120%);
+  z-index: 100;
+  background: #18181b;
+  color: #fff;
+  padding: 0.6rem 1.1rem;
+  border-radius: 0 0 0.6rem 0.6rem;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.18s ease-out;
+}
+.skip-link:focus {
+  transform: translate(-50%, 0);
+}
+
+/* Screen-reader-only text that stays in the accessibility tree. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Respect a system-level request for less motion.
+   The site leans on fadeIn/slideUp/float animations; for users who have asked
+   for reduced motion these are a vestibular trigger, so they are collapsed to
+   near-instant rather than removed (removal can break animation-fill-mode
+   states that elements depend on to be visible at all). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Comfortable tap targets on touch devices. The UI uses a lot of 11-12px
+   controls, which are below the ~44px recommended minimum. */
+@media (pointer: coarse) {
+  button,
+  a[role="button"],
+  [role="tab"] {
+    min-height: 40px;
+  }
+}

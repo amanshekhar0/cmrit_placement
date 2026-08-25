@@ -7,7 +7,8 @@ const router = express.Router();
 
 const cloudinary = require('../config/cloudinary');
 const Note = require('../models/Note');
-const NotesAccess = require('../models/NotesAccess');
+const Access = require('../models/Access');
+const { getEntitlements, grantAccess: grantProductAccess } = require('../utils/accessService');
 const Payment = require('../models/Payment');
 const { verifyToken, verifyAdmin } = require('../middleware/authMiddleware');
 const { adminLimiter } = require('../middleware/rateLimiter');
@@ -23,28 +24,27 @@ function getRazorpay() {
   });
 }
 
+// Capability-based: true for a legacy lifetime notes grant OR an active
+// bundle pass. Callers never need to know which product paid for it.
 async function userHasAccess(email) {
-  const doc = await NotesAccess.findOne({ email: String(email).toLowerCase() });
-  return !!doc;
+  const caps = await getEntitlements(email);
+  return caps.notes;
 }
 
-function genToken() {
-  return 'CMRIT-NOTES-' + crypto.randomBytes(8).toString('hex').toUpperCase();
+// The Access doc backing a user's notes entitlement, preferring the bundle
+// (which carries the current expiry) over a legacy lifetime notes grant.
+async function notesAccessDoc(email) {
+  const lower = String(email).toLowerCase();
+  const docs = await Access.find({ email: lower, product: { $in: ['bundle', 'notes'] } });
+  const now = new Date();
+  const active = docs.filter((d) => d.expiresAt === null || d.expiresAt > now);
+  return active.find((d) => d.product === 'bundle') || active[0] || null;
 }
 
 // Grant (or refresh) notes access for an email, guaranteeing an access token.
 // Used by both payment paths and manual admin grants.
 async function grantAccess(email, fields) {
-  const lower = String(email).toLowerCase();
-  let access = await NotesAccess.findOne({ email: lower });
-  if (!access) {
-    access = await NotesAccess.create({ email: lower, token: genToken(), ...fields });
-  } else {
-    Object.assign(access, fields);
-    if (!access.token) access.token = genToken();
-    await access.save();
-  }
-  return access;
+  return grantProductAccess(email, 'notes', fields);
 }
 
 // Build a signed Cloudinary preview image of the PDF's first page.
@@ -70,8 +70,8 @@ function buildPreviewUrl(note, clear) {
 // "claim" the send via the welcomeEmailSent flag before emailing.
 async function maybeSendPurchaseEmail(email, name, info) {
   const lower = String(email).toLowerCase();
-  const claim = await NotesAccess.findOneAndUpdate(
-    { email: lower, welcomeEmailSent: { $ne: true } },
+  const claim = await Access.findOneAndUpdate(
+    { email: lower, product: 'notes', welcomeEmailSent: { $ne: true } },
     { $set: { welcomeEmailSent: true } },
     { new: true }
   );
@@ -82,7 +82,7 @@ async function maybeSendPurchaseEmail(email, name, info) {
   } catch (err) {
     console.error('Failed to send purchase email to', lower, '-', err.message);
     // Release the claim so a later trigger can retry the send.
-    await NotesAccess.updateOne({ email: lower }, { $set: { welcomeEmailSent: false } });
+    await Access.updateOne({ email: lower, product: 'notes' }, { $set: { welcomeEmailSent: false } });
   }
 }
 
@@ -93,7 +93,7 @@ async function maybeSendPurchaseEmail(email, name, info) {
 // GET /api/notes/access — does the current user own the bundle?
 router.get('/access', verifyToken, async (req, res) => {
   try {
-    const access = await NotesAccess.findOne({ email: req.user.email.toLowerCase() });
+    const access = await notesAccessDoc(req.user.email);
     res.json({
       success: true,
       hasAccess: !!access,
@@ -110,7 +110,7 @@ router.get('/access', verifyToken, async (req, res) => {
 router.get('/', verifyToken, async (req, res) => {
   try {
     const notes = await Note.find().sort({ createdAt: -1 });
-    const access = await NotesAccess.findOne({ email: req.user.email.toLowerCase() });
+    const access = await notesAccessDoc(req.user.email);
     const hasAccess = !!access;
 
     const data = notes.map((n) => ({
@@ -453,7 +453,7 @@ router.delete('/admin/:id', adminLimiter, verifyAdmin, async (req, res) => {
 // GET /api/notes/admin/grants — list everyone who has access
 router.get('/admin/grants', verifyAdmin, async (req, res) => {
   try {
-    const grants = await NotesAccess.find().sort({ createdAt: -1 });
+    const grants = await Access.find({ product: 'notes' }).sort({ createdAt: -1 });
     res.json({ success: true, data: grants });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -481,7 +481,7 @@ router.post('/admin/grant', adminLimiter, verifyAdmin, async (req, res) => {
 router.delete('/admin/grant/:email', adminLimiter, verifyAdmin, async (req, res) => {
   try {
     const email = decodeURIComponent(req.params.email).trim().toLowerCase();
-    await NotesAccess.findOneAndDelete({ email });
+    await Access.findOneAndDelete({ email, product: 'notes' });
     res.json({ success: true, message: 'Access revoked' });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

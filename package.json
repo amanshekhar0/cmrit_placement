@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/gen-sitemap.mjs && vite build && npm run prerender:bundle && npm run prerender",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sitemap": "node scripts/gen-sitemap.mjs",
+    "verify": "node server/scripts/checkSlugParity.js && npm run lint",
+    "prerender:bundle": "vite build --config vite.prerender.config.js",
+    "prerender": "node scripts/prerender.mjs"
   },
   "dependencies": {
     "@microsoft/clarity": "^1.0.2",

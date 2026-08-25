@@ -9,13 +9,21 @@ const statsRoutes = require('./routes/statsRoutes');
 const authRoutes = require('./routes/authRoutes');
 const notesRoutes = require('./routes/notesRoutes');
 const mustReadRoutes = require('./routes/mustReadRoutes');
+const subscriptionRoutes = require('./routes/subscriptionRoutes');
+const aiRoutes = require('./routes/aiRoutes');
+const answerRoutes = require('./routes/answerRoutes');
 const { apiLimiter } = require('./middleware/rateLimiter');
+const { sanitizeQuery } = require('./middleware/sanitizeQuery');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Trust Vercel's proxy for accurate IP rate limiting
 app.set('trust proxy', 1);
+
+// Removes the default `X-Powered-By: Express` header, which tells an attacker
+// exactly what stack to target.
+app.disable('x-powered-by');
 
 // Middleware
 app.use(cors({
@@ -58,8 +66,12 @@ app.get('/', (req, res) => {
 
 // API Routes
 app.use('/api', apiLimiter);
+app.use('/api', sanitizeQuery);
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', notesRoutes);
+app.use('/api/subscription', subscriptionRoutes);
+app.use('/api/ai', aiRoutes);
+app.use('/api/answers', answerRoutes);
 app.use('/api/mustread', mustReadRoutes);
 app.use('/api/technical', technicalRoutes);
 app.use('/api/hr', hrRoutes);

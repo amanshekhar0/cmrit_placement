@@ -43,7 +43,7 @@ const verifyToken = (req, res, next) => {
     const decoded = jwt.verify(token, JWT_SECRET);
     req.user = { email: decoded.email, name: decoded.name, picture: decoded.picture };
     next();
-  } catch (error) {
+  } catch {
     res.status(401).json({ success: false, message: 'Invalid or expired session' });
   }
 };

@@ -333,7 +333,7 @@ export default function NotesSection({ user }) {
                     alt={note.title}
                     loading="lazy"
                     onContextMenu={(e) => e.preventDefault()}
-                    className={`w-full h-full object-cover object-top ${hasAccess ? "" : "blur-[3px] scale-105"}`}
+                    className={`w-full h-full object-cover object-top ${hasAccess ?"" :"blur-[3px] scale-105"}`}
                     onError={(e) => { e.currentTarget.style.visibility = "hidden"; }}
                   />
                 )}

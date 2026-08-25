@@ -1,0 +1,38 @@
+User-agent: *
+Allow: /
+
+# Private surfaces: nothing here is useful in an index.
+Disallow: /admin
+Disallow: /api/
+Disallow: /login
+
+# AI answer engines are allowed deliberately.
+# Being quoted by ChatGPT, Perplexity or Claude when a student asks
+# "what does Deloitte ask at CMRIT" is the same win as ranking on Google,
+# and these crawlers only see the free tier -- the paid bank is withheld
+# server-side, not hidden behind robots rules.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://cmritplacement.vercel.app/sitemap.xml
