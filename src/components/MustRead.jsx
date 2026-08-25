@@ -92,8 +92,8 @@ export default function MustRead() {
             key={t.key}
             onClick={() => switchType(t.key)}
             className={`text-[12px] font-medium px-3.5 py-1.5 rounded-lg transition-colors ${
-              activeType === t.key ? "bg-white text-zinc-900 shadow-sm" : "text-zinc-500 hover:text-zinc-700"
-            }`}
+ activeType === t.key ?"bg-white text-zinc-900 shadow-sm" :"text-zinc-500 hover:text-zinc-700"
+ }`}
           >
             {t.label}
           </button>
@@ -108,10 +108,10 @@ export default function MustRead() {
               key={c}
               onClick={() => setActiveCategory(c)}
               className={`text-[11px] font-medium px-2.5 py-1 rounded-lg border transition-colors ${
-                activeCategory === c
-                  ? "bg-zinc-900 text-white border-zinc-900"
-                  : "bg-white text-zinc-500 border-zinc-200 hover:border-zinc-300 hover:text-zinc-700"
-              }`}
+ activeCategory === c
+ ?"bg-zinc-900 text-white border-zinc-900"
+ :"bg-white text-zinc-500 border-zinc-200 hover:border-zinc-300 hover:text-zinc-700"
+ }`}
             >
               {c}
             </button>
@@ -141,7 +141,7 @@ export default function MustRead() {
                         {item.category}
                       </span>
                       {item.difficulty && (
-                        <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded border ${DIFFICULTY_STYLES[item.difficulty] || "bg-zinc-50 text-zinc-600 border-zinc-200"}`}>
+                        <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded border ${DIFFICULTY_STYLES[item.difficulty] ||"bg-zinc-50 text-zinc-600 border-zinc-200"}`}>
                           {item.difficulty}
                         </span>
                       )}
@@ -151,7 +151,7 @@ export default function MustRead() {
                     </p>
                   </div>
                   <svg
-                    className={`w-4 h-4 text-zinc-300 flex-shrink-0 mt-0.5 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                    className={`w-4 h-4 text-zinc-300 flex-shrink-0 mt-0.5 transition-transform ${isOpen ?"rotate-180" :""}`}
                     fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />

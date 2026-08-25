@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback } from "react";
 
 const STORAGE_KEY = "cmrit_completed_questions";
 

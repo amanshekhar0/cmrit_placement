@@ -103,4 +103,54 @@ async function sendNotesPurchaseEmail(to, name, { amount, paymentId } = {}) {
   });
 }
 
-module.exports = { sendEmail, sendNotesPurchaseEmail };
+// Note: unlike purchaseEmailHtml above (which takes paise, matching Razorpay's
+// entity.amount), this one takes plain rupees — the caller reads the price from
+// the product config, not from the payment entity.
+function passEmailHtml({ name, amountInr, paymentId, expiresAt }) {
+  const greeting = name ? `Hi ${name},` : 'Hi there,';
+  const appUrl = process.env.APP_URL || 'https://cmritplacement.vercel.app';
+  const validTill = expiresAt
+    ? new Date(expiresAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })
+    : null;
+
+  return `
+  <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#fafafa;padding:32px 0;">
+    <div style="max-width:520px;margin:0 auto;background:#ffffff;border:1px solid #e4e4e7;border-radius:16px;overflow:hidden;">
+      <div style="background:#18181b;padding:24px 28px;">
+        <h1 style="margin:0;color:#ffffff;font-size:18px;font-weight:600;letter-spacing:-0.02em;">CMRIT Placement Portal</h1>
+      </div>
+      <div style="padding:28px;">
+        <p style="margin:0 0 14px;color:#18181b;font-size:15px;">${greeting}</p>
+        <p style="margin:0 0 18px;color:#3f3f46;font-size:14px;line-height:1.6;">
+          Your payment of <strong>&#8377;${amountInr}</strong> went through and your
+          <strong>CMRIT Placement Pass</strong> is now active. 🎉
+        </p>
+        <p style="margin:0 0 18px;color:#3f3f46;font-size:14px;line-height:1.6;">
+          You now have the full question bank across every company and year, the
+          premium notes library, AI answers, and mock interviews.
+        </p>
+        ${validTill ? `<div style="margin:0 0 18px;padding:12px 14px;background:#fafafa;border:1px solid #e4e4e7;border-radius:10px;">
+          <p style="margin:0;color:#3f3f46;font-size:13px;">Valid until <strong>${validTill}</strong></p>
+        </div>` : ''}
+        <a href="${appUrl}" style="display:inline-block;background:#18181b;color:#ffffff;text-decoration:none;font-size:14px;font-weight:500;padding:11px 20px;border-radius:10px;">
+          Open the portal &rarr;
+        </a>
+        ${paymentId ? `<p style="margin:22px 0 0;color:#a1a1aa;font-size:12px;">Payment reference: ${paymentId}</p>` : ''}
+        <p style="margin:6px 0 0;color:#a1a1aa;font-size:12px;">Access is tied to this email address.</p>
+      </div>
+      <div style="padding:16px 28px;border-top:1px solid #f4f4f5;">
+        <p style="margin:0;color:#a1a1aa;font-size:11px;">&copy; ${new Date().getFullYear()} CMRIT Placement Portal</p>
+      </div>
+    </div>
+  </div>`;
+}
+
+async function sendPassPurchaseEmail(to, name, { amount, paymentId, expiresAt } = {}) {
+  return sendEmail({
+    to,
+    subject: 'Your CMRIT Placement Pass is active 🎉',
+    html: passEmailHtml({ name, amountInr: amount, paymentId, expiresAt }),
+  });
+}
+
+module.exports = { sendEmail, sendNotesPurchaseEmail, sendPassPurchaseEmail };

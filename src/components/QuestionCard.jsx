@@ -106,7 +106,7 @@ export default function QuestionCard({ card, bookmarked, onToggle, isCompleted, 
   };
 
   return (
-    <div className={`bg-white rounded-xl border hover:border-zinc-300/80 transition-all duration-200 group ${isCompleted ? "border-emerald-200/80 bg-emerald-50/20" : "border-zinc-200/80"}`}>
+    <div className={`bg-white rounded-xl border hover:border-zinc-300/80 transition-all duration-200 group ${isCompleted ?"border-emerald-200/80 bg-emerald-50/20" :"border-zinc-200/80"}`}>
       <div className="p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-start gap-3 flex-1 min-w-0 text-left">
@@ -117,10 +117,10 @@ export default function QuestionCard({ card, bookmarked, onToggle, isCompleted, 
                 title={isCompleted ? "Mark as not done" : "Mark as done"}
                 aria-label={isCompleted ? "Mark as not done" : "Mark as done"}
                 className={`flex-shrink-0 w-5 h-5 mt-0.5 rounded-full border-2 flex items-center justify-center transition-all duration-200 active:scale-[0.9] ${
-                  isCompleted
-                    ? "bg-emerald-500 border-emerald-500 text-white shadow-sm"
-                    : "border-zinc-300 hover:border-zinc-400 text-transparent hover:bg-zinc-50"
-                }`}
+ isCompleted
+ ?"bg-emerald-500 border-emerald-500 text-white shadow-sm"
+ :"border-zinc-300 hover:border-zinc-400 text-transparent hover:bg-zinc-50"
+ }`}
               >
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -154,7 +154,7 @@ export default function QuestionCard({ card, bookmarked, onToggle, isCompleted, 
                 </span>
               )}
             </div>
-            <p className={`text-[13px] font-normal leading-relaxed ${isCompleted ? "text-zinc-400 line-through" : "text-zinc-700"}`}>{question}</p>
+            <p className={`text-[13px] font-normal leading-relaxed ${isCompleted ?"text-zinc-400 line-through" :"text-zinc-700"}`}>{question}</p>
             </div>
           </div>
           
@@ -182,10 +182,10 @@ export default function QuestionCard({ card, bookmarked, onToggle, isCompleted, 
               title={bookmarked ? "Remove bookmark" : "Save question"}
               aria-label={bookmarked ? "Remove bookmark" : "Save question"}
               className={`flex-shrink-0 p-1.5 rounded-lg transition-all duration-200 active:scale-[0.93] ${
-                bookmarked
-                  ? "text-amber-500 bg-amber-50/80"
-                  : "text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100/70 md:opacity-0 group-hover:opacity-100"
-              }`}
+ bookmarked
+ ?"text-amber-500 bg-amber-50/80"
+ :"text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100/70 md:opacity-0 group-hover:opacity-100"
+ }`}
             >
               <svg className="w-[17px] h-[17px]" fill={bookmarked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>

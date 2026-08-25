@@ -1,0 +1,76 @@
+# CMRIT Placement Portal
+
+> Previous-year campus-placement interview questions from companies that recruited at
+> CMR Institute of Technology (CMRIT), Bengaluru, India. Questions are compiled from
+> students' own recollections after their drives, organised by company and placement season.
+
+## Facts
+
+- Questions: 2,818 across 172 companies
+- Placement seasons covered: 2022-23 to 2026-27
+- Rounds covered: Technical, Programming (coding), and HR
+- Free tier: a preview of each company's technical questions, plus the complete HR bank
+- Paid tier: the full technical and coding bank, notes, AI answers and mock interviews
+- Sign-in is restricted to @cmrit.ac.in accounts; the question pages are public
+
+## Accuracy and limits
+
+- Questions are recalled by students after the fact, so wording may differ from what
+  was asked verbatim on the day.
+- The site is an independent student resource. It is not an official publication of
+  CMR Institute of Technology, and it is not affiliated with any company listed.
+- Company names and logos belong to their respective owners and are used only to
+  identify which company asked which questions.
+
+## Key pages
+
+- [All companies](https://cmritplacement.vercel.app/companies): every recruiter with recorded questions
+- [Pricing](https://cmritplacement.vercel.app/pricing)
+- [Terms](https://cmritplacement.vercel.app/terms)
+- [Privacy](https://cmritplacement.vercel.app/privacy)
+
+## Company pages
+
+- [ABB](https://cmritplacement.vercel.app/company/abb)
+- [Accenture](https://cmritplacement.vercel.app/company/accenture)
+- [Affle](https://cmritplacement.vercel.app/company/affle)
+- [Alembic Real Estate](https://cmritplacement.vercel.app/company/alembic-real-estate)
+- [Altair](https://cmritplacement.vercel.app/company/altair)
+- [Altair india (HPC)](https://cmritplacement.vercel.app/company/altair-india-hpc)
+- [Amadaus](https://cmritplacement.vercel.app/company/amadaus)
+- [Amadeus](https://cmritplacement.vercel.app/company/amadeus)
+- [Amadeus (Dec)](https://cmritplacement.vercel.app/company/amadeus-dec)
+- [Amazon](https://cmritplacement.vercel.app/company/amazon)
+- [ANZ](https://cmritplacement.vercel.app/company/anz)
+- [ANZ (Apprentice Role)](https://cmritplacement.vercel.app/company/anz-apprentice-role)
+- [ANZ Bank](https://cmritplacement.vercel.app/company/anz-bank)
+- [Archle Labs](https://cmritplacement.vercel.app/company/archle-labs)
+- [Arts for Tech](https://cmritplacement.vercel.app/company/arts-for-tech)
+- [Ascendion](https://cmritplacement.vercel.app/company/ascendion)
+- [Atomwalk Technologies](https://cmritplacement.vercel.app/company/atomwalk-technologies)
+- [AXA](https://cmritplacement.vercel.app/company/axa)
+- [AXA XL](https://cmritplacement.vercel.app/company/axa-xl)
+- [Axcess.io](https://cmritplacement.vercel.app/company/axcess-io)
+- [Beghou](https://cmritplacement.vercel.app/company/beghou)
+- [Beghou Consulting](https://cmritplacement.vercel.app/company/beghou-consulting)
+- [Belc](https://cmritplacement.vercel.app/company/belc)
+- [BlueBird](https://cmritplacement.vercel.app/company/bluebird)
+- [Bosch](https://cmritplacement.vercel.app/company/bosch)
+- [Bosch Drive](https://cmritplacement.vercel.app/company/bosch-drive)
+- [Bottomline](https://cmritplacement.vercel.app/company/bottomline)
+- [Bottomline Technologies](https://cmritplacement.vercel.app/company/bottomline-technologies)
+- [BSC Solutions](https://cmritplacement.vercel.app/company/bsc-solutions)
+- [Capgemini](https://cmritplacement.vercel.app/company/capgemini)
+- [Capgemini(Dec)](https://cmritplacement.vercel.app/company/capgemini-dec)
+- [Carrier](https://cmritplacement.vercel.app/company/carrier)
+- [Ceptes](https://cmritplacement.vercel.app/company/ceptes)
+- [Ceptes Software Drive](https://cmritplacement.vercel.app/company/ceptes-software-drive)
+- [Chainalytics](https://cmritplacement.vercel.app/company/chainalytics)
+- [Cimpress](https://cmritplacement.vercel.app/company/cimpress)
+- [Clarivate](https://cmritplacement.vercel.app/company/clarivate)
+- [CLARIVATE ANALYTICS](https://cmritplacement.vercel.app/company/clarivate-analytics)
+- [Cognizant](https://cmritplacement.vercel.app/company/cognizant)
+- [Conde Nest](https://cmritplacement.vercel.app/company/conde-nest)
+
+A complete list of all 172 company URLs is in
+[sitemap.xml](https://cmritplacement.vercel.app/sitemap.xml).

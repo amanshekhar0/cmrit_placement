@@ -171,7 +171,7 @@ export default function MockInterview() {
       {/* Upload zone */}
       {!resumeText && (
         <label
-          className={`block border-2 border-dashed border-zinc-200 rounded-2xl bg-white p-10 text-center cursor-pointer hover:border-zinc-300 hover:bg-zinc-50/50 transition-colors ${extracting ? "pointer-events-none opacity-70" : ""}`}
+          className={`block border-2 border-dashed border-zinc-200 rounded-2xl bg-white p-10 text-center cursor-pointer hover:border-zinc-300 hover:bg-zinc-50/50 transition-colors ${extracting ?"pointer-events-none opacity-70" :""}`}
         >
           <input type="file" accept="application/pdf" onChange={handleFile} className="hidden" disabled={extracting} />
           <div className="w-12 h-12 rounded-xl bg-zinc-100 flex items-center justify-center mx-auto mb-3">

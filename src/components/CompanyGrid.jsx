@@ -45,10 +45,10 @@ function CompanyCardButton({ company, count, isActive, onSelect, cards, complete
       onClick={onSelect}
       aria-pressed={isActive}
       className={`relative flex flex-col items-center gap-3 p-5 rounded-xl border transition-all duration-200 text-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
-        isActive
-          ? "border-zinc-900 bg-zinc-50 shadow-sm"
-          : "border-zinc-200/80 bg-white hover:border-zinc-300 hover:shadow-sm"
-      }`}
+ isActive
+ ?"border-zinc-900 bg-zinc-50 shadow-sm"
+ :"border-zinc-200/80 bg-white hover:border-zinc-300 hover:shadow-sm"
+ }`}
     >
       {logoUrl && !imgError ? (
         <div className="w-11 h-11 rounded-xl bg-white p-1.5 border border-zinc-200/60 flex items-center justify-center flex-shrink-0 group-hover:scale-[1.03] transition-transform duration-200">
@@ -146,10 +146,10 @@ function CompanyQuestions({ cards, bookmarks, onToggleBookmark, completed, onTog
               onClick={() => setTab(t.key)}
               aria-pressed={tab === t.key}
               className={`text-[12px] px-3 py-1.5 rounded-lg font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-200 ${
-                tab === t.key
-                  ? "bg-zinc-900 text-white shadow-sm"
-                  : "text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100/60"
-              }`}
+ tab === t.key
+ ?"bg-zinc-900 text-white shadow-sm"
+ :"text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100/60"
+ }`}
             >
               {t.label}
             </button>

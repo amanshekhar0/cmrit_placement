@@ -1,4 +1,3 @@
-import React from "react";
 
 /**
  * Parsed inline markdown formatting.
