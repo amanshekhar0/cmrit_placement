@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, lazy, Suspense } from "react";
+import { useState, useMemo, useEffect, useCallback, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import Fuse from "fuse.js";
 import Clarity from "@microsoft/clarity";
@@ -17,6 +17,15 @@ import UpgradeModal, { LockedQuestions, ExpiryBanner } from "./components/Paywal
 const MockInterview = lazy(() => import("./components/MockInterview"));
 import { useBookmarks } from "./hooks/useBookmarks";
 import { useProgress } from "./hooks/useProgress";
+import {
+  readSession,
+  saveSession,
+  clearSession,
+  runSessionMigration,
+  authFetch,
+  expireSession,
+  SESSION_EXPIRED_MESSAGE,
+} from "./utils/session";
 
 function decodeJwt(token) {
   try {
@@ -104,10 +113,10 @@ function CompanyChip({ company, count, onClick }) {
 }
 
 export default function App() {
-  const [user, setUser] = useState(() => {
-    const cached = localStorage.getItem("cmrit_user");
-    return cached ? JSON.parse(cached) : null;
-  });
+  // readSession() drops a cached user whose token is missing or expired, so
+  // the app never renders as "signed in" while holding a token the API will
+  // reject with a 401 the moment the student tries to pay.
+  const [user, setUser] = useState(() => readSession());
 
   // Track user in Clarity whenever the user state changes (login or load from cache)
   useEffect(() => {
@@ -122,6 +131,20 @@ export default function App() {
   }, [user]);
 
   const [authError, setAuthError] = useState("");
+
+  // Single place that reacts to a dead session: drop it, reset everything it
+  // unlocked, and tell the student to sign in again. Without this, a rejected
+  // token left the UI looking signed in while every protected call 401d.
+  const handleSessionExpired = useCallback(() => {
+    // expireSession() also parks the reason for the page that renders next:
+    // clearing the session fires `cmrit:auth`, which swaps this dashboard for
+    // the signed-out landing page, and a silent logout mid-purchase is exactly
+    // the confusion this whole path exists to remove.
+    expireSession();
+    setUser(null);
+    setAuthError(SESSION_EXPIRED_MESSAGE);
+  }, []);
+
   const [apiKeyInput, setApiKeyInput] = useState(() => localStorage.getItem("cmrit_groq_api_key") || "");
 
   const [query, setQuery] = useState(() => {
@@ -196,15 +219,23 @@ export default function App() {
     // Logout clears this state directly; the effect only ever fetches.
     if (!user || !user.token) return;
     const API_URL = import.meta.env.DEV ? (import.meta.env.VITE_API_URL || "") : "";
-    fetch(`${API_URL}/api/subscription/status`, {
-      headers: { Authorization: `Bearer ${user.token}` },
-    })
+    let cancelled = false;
+    authFetch(`${API_URL}/api/subscription/status`)
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => {
-        if (d && d.success) setSubscription(d);
+        if (!cancelled && d && d.success) setSubscription(d);
       })
-      .catch(() => setSubscription(null));
-  }, [user]);
+      .catch((err) => {
+        if (cancelled) return;
+        setSubscription(null);
+        // This is the first authenticated call after sign-in, so a rejected
+        // token surfaces here -- long before the student opens the pay card.
+        if (err && err.sessionExpired) handleSessionExpired();
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [user, handleSessionExpired]);
 
   const [showUpgrade, setShowUpgrade] = useState(false);
 
@@ -224,6 +255,37 @@ export default function App() {
     () => Object.values(lockedByCompany).reduce((a, b) => a + b, 0),
     [lockedByCompany]
   );
+
+  // How many questions EXIST per company, by round, regardless of how many the
+  // server was willing to send. With the free preview at zero this is the only
+  // thing an unpaid visitor sees, so it has to be derived from the server's own
+  // `counts` rather than from the (empty) question arrays.
+  const countsByCompany = useMemo(() => {
+    const map = {};
+    [...rawData, ...hrData].forEach((e) => {
+      if (!e) return;
+      const key = (e.company || "").trim();
+      if (!map[key]) map[key] = { technical: 0, programming: 0, hr: 0, total: 0 };
+      const c = e.counts;
+      if (c) {
+        map[key].technical += c.technical || 0;
+        map[key].programming += c.programming || 0;
+        map[key].hr += c.hr || 0;
+        map[key].total += c.total || 0;
+      } else {
+        // Payload without `counts` (an older server): shown + locked still works.
+        const shown =
+          (e.technical_questions || []).length +
+          (e.programming_questions || []).length +
+          (e.hr_questions || []).length;
+        map[key].technical += (e.technical_questions || []).length;
+        map[key].programming += (e.programming_questions || []).length;
+        map[key].hr += (e.hr_questions || []).length;
+        map[key].total += shown + (e.lockedCount || 0);
+      }
+    });
+    return map;
+  }, [rawData, hrData]);
 
   // Re-fetch questions and entitlements after a successful payment so the
   // newly unlocked questions appear without a manual reload.
@@ -250,20 +312,26 @@ export default function App() {
     return map;
   }, [allCards]);
 
+  // The hero counters advertise the SIZE of the bank, so they count what
+  // exists, not what this visitor is allowed to read -- otherwise every unpaid
+  // student would be told the portal has zero questions in it.
   const stats = useMemo(() => {
     const techYears = rawData.map((e) => e.year);
     const hrYears = hrData.flatMap((e) => e.years || []);
     const allYears = new Set([...techYears, ...hrYears].filter(Boolean));
 
+    const sum = (field) =>
+      Object.values(countsByCompany).reduce((n, c) => n + (c[field] || 0), 0);
+
     return {
-      total: allCards.length,
+      total: sum("total"),
       companies: companies.filter((c) => c !== "General Question Bank").length,
       years: allYears.size || 1,
-      tech: allCards.filter((c) => c.type === "Technical").length,
-      prog: allCards.filter((c) => c.type === "Programming").length,
-      hr: allCards.filter((c) => c.type === "HR").length,
+      tech: sum("technical"),
+      prog: sum("programming"),
+      hr: sum("hr"),
     };
-  }, [allCards, companies, rawData, hrData]);
+  }, [companies, rawData, hrData, countsByCompany]);
 
   const fuse = useMemo(() => {
     return new Fuse(allCards, { keys: ["question", "company"], threshold: 0.35, includeScore: true });
@@ -279,15 +347,14 @@ export default function App() {
     localStorage.removeItem("cmrit_theme");
   }, []);
 
-  // One-time migration: invalidate sessions created with the old 1-hour Google
-  // token so everyone re-logs in once and receives a 30-day app session token.
+  // One-time migration: drop any session issued before the current session
+  // version (old Google-token logins, tokens signed with a rotated secret).
+  // Those tokens can never be verified again, so the only way out is a fresh
+  // sign-in -- ask for it up front instead of failing at checkout.
   useEffect(() => {
-    if (localStorage.getItem("cmrit_session_v") !== "2") {
-      localStorage.setItem("cmrit_session_v", "2");
-      if (localStorage.getItem("cmrit_user")) {
-        localStorage.removeItem("cmrit_user");
-        setUser(null);
-      }
+    if (runSessionMigration()) {
+      setUser(null);
+      setAuthError(SESSION_EXPIRED_MESSAGE);
     }
   }, []);
 
@@ -381,14 +448,21 @@ export default function App() {
         return;
       }
 
+      // No token means the server could not mint a session (e.g. its JWT
+      // secret is unset). Caching a tokenless user here is what produced a
+      // "signed in" UI that 401d on every protected call.
+      if (!data.token || !data.user) {
+        setAuthError("Sign-in did not return a session. Please try again in a minute.");
+        return;
+      }
+
       const userData = {
         email: data.user.email,
         name: data.user.name,
         picture: data.user.picture,
         token: data.token, // long-lived app JWT
       };
-      localStorage.setItem("cmrit_user", JSON.stringify(userData));
-      window.dispatchEvent(new Event("cmrit:auth"));
+      saveSession(userData);
       setUser(userData);
       setAuthError("");
     } catch (error) {
@@ -398,8 +472,7 @@ export default function App() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("cmrit_user");
-    window.dispatchEvent(new Event("cmrit:auth"));
+    clearSession();
     setUser(null);
     setAuthError("");
     setShowAdminPanel(false);
@@ -684,11 +757,11 @@ export default function App() {
         {!hasQuestionAccess && !loadingData && !dataError && lockedTotal > 0 && (
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-zinc-200/80 bg-white px-4 py-3">
             <p className="text-[13px] text-zinc-600">
-              You are seeing a free preview.{" "}
               <span className="font-medium text-zinc-900">
                 {lockedTotal.toLocaleString()} questions
               </span>{" "}
-              are locked.
+              across {stats.companies} companies are locked. Unlock them to read the
+              questions, the notes library and the AI answers.
             </p>
             <button
               onClick={() => setShowUpgrade(true)}
@@ -842,6 +915,7 @@ export default function App() {
             <QuestionList cards={searchResults} bookmarks={bookmarks} onToggleBookmark={toggle} completed={completed} onToggleCompleted={toggleCompleted} />
             <LockedQuestions
               lockedCount={activeCompany ? (lockedByCompany[activeCompany] || 0) : lockedTotal}
+              shownCount={searchResults.length}
               company={activeCompany}
               onUpgrade={() => setShowUpgrade(true)}
             />
@@ -879,6 +953,10 @@ export default function App() {
               <CompanyGrid
                 companies={companies}
                 cardsByCompany={cardsByCompany}
+                countsByCompany={countsByCompany}
+                lockedByCompany={lockedByCompany}
+                hasAccess={hasQuestionAccess}
+                onUpgrade={() => setShowUpgrade(true)}
                 bookmarks={bookmarks}
                 onToggleBookmark={toggle}
                 activeCompany={activeCompany}
@@ -913,6 +991,7 @@ export default function App() {
         user={user}
         subscription={subscription}
         onSuccess={handleUpgradeSuccess}
+        onSessionExpired={handleSessionExpired}
       />
     </div>
   );

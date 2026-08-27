@@ -24,14 +24,23 @@ const PRODUCTS = {
 
 // How much of the question bank an unpaid visitor can see.
 //
-// This is the metered-paywall dial. Set FREE_TECH_SAMPLE to 0 to turn the
-// whole thing into a hard paywall — nothing else needs to change.
+// Both dials default to 0: a signed-out or unpaid visitor sees NO question
+// text at all, only how many questions each company has. The counts are what
+// the public pages and the paywall card are built from, and they are computed
+// from the full entry server-side -- the withheld text is never serialised
+// into the response, so there is nothing to read out of the network tab.
+//
+// Raise either number in the environment to reopen a metered preview without
+// touching any other file.
 const SAMPLING = {
   // Technical + programming questions shown per company before the lock.
-  FREE_TECH_SAMPLE: parseInt(process.env.FREE_TECH_SAMPLE || '5', 10),
-  // HR questions are generic and high-volume; they are the SEO engine, so they
-  // stay fully free. Flip to a number to meter them too.
-  FREE_HR_SAMPLE: process.env.FREE_HR_SAMPLE ? parseInt(process.env.FREE_HR_SAMPLE, 10) : null,
+  FREE_TECH_SAMPLE: parseInt(process.env.FREE_TECH_SAMPLE || '0', 10),
+  // HR questions per company. Set to the string 'all' to make them fully free
+  // again (they used to be the SEO engine); any number meters them.
+  FREE_HR_SAMPLE:
+    process.env.FREE_HR_SAMPLE === 'all'
+      ? null
+      : parseInt(process.env.FREE_HR_SAMPLE || '0', 10),
 };
 
 module.exports = { PRODUCTS, SAMPLING };

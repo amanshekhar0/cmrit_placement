@@ -226,6 +226,15 @@ FREE_TECH_SAMPLE=5         # free questions per company; set 0 for a hard paywal
 FREE_HR_SAMPLE=            # blank = HR questions stay fully free (SEO surface)
 ```
 
+> **Deploying:** every variable in `server/.env` must also exist in the Vercel
+> project's Environment Variables (Production **and** Preview), then redeploy —
+> `server/.env` is gitignored and never ships. `JWT_SECRET` is the one that bites:
+> if it is missing, sign-in cannot mint a session; if its value ever changes,
+> every session token issued before the change stops verifying and users see
+> "Your session is no longer valid" until they sign in again. The server logs
+> `Auth rejected ... invalid signature` in that case (a genuine expiry logs
+> `TokenExpiredError` instead), so the Vercel function logs tell the two apart.
+
 ### Seed the Database
 ```bash
 cd server

@@ -8,16 +8,20 @@ const { SAMPLING } = require('../config/products');
 // network tab -- the same reasoning behind the server-side blur on note
 // previews in notesRoutes.js.
 //
-// The response keeps `lockedCount` so the UI can say "38 more questions"
-// without ever having received them.
+// With SAMPLING at its default of 0 nothing is shown to an unpaid caller, so
+// every response is counts-only. That is why `counts` and `totalAvailable`
+// are always present and always describe the FULL entry: they are the only
+// thing the public pages have left to render, and they carry no question text.
 function sampleTechnical(entry, hasAccess) {
   const doc = typeof entry.toObject === 'function' ? entry.toObject() : { ...entry };
   const tech = doc.technical_questions || [];
   const prog = doc.programming_questions || [];
   const total = tech.length + prog.length;
+  // Always the full breakdown, regardless of what is shown below.
+  const counts = { technical: tech.length, programming: prog.length, hr: 0, total };
 
   if (hasAccess) {
-    return { ...doc, locked: false, lockedCount: 0, totalAvailable: total };
+    return { ...doc, locked: false, lockedCount: 0, totalAvailable: total, counts };
   }
 
   const n = SAMPLING.FREE_TECH_SAMPLE;
@@ -33,18 +37,19 @@ function sampleTechnical(entry, hasAccess) {
     locked: total > shown,
     lockedCount: total - shown,
     totalAvailable: total,
+    counts,
   };
 }
 
 function sampleHr(entry, hasAccess) {
   const doc = typeof entry.toObject === 'function' ? entry.toObject() : { ...entry };
   const all = doc.hr_questions || [];
+  const counts = { technical: 0, programming: 0, hr: all.length, total: all.length };
 
-  // FREE_HR_SAMPLE is null by default: HR questions stay fully public because
-  // they are the highest-search-volume, lowest-exclusivity content we have,
-  // and they are what pulls organic traffic to the paid technical bank.
+  // FREE_HR_SAMPLE is null only when FREE_HR_SAMPLE=all is set in the
+  // environment, which reopens the HR bank as fully public.
   if (hasAccess || SAMPLING.FREE_HR_SAMPLE === null) {
-    return { ...doc, locked: false, lockedCount: 0, totalAvailable: all.length };
+    return { ...doc, locked: false, lockedCount: 0, totalAvailable: all.length, counts };
   }
 
   const shown = all.slice(0, SAMPLING.FREE_HR_SAMPLE);
@@ -54,6 +59,7 @@ function sampleHr(entry, hasAccess) {
     locked: all.length > shown.length,
     lockedCount: all.length - shown.length,
     totalAvailable: all.length,
+    counts,
   };
 }
 

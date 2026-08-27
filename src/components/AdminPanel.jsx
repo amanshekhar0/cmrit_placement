@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { authFetch } from "../utils/session";
 
 const API_URL = import.meta.env.DEV ? (import.meta.env.VITE_API_URL || "") : "";
 
@@ -23,10 +24,13 @@ export default function AdminPanel({ user }) {
   const [uploading, setUploading] = useState(false);
   const [notesMsg, setNotesMsg] = useState("");
 
-  // Grant management
+  // Access management (the ₹99 Placement Pass, granted by hand)
   const [grantEmail, setGrantEmail] = useState("");
+  const [grantDays, setGrantDays] = useState("");
+  const [grantNote, setGrantNote] = useState("");
   const [granting, setGranting] = useState(false);
   const [grantMsg, setGrantMsg] = useState("");
+  const [grantFilter, setGrantFilter] = useState("");
 
   const authHeaders = { Authorization: `Bearer ${user.token}` };
 
@@ -41,16 +45,18 @@ export default function AdminPanel({ user }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.token]);
 
+  // Every entitlement, paid or comped, from the subscription service. The old
+  // /api/notes/admin/grants list only ever showed legacy notes-only grants, so
+  // a hand-granted ₹99 pass was invisible here.
   const fetchGrants = useCallback(async () => {
     try {
-      const res = await fetch(`${API_URL}/api/notes/admin/grants`, { headers: authHeaders });
+      const res = await authFetch(`${API_URL}/api/subscription/admin/list`);
       const data = await res.json();
       if (data.success) setGrants(data.data);
     } catch (err) {
       console.error("Failed to load grants:", err);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user.token]);
+  }, []);
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -174,21 +180,29 @@ export default function AdminPanel({ user }) {
 
   const handleGrant = async (e) => {
     e.preventDefault();
-    if (!grantEmail.includes("@")) {
-      showGrantMsg("Enter a valid email.");
+    const email = grantEmail.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showGrantMsg("Enter a valid email address.");
       return;
     }
     setGranting(true);
     try {
-      const res = await fetch(`${API_URL}/api/notes/admin/grant`, {
+      const res = await authFetch(`${API_URL}/api/subscription/admin/grant`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", ...authHeaders },
-        body: JSON.stringify({ email: grantEmail.trim() }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          product: "bundle",
+          // Empty means "the normal 60-day term"; the server fills it in.
+          ...(grantDays ? { days: grantDays } : {}),
+          ...(grantNote.trim() ? { note: grantNote.trim() } : {}),
+        }),
       });
       const data = await res.json();
       if (data.success) {
         setGrantEmail("");
-        showGrantMsg("Access granted.");
+        setGrantNote("");
+        showGrantMsg(`Access granted to ${email}.`);
         fetchGrants();
       } else {
         showGrantMsg(data.message || "Failed to grant access.");
@@ -200,12 +214,13 @@ export default function AdminPanel({ user }) {
     }
   };
 
-  const handleRevoke = async (email) => {
-    if (!window.confirm(`Revoke access for ${email}?`)) return;
+  const handleRevoke = async (email, product) => {
+    if (!window.confirm(`Revoke ${product} access for ${email}?`)) return;
     try {
-      const res = await fetch(`${API_URL}/api/notes/admin/grant/${encodeURIComponent(email)}`, {
-        method: "DELETE",
-        headers: authHeaders,
+      const res = await authFetch(`${API_URL}/api/subscription/admin/revoke`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, product }),
       });
       const data = await res.json();
       if (data.success) {
@@ -218,6 +233,15 @@ export default function AdminPanel({ user }) {
       showGrantMsg(err.message);
     }
   };
+
+  // Client-side filter: the list is one row per entitlement and stays small
+  // enough that a server-side search would only add a round-trip.
+  const visibleGrants = grants.filter((g) =>
+    grantFilter.trim()
+      ? g.email.toLowerCase().includes(grantFilter.trim().toLowerCase())
+      : true
+  );
+  const activeGrants = grants.filter((g) => g.active).length;
 
   if (loading) {
     return (
@@ -325,54 +349,127 @@ export default function AdminPanel({ user }) {
         </div>
       </div>
 
-      {/* ───────────── Notes Access Grants ───────────── */}
+      {/* ───────────── Website Access ───────────── */}
       <div className="bg-white border border-zinc-200/80 rounded-xl shadow-sm overflow-hidden mb-8">
-        <div className="px-5 py-4 border-b border-zinc-100 flex items-center justify-between">
+        <div className="px-5 py-4 border-b border-zinc-100 flex flex-wrap items-center justify-between gap-2">
           <div>
-            <h3 className="font-semibold text-zinc-800 text-[14px]">Notes Access</h3>
-            <p className="text-[11px] text-zinc-400 mt-0.5">Manually grant access by email (works even before they sign in).</p>
+            <h3 className="font-semibold text-zinc-800 text-[14px]">
+              Website Access{" "}
+              <span className="ml-1 text-[11px] font-medium text-zinc-400 tabular-nums">
+                {activeGrants} active / {grants.length} total
+              </span>
+            </h3>
+            <p className="text-[11px] text-zinc-400 mt-0.5">
+              Give someone the full Placement Pass &mdash; every question, the notes
+              library, AI answers and mock interviews. Works even before they have
+              signed in; the access attaches the first time they log in with that
+              Google account.
+            </p>
           </div>
           {grantMsg && <span className="text-[11px] font-medium text-emerald-600">{grantMsg}</span>}
         </div>
 
-        <form onSubmit={handleGrant} className="p-5 flex flex-col sm:flex-row gap-3 border-b border-zinc-100">
+        <form onSubmit={handleGrant} className="p-5 space-y-3 border-b border-zinc-100">
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              value={grantEmail}
+              onChange={(e) => setGrantEmail(e.target.value)}
+              placeholder="student@cmrit.ac.in"
+              className="flex-1 px-3 py-2 rounded-lg text-[13px] bg-zinc-50 border border-zinc-200 text-zinc-800 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900/8 focus:border-zinc-300"
+            />
+            <select
+              value={grantDays}
+              onChange={(e) => setGrantDays(e.target.value)}
+              aria-label="Access duration"
+              className="px-3 py-2 rounded-lg text-[13px] bg-zinc-50 border border-zinc-200 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-900/8 focus:border-zinc-300"
+            >
+              <option value="">60 days (standard)</option>
+              <option value="7">7 days</option>
+              <option value="30">30 days</option>
+              <option value="180">180 days</option>
+              <option value="365">1 year</option>
+              <option value="lifetime">Lifetime</option>
+            </select>
+            <button
+              type="submit"
+              disabled={granting}
+              className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-60 text-white text-[13px] font-medium px-4 py-2 rounded-lg transition-all active:scale-[0.98]"
+            >
+              {granting ? "Granting…" : "Grant Access"}
+            </button>
+          </div>
           <input
-            type="email"
-            value={grantEmail}
-            onChange={(e) => setGrantEmail(e.target.value)}
-            placeholder="student@cmrit.ac.in"
-            className="flex-1 px-3 py-2 rounded-lg text-[13px] bg-zinc-50 border border-zinc-200 text-zinc-800 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900/8 focus:border-zinc-300"
+            type="text"
+            value={grantNote}
+            onChange={(e) => setGrantNote(e.target.value)}
+            placeholder="Reason (optional) - e.g. class rep, contest winner"
+            maxLength={200}
+            className="w-full px-3 py-2 rounded-lg text-[13px] bg-zinc-50 border border-zinc-200 text-zinc-800 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900/8 focus:border-zinc-300"
           />
-          <button
-            type="submit"
-            disabled={granting}
-            className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-60 text-white text-[13px] font-medium px-4 py-2 rounded-lg transition-all active:scale-[0.98]"
-          >
-            {granting ? "Granting…" : "Grant Access"}
-          </button>
+          <p className="text-[11px] text-zinc-400">
+            Granting again on an account that still has time left{" "}
+            <strong className="font-medium text-zinc-500">adds</strong> the new term on
+            top of the days remaining.
+          </p>
         </form>
+
+        <div className="px-5 py-3 border-b border-zinc-100">
+          <input
+            type="search"
+            value={grantFilter}
+            onChange={(e) => setGrantFilter(e.target.value)}
+            placeholder="Filter by email…"
+            aria-label="Filter access list by email"
+            className="w-full sm:max-w-xs px-3 py-1.5 rounded-lg text-[12px] bg-zinc-50 border border-zinc-200 text-zinc-800 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900/8"
+          />
+        </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[13px]">
             <thead>
               <tr className="bg-zinc-50/50 text-zinc-500 border-b border-zinc-100">
                 <th className="px-5 py-3 font-medium">Email</th>
+                <th className="px-5 py-3 font-medium">Product</th>
+                <th className="px-5 py-3 font-medium">Status</th>
                 <th className="px-5 py-3 font-medium">Via</th>
                 <th className="px-5 py-3 font-medium">Access Token</th>
-                <th className="px-5 py-3 font-medium">Granted</th>
                 <th className="px-5 py-3 font-medium text-right">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-100">
-              {grants.map((g) => (
+              {visibleGrants.map((g) => (
                 <tr key={g._id} className="hover:bg-zinc-50/50 transition-colors">
-                  <td className="px-5 py-3 text-zinc-900 font-medium">{g.email}</td>
+                  <td className="px-5 py-3 text-zinc-900 font-medium">
+                    {g.email}
+                    {g.note && (
+                      <span className="block text-[11px] font-normal text-zinc-400">{g.note}</span>
+                    )}
+                  </td>
+                  <td className="px-5 py-3 text-zinc-500">{g.product}</td>
                   <td className="px-5 py-3">
-                    <span className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${
- g.grantedVia ==="payment"
- ?"bg-emerald-50 text-emerald-700"
- :"bg-zinc-100 text-zinc-600"
- }`}>
+                    {!g.active ? (
+                      <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-red-50 text-red-600">
+                        Expired
+                      </span>
+                    ) : g.daysLeft === null ? (
+                      <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-violet-50 text-violet-700">
+                        Lifetime
+                      </span>
+                    ) : (
+                      <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 tabular-nums">
+                        {g.daysLeft} day{g.daysLeft === 1 ? "" : "s"} left
+                      </span>
+                    )}
+                  </td>
+                  <td className="px-5 py-3">
+                    <span
+                      className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${
+                        g.grantedVia === "payment"
+                          ? "bg-emerald-50 text-emerald-700"
+                          : "bg-zinc-100 text-zinc-600"
+                      }`}
+                    >
                       {g.grantedVia}
                     </span>
                   </td>
@@ -381,23 +478,24 @@ export default function AdminPanel({ user }) {
                       {g.token || "—"}
                     </code>
                   </td>
-                  <td className="px-5 py-3 text-zinc-500">
-                    {g.createdAt ? new Date(g.createdAt).toLocaleDateString() : "—"}
-                  </td>
                   <td className="px-5 py-3 text-right">
-                    <button
-                      onClick={() => handleRevoke(g.email)}
-                      className="text-[12px] font-medium text-red-500 hover:text-red-700"
-                    >
-                      Revoke
-                    </button>
+                    {g.active ? (
+                      <button
+                        onClick={() => handleRevoke(g.email, g.product)}
+                        className="text-[12px] font-medium text-red-500 hover:text-red-700"
+                      >
+                        Revoke
+                      </button>
+                    ) : (
+                      <span className="text-[12px] text-zinc-300">—</span>
+                    )}
                   </td>
                 </tr>
               ))}
-              {grants.length === 0 && (
+              {visibleGrants.length === 0 && (
                 <tr>
-                  <td colSpan="5" className="px-5 py-4 text-center text-zinc-500">
-                    No one has access yet.
+                  <td colSpan="6" className="px-5 py-4 text-center text-zinc-500">
+                    {grants.length ? "No match for that email." : "No one has access yet."}
                   </td>
                 </tr>
               )}

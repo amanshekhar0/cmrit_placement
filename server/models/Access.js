@@ -35,6 +35,13 @@ const accessSchema = new mongoose.Schema({
   paymentId: String,  // razorpay_payment_id when granted via payment
   orderId: String,
   grantedBy: String,  // admin email when granted manually
+  // Free-text reason for a manual grant ("class rep", "won the quiz"), so a
+  // list of comped accounts is auditable months later.
+  note: {
+    type: String,
+    trim: true,
+    maxlength: 200,
+  },
   token: String,      // human-readable access token, shown to user + admin
   // Number of times this entitlement has been paid for (first buy + renewals).
   purchaseCount: {

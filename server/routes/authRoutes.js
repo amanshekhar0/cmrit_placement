@@ -34,7 +34,23 @@ router.post('/google', async (req, res) => {
       user = await User.create({ email: profile.email, name: profile.name, picture: profile.picture });
     }
 
-    const token = issueSessionToken(profile);
+    let token;
+    try {
+      token = issueSessionToken(profile);
+    } catch (e) {
+      // Never hand back a success without a token: the client would cache a
+      // 'signed in' user that fails every protected call with a 401.
+      if (e.code === 'AUTH_NOT_CONFIGURED') {
+        console.error('Sign-in failed:', e.message);
+        return res.status(503).json({
+          success: false,
+          code: 'AUTH_NOT_CONFIGURED',
+          message: 'Sign-in is temporarily unavailable. Please try again shortly.',
+        });
+      }
+      throw e;
+    }
+
     res.json({
       success: true,
       token,

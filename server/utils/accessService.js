@@ -24,20 +24,28 @@ function computeExpiry(existing, durationDays) {
 // Grant (or renew) a product for an email. Idempotent per (email, product):
 // both the in-page verify and the Razorpay webhook may call this for the same
 // payment, so a repeat call with the SAME paymentId must not extend twice.
-async function grantAccess(email, product, fields = {}) {
+//
+// `options.durationDays` overrides the product's own term for THIS grant, so
+// an admin can hand out a 7-day trial or a permanent staff pass (null) without
+// inventing a new product. Payments never pass it, so a purchase always gets
+// exactly the term that was advertised and paid for.
+async function grantAccess(email, product, fields = {}, options = {}) {
   const lower = String(email).toLowerCase();
   const spec = PRODUCTS[product];
   if (!spec) throw new Error(`Unknown product: ${product}`);
 
   const existing = await Access.findOne({ email: lower, product });
 
-  // Same payment already applied — return as-is rather than double-extending.
+  // Same payment already applied - return as-is rather than double-extending.
   if (existing && fields.paymentId && existing.paymentId === fields.paymentId) {
     return existing;
   }
 
   const isRenewal = !!existing && fields.grantedVia === 'payment';
-  const expiresAt = computeExpiry(existing, spec.durationDays);
+  const durationDays = Object.prototype.hasOwnProperty.call(options, 'durationDays')
+    ? options.durationDays
+    : spec.durationDays;
+  const expiresAt = computeExpiry(existing, durationDays);
 
   if (!existing) {
     return Access.create({

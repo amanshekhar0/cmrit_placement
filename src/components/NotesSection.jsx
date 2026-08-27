@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import * as pdfjsLib from "pdfjs-dist";
+import { authFetch } from "../utils/session";
 import pdfWorker from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
@@ -38,9 +39,7 @@ export default function NotesSection({ user }) {
 
   const fetchNotes = useCallback(async () => {
     try {
-      const res = await fetch(`${API_URL}/api/notes`, {
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
+      const res = await authFetch(`${API_URL}/api/notes`);
       const data = await res.json();
       if (data.success) {
         setNotes(data.data);
@@ -97,12 +96,9 @@ export default function NotesSection({ user }) {
       const ok = await loadRazorpayScript();
       if (!ok) throw new Error("Failed to load the payment gateway. Check your connection.");
 
-      const orderRes = await fetch(`${API_URL}/api/notes/create-order`, {
+      const orderRes = await authFetch(`${API_URL}/api/notes/create-order`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
+        headers: { "Content-Type": "application/json" },
       });
       const orderData = await orderRes.json();
       if (!orderData.success) throw new Error(orderData.message || "Could not start the payment.");
@@ -131,12 +127,9 @@ export default function NotesSection({ user }) {
         },
         handler: async (response) => {
           try {
-            const verifyRes = await fetch(`${API_URL}/api/notes/verify-payment`, {
+            const verifyRes = await authFetch(`${API_URL}/api/notes/verify-payment`, {
               method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${user.token}`,
-              },
+              headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,
