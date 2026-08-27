@@ -30,7 +30,7 @@ async function maybeSendPurchaseEmail(email, name, info) {
   const claim = await Access.findOneAndUpdate(
     { email: lower, product: 'bundle', welcomeEmailSent: { $ne: true } },
     { $set: { welcomeEmailSent: true } },
-    { new: true }
+    { returnDocument: 'after' }
   );
   if (!claim) return; // already sent for this term, or no entitlement yet
 
@@ -93,7 +93,7 @@ router.post('/create-order', verifyToken, async (req, res) => {
     await Payment.findOneAndUpdate(
       { orderId: order.id },
       { email, orderId: order.id, amount: AMOUNT_PAISE, currency: 'INR', status: 'created' },
-      { upsert: true, new: true }
+      { upsert: true, returnDocument: 'after' }
     );
 
     res.json({
@@ -229,18 +229,60 @@ router.post('/webhook', async (req, res) => {
 // --------------------------------------------------------------
 // Admin: grant / revoke / list
 // --------------------------------------------------------------
+// Grant a pass by email.
+//
+// The whole point of granting by EMAIL rather than by user id is that the
+// recipient does not have to exist yet: the entitlement is matched the moment
+// they first sign in with that Google account (see accessService.getEntitlements).
+//
+// `days` overrides the product term for this grant only:
+//   omitted        -> the product's normal term (60 days for the bundle)
+//   a number 1-3650-> that many days, added on top of any time they have left
+//   'lifetime'     -> never expires
 router.post('/admin/grant', adminLimiter, verifyAdmin, async (req, res) => {
   try {
-    const { email, product = 'bundle' } = req.body;
-    if (!email) return res.status(400).json({ success: false, message: 'email is required' });
-    if (!PRODUCTS[product]) return res.status(400).json({ success: false, message: 'Unknown product' });
+    const { email, product = 'bundle', days, note } = req.body;
 
-    const access = await grantAccess(email, product, {
-      grantedVia: 'manual',
-      grantedBy: req.user.email,
-    });
+    const lower = String(email || '').trim().toLowerCase();
+    // A typo here silently creates an entitlement nobody can ever claim, so
+    // reject anything that is not shaped like an address before writing it.
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lower)) {
+      return res.status(400).json({ success: false, message: 'Enter a valid email address.' });
+    }
+    if (!PRODUCTS[product]) {
+      return res.status(400).json({ success: false, message: 'Unknown product' });
+    }
+
+    const options = {};
+    if (days !== undefined && days !== null && days !== '') {
+      if (days === 'lifetime') {
+        options.durationDays = null;
+      } else {
+        const n = parseInt(days, 10);
+        if (!Number.isFinite(n) || n < 1 || n > 3650) {
+          return res.status(400).json({
+            success: false,
+            message: 'days must be between 1 and 3650, or "lifetime".',
+          });
+        }
+        options.durationDays = n;
+      }
+    }
+
+    const access = await grantAccess(
+      lower,
+      product,
+      {
+        grantedVia: 'manual',
+        grantedBy: req.user.email,
+        ...(note ? { note: String(note).slice(0, 200) } : {}),
+      },
+      options
+    );
+
     res.json({ success: true, data: access });
   } catch (error) {
+    console.error('admin/grant error:', error);
     res.status(500).json({ success: false, message: error.message });
   }
 });
@@ -252,9 +294,9 @@ router.post('/admin/revoke', adminLimiter, verifyAdmin, async (req, res) => {
 
     // Expire rather than delete, so the purchase history survives a revoke.
     const access = await Access.findOneAndUpdate(
-      { email: String(email).toLowerCase(), product },
+      { email: String(email).trim().toLowerCase(), product },
       { $set: { expiresAt: new Date() } },
-      { new: true }
+      { returnDocument: 'after' }
     );
     if (!access) return res.status(404).json({ success: false, message: 'No such entitlement' });
     res.json({ success: true, data: access });
@@ -263,15 +305,27 @@ router.post('/admin/revoke', adminLimiter, verifyAdmin, async (req, res) => {
   }
 });
 
+// Every entitlement, newest first, with the active/expired split precomputed
+// so the admin panel does not have to reimplement the expiry rule.
 router.get('/admin/list', adminLimiter, verifyAdmin, async (req, res) => {
   try {
-    const all = await Access.find().sort({ createdAt: -1 });
+    const all = await Access.find().sort({ createdAt: -1 }).lean();
     const now = new Date();
+
+    const data = all.map((a) => ({
+      ...a,
+      active: a.expiresAt === null || (a.expiresAt && a.expiresAt > now),
+      daysLeft:
+        a.expiresAt === null
+          ? null
+          : Math.max(0, Math.ceil((new Date(a.expiresAt) - now) / (24 * 60 * 60 * 1000))),
+    }));
+
     res.json({
       success: true,
-      count: all.length,
-      active: all.filter((a) => a.expiresAt === null || a.expiresAt > now).length,
-      data: all,
+      count: data.length,
+      active: data.filter((a) => a.active).length,
+      data,
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

@@ -9,7 +9,7 @@
 - Questions: 2,818 across 172 companies
 - Placement seasons covered: 2022-23 to 2026-27
 - Rounds covered: Technical, Programming (coding), and HR
-- Free tier: a preview of each company's technical questions, plus the complete HR bank
+- Free tier: the company list, placement seasons and the number of technical, coding and HR questions each company has. Question text itself is behind the pass.
 - Paid tier: the full technical and coding bank, notes, AI answers and mock interviews
 - Sign-in is restricted to @cmrit.ac.in accounts; the question pages are public
 

@@ -73,7 +73,7 @@ async function maybeSendPurchaseEmail(email, name, info) {
   const claim = await Access.findOneAndUpdate(
     { email: lower, product: 'notes', welcomeEmailSent: { $ne: true } },
     { $set: { welcomeEmailSent: true } },
-    { new: true }
+    { returnDocument: 'after' }
   );
   if (!claim) return; // already sent, or no access record
 
@@ -248,7 +248,7 @@ router.post('/create-order', verifyToken, async (req, res) => {
     await Payment.findOneAndUpdate(
       { orderId: order.id },
       { email, orderId: order.id, amount: AMOUNT_PAISE, currency: 'INR', status: 'created' },
-      { upsert: true, new: true, setDefaultsOnInsert: true }
+      { upsert: true, returnDocument: 'after', setDefaultsOnInsert: true }
     );
 
     res.json({

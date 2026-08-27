@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { authFetch, SESSION_EXPIRED_MESSAGE } from "../utils/session";
 
 const API_URL = import.meta.env.DEV ? (import.meta.env.VITE_API_URL || "") : "";
 
@@ -22,8 +23,15 @@ function loadRazorpayScript() {
  * questions from the payload -- this component never receives the text it is
  * claiming to hide.
  */
-export function LockedQuestions({ lockedCount, company, onUpgrade }) {
+export function LockedQuestions({ lockedCount, shownCount = 0, company, onUpgrade }) {
   if (!lockedCount) return null;
+
+  // "N more questions" only makes sense next to questions the visitor can
+  // already read. With the free preview at zero there are none, so the card
+  // has to state the size of the bank rather than an increment on it.
+  const heading = shownCount > 0
+    ? `${lockedCount} more question${lockedCount === 1 ? "" : "s"}`
+    : `${lockedCount} question${lockedCount === 1 ? "" : "s"}`;
 
   return (
     <div className="relative mt-4 rounded-2xl border border-zinc-200/80 bg-white p-6 text-center shadow-sm">
@@ -33,8 +41,8 @@ export function LockedQuestions({ lockedCount, company, onUpgrade }) {
         </svg>
       </div>
 
-      <h3 className="text-[15px] font-semibold tracking-[-0.01em] text-zinc-900">
-        {lockedCount} more question{lockedCount === 1 ? "" : "s"}
+      <h3 className="text-[15px] font-semibold tracking-[-0.01em] text-zinc-900 tabular-nums">
+        {heading}
         {company ? ` from ${company}` : ""}
       </h3>
       <p className="mx-auto mt-1.5 max-w-[320px] text-[13px] leading-relaxed text-zinc-500">
@@ -83,7 +91,14 @@ export function ExpiryBanner({ subscription, onRenew }) {
  * The signature is verified server-side in /api/subscription/verify-payment;
  * a success callback here is never treated as proof of payment on its own.
  */
-export default function UpgradeModal({ open, onClose, user, subscription, onSuccess }) {
+export default function UpgradeModal({
+  open,
+  onClose,
+  user,
+  subscription,
+  onSuccess,
+  onSessionExpired,
+}) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
@@ -94,17 +109,23 @@ export default function UpgradeModal({ open, onClose, user, subscription, onSucc
   const isRenewal = !!(subscription && subscription.hasAccess);
 
   const handlePay = async () => {
+    // A cached user with no session token cannot buy anything: the order call
+    // would go out as `Bearer undefined` and come back 401. Ask for a fresh
+    // sign-in instead of opening a checkout that is going to fail.
+    if (!user || !user.token) {
+      setError(SESSION_EXPIRED_MESSAGE);
+      if (onSessionExpired) onSessionExpired();
+      return;
+    }
+
     setBusy(true);
     setError("");
     try {
       await loadRazorpayScript();
 
-      const orderRes = await fetch(`${API_URL}/api/subscription/create-order`, {
+      const orderRes = await authFetch(`${API_URL}/api/subscription/create-order`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
+        headers: { "Content-Type": "application/json" },
       });
       const order = await orderRes.json();
       if (!orderRes.ok || !order.success) {
@@ -122,12 +143,9 @@ export default function UpgradeModal({ open, onClose, user, subscription, onSucc
         theme: { color: "#18181b" },
         handler: async (response) => {
           try {
-            const verifyRes = await fetch(`${API_URL}/api/subscription/verify-payment`, {
+            const verifyRes = await authFetch(`${API_URL}/api/subscription/verify-payment`, {
               method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${user.token}`,
-              },
+              headers: { "Content-Type": "application/json" },
               body: JSON.stringify(response),
             });
             const result = await verifyRes.json();
@@ -159,7 +177,12 @@ export default function UpgradeModal({ open, onClose, user, subscription, onSucc
 
       rzp.open();
     } catch (err) {
-      setError(err.message);
+      if (err && err.sessionExpired) {
+        setError(SESSION_EXPIRED_MESSAGE);
+        if (onSessionExpired) onSessionExpired();
+      } else {
+        setError(err.message);
+      }
       setBusy(false);
     }
   };

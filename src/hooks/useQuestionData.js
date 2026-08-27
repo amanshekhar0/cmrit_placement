@@ -96,17 +96,31 @@ export function useQuestionData(token) {
     const grouped = groupCompanies(names);
 
     // Attach per-company counts and the years each one recruited in.
+    //
+    // `questionCount` is what the caller can actually READ; `totalCount` is how
+    // many exist. With the free preview at zero those differ for every unpaid
+    // visitor, and it is `totalCount` that the public pages advertise -- the
+    // server sends it (as `counts`/`totalAvailable`) without sending the text.
     for (const entry of grouped.values()) {
       entry.years = new Set();
       entry.questionCount = 0;
       entry.lockedCount = 0;
+      entry.counts = { technical: 0, programming: 0, hr: 0, total: 0 };
     }
+    const addCounts = (g, c) => {
+      if (!c) return;
+      g.counts.technical += c.technical || 0;
+      g.counts.programming += c.programming || 0;
+      g.counts.hr += c.hr || 0;
+      g.counts.total += c.total || 0;
+    };
     for (const e of state.tech) {
       const g = grouped.get(slugify(e.company || ""));
       if (!g) continue;
       if (e.year) g.years.add(e.year);
       g.questionCount += (e.technical_questions || []).length + (e.programming_questions || []).length;
       g.lockedCount += e.lockedCount || 0;
+      addCounts(g, e.counts);
     }
     for (const e of state.hr) {
       const g = grouped.get(slugify(e.company || ""));
@@ -114,19 +128,26 @@ export function useQuestionData(token) {
       (e.years || []).forEach((y) => g.years.add(y));
       g.questionCount += (e.hr_questions || []).length;
       g.lockedCount += e.lockedCount || 0;
+      addCounts(g, e.counts);
     }
 
     return [...grouped.values()]
-      .map((e) => ({ ...e, years: [...e.years].sort() }))
+      .map((e) => ({
+        ...e,
+        years: [...e.years].sort(),
+        // Falls back to shown+locked for any payload that predates `counts`.
+        totalCount: e.counts.total || e.questionCount + e.lockedCount,
+      }))
       .sort((a, b) => a.name.localeCompare(b.name));
   }, [state.tech, state.hr]);
 
   const totals = useMemo(() => {
     const shown = companies.reduce((n, c) => n + c.questionCount, 0);
     const locked = companies.reduce((n, c) => n + c.lockedCount, 0);
+    const total = companies.reduce((n, c) => n + c.totalCount, 0);
     const years = new Set();
     companies.forEach((c) => c.years.forEach((y) => years.add(y)));
-    return { companies: companies.length, shown, locked, total: shown + locked, years: years.size };
+    return { companies: companies.length, shown, locked, total, years: years.size };
   }, [companies]);
 
   return { ...state, loading, companies, totals };

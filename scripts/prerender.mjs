@@ -87,10 +87,16 @@ function readJson(rel) {
 const techRaw = readJson('server/data/interview_questions_combined.json');
 const hrRaw = readJson('server/data/hr_questions_company_wise.json');
 
-// The free-tier sample size must match the server's, or prerendered pages would
-// show a different amount of content than the live API returns for the same
-// anonymous visitor -- which is exactly the mismatch Google penalises.
-const FREE_TECH_SAMPLE = parseInt(process.env.FREE_TECH_SAMPLE || '5', 10);
+// The free-tier sample sizes must match the server's, or prerendered pages
+// would show a different amount of content than the live API returns for the
+// same anonymous visitor -- which is exactly the mismatch Google penalises.
+// Both default to 0 here for the same reason they do in server/config/products.js:
+// an anonymous visitor is told how many questions exist, never what they are.
+const FREE_TECH_SAMPLE = parseInt(process.env.FREE_TECH_SAMPLE || '0', 10);
+const FREE_HR_SAMPLE =
+  process.env.FREE_HR_SAMPLE === 'all'
+    ? null
+    : parseInt(process.env.FREE_HR_SAMPLE || '0', 10);
 
 function sampleTech(e) {
   const tech = e.technical_questions || [];
@@ -106,16 +112,26 @@ function sampleTech(e) {
     locked: total > shown,
     lockedCount: total - shown,
     totalAvailable: total,
+    counts: { technical: tech.length, programming: prog.length, hr: 0, total },
   };
 }
 
-// HR questions are fully free (FREE_HR_SAMPLE is null server-side).
-const sampleHrEntry = (e) => ({
-  ...e,
-  locked: false,
-  lockedCount: 0,
-  totalAvailable: (e.hr_questions || []).length,
-});
+function sampleHrEntry(e) {
+  const all = e.hr_questions || [];
+  const counts = { technical: 0, programming: 0, hr: all.length, total: all.length };
+  if (FREE_HR_SAMPLE === null) {
+    return { ...e, locked: false, lockedCount: 0, totalAvailable: all.length, counts };
+  }
+  const shown = all.slice(0, FREE_HR_SAMPLE);
+  return {
+    ...e,
+    hr_questions: shown,
+    locked: all.length > shown.length,
+    lockedCount: all.length - shown.length,
+    totalAvailable: all.length,
+    counts,
+  };
+}
 
 const tech = techRaw.map(sampleTech);
 const hr = hrRaw.map(sampleHrEntry);
@@ -174,9 +190,27 @@ for (const { slug } of grouped.values()) {
  * "/" and "/companies" genuinely need every company, because both derive
  * per-company counts for the grid. The legal pages need nothing at all.
  */
+// Answers are premium content, and an answer's KEY is the question itself --
+// so shipping the answer map ships both. Scope it to the questions the page
+// actually renders, for every route. "/" and "/companies" render no question
+// text at all, so they now embed no answers; before this they embedded the
+// entire cache, which handed every answered question away in view-source.
+function answersFor(scopedTech, scopedHr) {
+  const visible = new Set([
+    ...scopedTech.flatMap((e) => e.technical_questions || []),
+    ...scopedTech.flatMap((e) => e.programming_questions || []),
+    ...scopedHr.flatMap((e) => e.hr_questions || []),
+  ]);
+  const out = {};
+  for (const [q, v] of Object.entries(answers)) {
+    if (visible.has(q)) out[q] = v;
+  }
+  return out;
+}
+
 function seedFor(route) {
   if (route === '/' || route === '/companies') {
-    return { tech, hr, answers };
+    return { tech, hr, answers: answersFor(tech, hr) };
   }
 
   const m = route.match(/^\/company\/([^/]+)/);
@@ -186,18 +220,7 @@ function seedFor(route) {
   const scopedTech = tech.filter((e) => slugify((e.company || '').trim()) === slug);
   const scopedHr = hr.filter((e) => slugify((e.company || '').trim()) === slug);
 
-  // Only the answers for questions this page can show.
-  const visible = new Set([
-    ...scopedTech.flatMap((e) => e.technical_questions || []),
-    ...scopedTech.flatMap((e) => e.programming_questions || []),
-    ...scopedHr.flatMap((e) => e.hr_questions || []),
-  ]);
-  const scopedAnswers = {};
-  for (const [q, v] of Object.entries(answers)) {
-    if (visible.has(q)) scopedAnswers[q] = v;
-  }
-
-  return { tech: scopedTech, hr: scopedHr, answers: scopedAnswers };
+  return { tech: scopedTech, hr: scopedHr, answers: answersFor(scopedTech, scopedHr) };
 }
 
 // Meta names/properties contain characters that are regex-significant (":" in

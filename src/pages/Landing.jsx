@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { takeAuthNotice } from "../utils/session";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import PublicShell from "./PublicShell";
@@ -16,7 +17,7 @@ const FAQ = [
   },
   {
     q: "Is it free?",
-    a: "A preview of every company's technical questions and the complete HR question bank are free, with no payment details required. The full technical and coding bank, the notes library, AI answers and mock interviews are part of the ₹99 pass, which lasts 60 days.",
+    a: "Browsing is free: you can see every company, every placement season and exactly how many technical, coding and HR questions each one has, with no payment details required. Reading the questions themselves, along with the notes library, AI answers and mock interviews, is part of the ₹99 pass, which lasts 60 days.",
   },
   {
     q: "What kind of questions are asked in campus placements?",
@@ -70,16 +71,18 @@ function CompanyPill({ company }) {
 export default function Landing() {
   const { companies, totals, loading } = useQuestionData(null);
 
+  // If the dashboard just dropped a session the server rejected, say so here --
+  // this page is where that student lands, and without a word they would only
+  // see themselves mysteriously signed out.
+  const [authNotice] = useState(() => takeAuthNotice());
+
   // The most-documented companies lead, so the highest-value pages get the
   // strongest internal links. This grid is also how a crawler discovers every
   // company page in the first place.
   const featured = useMemo(
     () =>
       [...companies]
-        .sort(
-          (a, b) =>
-            b.questionCount + b.lockedCount - (a.questionCount + a.lockedCount)
-        )
+        .sort((a, b) => b.totalCount - a.totalCount)
         .slice(0, 36),
     [companies]
   );
@@ -105,6 +108,17 @@ export default function Landing() {
         path="/"
         jsonLd={jsonLd}
       />
+
+      {authNotice && (
+        <div className="border-b border-amber-200/70 bg-amber-50/70">
+          <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-2 px-6 py-3 text-center text-[13px] text-amber-900">
+            <span>{authNotice}</span>
+            <Link to="/login" className="font-medium underline underline-offset-2">
+              Sign in again
+            </Link>
+          </div>
+        </div>
+      )}
 
       {/* Hero */}
       <section className="border-b border-zinc-200/60 bg-white">

@@ -136,7 +136,39 @@ export default function CompanyPage() {
       t.reduce((n, e) => n + (e.lockedCount || 0), 0) +
       hrScoped.reduce((n, e) => n + (e.lockedCount || 0), 0);
 
-    return { technical, programming, hrQs, locked, years: [...new Set(entries.techEntries.map((e) => e.year).filter(Boolean))].sort() };
+    // How many questions EXIST in this selection, by round. The server sends
+    // these counts for every entry whether or not it sends the question text,
+    // which is what lets a signed-out visitor still be told the size of the
+    // bank without any of it being delivered to their browser.
+    const counts = { technical: 0, programming: 0, hr: 0, total: 0 };
+    for (const e of [...t, ...hrScoped]) {
+      const c = e.counts;
+      if (c) {
+        counts.technical += c.technical || 0;
+        counts.programming += c.programming || 0;
+        counts.hr += c.hr || 0;
+        counts.total += c.total || 0;
+      } else {
+        // Older payloads without `counts`: fall back to shown + locked.
+        counts.technical += (e.technical_questions || []).length;
+        counts.programming += (e.programming_questions || []).length;
+        counts.hr += (e.hr_questions || []).length;
+        counts.total +=
+          (e.technical_questions || []).length +
+          (e.programming_questions || []).length +
+          (e.hr_questions || []).length +
+          (e.lockedCount || 0);
+      }
+    }
+
+    return {
+      technical,
+      programming,
+      hrQs,
+      locked,
+      counts,
+      years: [...new Set(entries.techEntries.map((e) => e.year).filter(Boolean))].sort(),
+    };
   }, [entries, year]);
 
   if (loading) {
@@ -177,7 +209,9 @@ export default function CompanyPage() {
   }
 
   const shownTotal = scoped.technical.length + scoped.programming.length + scoped.hrQs.length;
-  const grandTotal = shownTotal + scoped.locked;
+  // Prefer the server's own count over shown+locked: it is the one number that
+  // is correct whether the visitor can read none, some or all of the bank.
+  const grandTotal = scoped.counts.total || shownTotal + scoped.locked;
   const domain = COMPANY_DOMAINS[company.name] || company.variants.map((v) => COMPANY_DOMAINS[v]).find(Boolean);
   const path = year ? `/company/${slug}/${year}` : `/company/${slug}`;
 
@@ -214,11 +248,28 @@ export default function CompanyPage() {
     ],
   };
 
+  // Only questions with a real cached answer are marked up. A FAQPage whose
+  // acceptedAnswer just restates where the question came from adds no value
+  // and Google discounts it, so an unanswered question is better left out.
+  const faqEntities = visible
+    .filter(({ q }) => answers[q]?.answer)
+    .slice(0, 50)
+    .map(({ q }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: answers[q].answer },
+    }));
+
+  // A FAQPage with an empty mainEntity is invalid structured data, and with the
+  // free preview at zero that is the normal case for a signed-out visitor. So
+  // the page only claims to be an FAQ when it is actually showing answered
+  // questions; otherwise it declares itself as what it is -- a gated page.
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
+    "@type": faqEntities.length ? "FAQPage" : "WebPage",
     name: title,
     url: `${SITE}${path}`,
+    description,
     // Declares that part of this page is gated. This is Google's supported
     // mechanism for paywalled content; without it, showing crawlers more than
     // users would be cloaking.
@@ -226,17 +277,7 @@ export default function CompanyPage() {
     hasPart: scoped.locked
       ? { "@type": "WebPageElement", isAccessibleForFree: false, cssSelector: ".paywalled-questions" }
       : undefined,
-    // Only questions with a real cached answer are marked up. A FAQPage whose
-    // acceptedAnswer just restates where the question came from adds no value
-    // and Google discounts it, so an unanswered question is better left out.
-    mainEntity: visible
-      .filter(({ q }) => answers[q]?.answer)
-      .slice(0, 50)
-      .map(({ q }) => ({
-        "@type": "Question",
-        name: q,
-        acceptedAnswer: { "@type": "Answer", text: answers[q].answer },
-      })),
+    ...(faqEntities.length ? { mainEntity: faqEntities } : {}),
   };
 
   return (
@@ -306,7 +347,8 @@ export default function CompanyPage() {
         <QuestionBlock heading="Programming" items={scoped.programming} tone="bg-violet-50 text-violet-600" answers={answers} />
         <QuestionBlock heading="HR" items={scoped.hrQs} tone="bg-emerald-50 text-emerald-600" answers={answers} />
 
-        {shownTotal === 0 && (
+        {/* Nothing at all on record -- distinct from "locked", which has content. */}
+        {grandTotal === 0 && (
           <p className="rounded-xl border border-zinc-200/80 bg-white p-6 text-center text-[14px] text-zinc-500">
             No questions recorded for this selection yet.
           </p>
@@ -320,11 +362,36 @@ export default function CompanyPage() {
               </svg>
             </div>
             <h2 className="text-[15px] font-semibold tracking-[-0.01em] text-zinc-900">
-              {scoped.locked} more question{scoped.locked === 1 ? "" : "s"} from {company.name}
+              {shownTotal === 0
+                ? `${scoped.locked} question${scoped.locked === 1 ? "" : "s"} from ${company.name}`
+                : `${scoped.locked} more question${scoped.locked === 1 ? "" : "s"} from ${company.name}`}
             </h2>
-            <p className="mx-auto mt-1.5 max-w-[340px] text-[13px] leading-relaxed text-zinc-500">
-              Unlock the full bank across all {companies.length} companies, plus notes,
-              AI answers and mock interviews.
+
+            {/* The breakdown is the whole free tier now: it tells a visitor how
+                much is behind the pass without handing over any of it. */}
+            <div className="mx-auto mt-4 flex max-w-[340px] flex-wrap items-center justify-center gap-2">
+              {[
+                { label: "Technical", n: scoped.counts.technical, tone: "bg-blue-50 text-blue-700" },
+                { label: "Programming", n: scoped.counts.programming, tone: "bg-violet-50 text-violet-700" },
+                { label: "HR", n: scoped.counts.hr, tone: "bg-emerald-50 text-emerald-700" },
+              ]
+                .filter((r) => r.n > 0)
+                .map((r) => (
+                  <span
+                    key={r.label}
+                    className={`rounded-lg px-2.5 py-1 text-[12px] font-medium tabular-nums ${r.tone}`}
+                  >
+                    {r.n} {r.label}
+                  </span>
+                ))}
+            </div>
+
+            {/* Deliberately no company count here: a prerendered company page
+                is seeded with only its OWN company, so `companies.length` is 1
+                in the static HTML a crawler reads. */}
+            <p className="mx-auto mt-4 max-w-[340px] text-[13px] leading-relaxed text-zinc-500">
+              Unlock the full bank across every company and placement season, plus
+              notes, AI answers and mock interviews.
             </p>
             <Link
               to="/login"

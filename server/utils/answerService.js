@@ -100,7 +100,7 @@ async function ensureAnswer(question, type = 'Technical', { force = false } = {}
   const saved = await Answer.findOneAndUpdate(
     { hash },
     update,
-    { upsert: true, new: true, setDefaultsOnInsert: true }
+    { upsert: true, returnDocument: 'after', setDefaultsOnInsert: true }
   );
 
   return { answer: saved, created: !existing };

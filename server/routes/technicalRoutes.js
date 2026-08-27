@@ -97,7 +97,7 @@ router.put('/:id', adminLimiter, verifyAdmin, async (req, res) => {
     const entry = await TechnicalQuestion.findOneAndUpdate(
       { id: req.params.id },
       req.body,
-      { new: true, runValidators: true }
+      { returnDocument: 'after', runValidators: true }
     );
     if (!entry) {
       return res.status(404).json({ success: false, message: 'Entry not found' });

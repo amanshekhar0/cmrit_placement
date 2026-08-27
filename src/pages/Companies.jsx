@@ -33,7 +33,7 @@ function CompanyCard({ company }) {
           {company.name}
         </p>
         <p className="mt-0.5 text-[11px] tabular-nums text-zinc-400">
-          {company.questionCount + company.lockedCount} questions
+          {company.totalCount} questions
           {company.years.length ? ` · ${company.years.length} season${company.years.length === 1 ? "" : "s"}` : ""}
         </p>
       </div>

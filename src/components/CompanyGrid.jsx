@@ -171,8 +171,77 @@ function CompanyQuestions({ cards, bookmarks, onToggleBookmark, completed, onTog
   );
 }
 
-export default function CompanyGrid({ companies, cardsByCompany, bookmarks, onToggleBookmark, activeCompany, onSelectCompany, completed, onToggleCompleted }) {
+/**
+ * What a company's drawer shows when the visitor has not paid for it.
+ *
+ * The counts come from the server alongside an EMPTY question array -- the
+ * question text was never sent -- so this panel is the entire free tier: how
+ * much exists, split by round, and a way to buy it.
+ */
+function LockedCompanyPanel({ company, counts, lockedCount, onUpgrade }) {
+  const rows = [
+    { label: "Technical", n: counts.technical, tone: "bg-blue-50 text-blue-700" },
+    { label: "Programming", n: counts.programming, tone: "bg-violet-50 text-violet-700" },
+    { label: "HR", n: counts.hr, tone: "bg-emerald-50 text-emerald-700" },
+  ].filter((r) => r.n > 0);
+
+  const total = counts.total || lockedCount;
+
+  return (
+    <div className="mt-4 rounded-xl border border-zinc-200/80 bg-white p-7 text-center">
+      <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-900">
+        <svg className="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      </div>
+
+      <h3 className="text-[15px] font-semibold tracking-[-0.01em] text-zinc-900 tabular-nums">
+        {total} question{total === 1 ? "" : "s"} from {company}
+      </h3>
+
+      <div className="mx-auto mt-4 flex max-w-[340px] flex-wrap items-center justify-center gap-2">
+        {rows.map((r) => (
+          <span
+            key={r.label}
+            className={`rounded-lg px-2.5 py-1 text-[12px] font-medium tabular-nums ${r.tone}`}
+          >
+            {r.n} {r.label}
+          </span>
+        ))}
+      </div>
+
+      <p className="mx-auto mt-4 max-w-[320px] text-[13px] leading-relaxed text-zinc-500">
+        Unlock the full question bank across every company and year, plus premium
+        notes, AI answers and mock interviews.
+      </p>
+
+      <button
+        onClick={onUpgrade}
+        className="mt-4 inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-5 py-2.5 text-[13px] font-medium text-white shadow-sm transition-all duration-200 hover:bg-zinc-800 active:scale-[0.98]"
+      >
+        Unlock for &#8377;99
+        <span className="text-zinc-400">&middot; 2 months</span>
+      </button>
+    </div>
+  );
+}
+
+export default function CompanyGrid({
+  companies,
+  cardsByCompany,
+  countsByCompany = {},
+  lockedByCompany = {},
+  hasAccess = true,
+  onUpgrade,
+  bookmarks,
+  onToggleBookmark,
+  activeCompany,
+  onSelectCompany,
+  completed,
+  onToggleCompleted,
+}) {
   const filteredCompanies = companies.filter((c) => c !== "General Question Bank");
+  const emptyCounts = { technical: 0, programming: 0, hr: 0, total: 0 };
 
   return (
     <div className="space-y-5">
@@ -181,11 +250,17 @@ export default function CompanyGrid({ companies, cardsByCompany, bookmarks, onTo
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
           {filteredCompanies.map((company) => {
             const cards = cardsByCompany[company] || [];
+            const counts = countsByCompany[company];
+            // The tile advertises how many questions the company HAS, so it
+            // reads the same whether or not this visitor can open them.
+            const count = counts
+              ? counts.total
+              : cards.length + (lockedByCompany[company] || 0);
             return (
               <CompanyCardButton
                 key={company}
                 company={company}
-                count={cards.length}
+                count={count}
                 isActive={false}
                 onSelect={() => onSelectCompany(company)}
                 cards={cards}
@@ -196,11 +271,14 @@ export default function CompanyGrid({ companies, cardsByCompany, bookmarks, onTo
         </div>
       )}
 
-      {/* Active Company Detail */}
-      {activeCompany && cardsByCompany[activeCompany] && (
+      {/* Active Company Detail.
+          Rendered off `activeCompany` alone: with the free preview at zero an
+          unpaid visitor has no cards for ANY company, and gating this on
+          cardsByCompany made clicking a company tile do nothing at all. */}
+      {activeCompany && (
         <div className="bg-white rounded-xl border border-zinc-200/80 overflow-hidden animate-fadeIn">
           <div className="bg-zinc-50/80 px-5 py-3.5 flex items-center justify-between border-b border-zinc-200/60">
-            <DrawerHeader company={activeCompany} cards={cardsByCompany[activeCompany]} completed={completed} />
+            <DrawerHeader company={activeCompany} cards={cardsByCompany[activeCompany] || []} completed={completed} />
             <button
               onClick={() => onSelectCompany(null)}
               className="flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-zinc-50 border border-zinc-200/80 rounded-lg text-[12px] font-medium text-zinc-500 hover:text-zinc-700 shadow-sm transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-200"
@@ -212,13 +290,31 @@ export default function CompanyGrid({ companies, cardsByCompany, bookmarks, onTo
             </button>
           </div>
           <div className="px-5 pb-5 pt-1">
-            <CompanyQuestions
-              cards={cardsByCompany[activeCompany]}
-              bookmarks={bookmarks}
-              onToggleBookmark={onToggleBookmark}
-              completed={completed}
-              onToggleCompleted={onToggleCompleted}
-            />
+            {(cardsByCompany[activeCompany] || []).length > 0 && (
+              <CompanyQuestions
+                cards={cardsByCompany[activeCompany]}
+                bookmarks={bookmarks}
+                onToggleBookmark={onToggleBookmark}
+                completed={completed}
+                onToggleCompleted={onToggleCompleted}
+              />
+            )}
+
+            {!hasAccess && (lockedByCompany[activeCompany] || 0) > 0 && (
+              <LockedCompanyPanel
+                company={activeCompany}
+                counts={countsByCompany[activeCompany] || emptyCounts}
+                lockedCount={lockedByCompany[activeCompany] || 0}
+                onUpgrade={onUpgrade}
+              />
+            )}
+
+            {(cardsByCompany[activeCompany] || []).length === 0 &&
+              (lockedByCompany[activeCompany] || 0) === 0 && (
+                <p className="mt-4 rounded-xl border border-dashed border-zinc-200 bg-white p-6 text-center text-[13px] text-zinc-400">
+                  No questions recorded for this company yet.
+                </p>
+              )}
           </div>
         </div>
       )}
